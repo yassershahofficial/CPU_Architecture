@@ -1,10 +1,10 @@
-module FSM(clk, reset, pc, ir_load, rom_read_enable, state);
+module FSM(clk, reset, pc, rom_read_enable, state, ir_load);
 
 	input clk, reset;
-
-	output reg [2:0] pc, ir_load;
+	
+	output reg [7:0] pc;
 	output reg [1:0] state;
-	output reg rom_read_enable;
+	output reg rom_read_enable, ir_load;
 
 	parameter FETCH = 2'b00, DECODE = 2'b01, EXECUTE = 2'b10;
 

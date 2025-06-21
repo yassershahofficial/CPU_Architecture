@@ -4,14 +4,14 @@ module CPU(clk, reset, rom_data, ram_data_in, ram_write, ram_read, alu_enable, r
 	input [15:0] rom_data, ram_data_in;
 
 	output ram_write, ram_read, alu_enable;
-	output [2:0] rom_address;
+	output [7:0] rom_address;
 	output [5:0] ram_addr;
 	output [15:0] ram_data_out;
 	output [3:0] alu_op;
 
 	reg [15:0] IR;
 	
-	wire [2:0] pc;
+	wire [7:0] pc;
 	wire [1:0] state;
 	wire ir_load, rom_read_enable;
 	wire [3:0] opcode = IR[15:12];

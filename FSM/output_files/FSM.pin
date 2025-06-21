@@ -62,8 +62,8 @@ CHIP  "FSM"  ASSIGNED TO AN: 5M40ZE64C4
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
-state[1]                     : 1         : output : 3.3-V LVTTL       :         : 1         : N              
-pc[1]                        : 2         : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 1         :        :                   :         : 1         :                
+GND*                         : 2         :        :                   :         : 1         :                
 GND*                         : 3         :        :                   :         : 1         :                
 GND*                         : 4         :        :                   :         : 1         :                
 GND*                         : 5         :        :                   :         : 1         :                
@@ -90,7 +90,7 @@ GND*                         : 25        :        :                   :         
 GND*                         : 26        :        :                   :         : 1         :                
 GND*                         : 27        :        :                   :         : 1         :                
 GND*                         : 28        :        :                   :         : 1         :                
-ir_load[2]                   : 29        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 29        :        :                   :         : 1         :                
 GND*                         : 30        :        :                   :         : 1         :                
 GND*                         : 31        :        :                   :         : 1         :                
 GND*                         : 32        :        :                   :         : 1         :                
@@ -104,25 +104,25 @@ VCCIO2                       : 39        : power  :                   : 3.3V    
 GND*                         : 40        :        :                   :         : 2         :                
 VCCINT                       : 41        : power  :                   : 1.8V    :           :                
 GND*                         : 42        :        :                   :         : 2         :                
-GND*                         : 43        :        :                   :         : 2         :                
+pc[3]                        : 43        : output : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 44        :        :                   :         : 2         :                
-GND*                         : 45        :        :                   :         : 2         :                
-GND*                         : 46        :        :                   :         : 2         :                
-GND*                         : 47        :        :                   :         : 2         :                
-GND*                         : 48        :        :                   :         : 2         :                
-GND*                         : 49        :        :                   :         : 2         :                
-GND*                         : 50        :        :                   :         : 2         :                
-GND*                         : 51        :        :                   :         : 2         :                
-GND*                         : 52        :        :                   :         : 2         :                
-GND*                         : 53        :        :                   :         : 2         :                
-ir_load[1]                   : 54        : output : 3.3-V LVTTL       :         : 2         : N              
-GND*                         : 55        :        :                   :         : 2         :                
+pc[4]                        : 45        : output : 3.3-V LVTTL       :         : 2         : N              
+pc[0]                        : 46        : output : 3.3-V LVTTL       :         : 2         : N              
+pc[2]                        : 47        : output : 3.3-V LVTTL       :         : 2         : N              
+pc[1]                        : 48        : output : 3.3-V LVTTL       :         : 2         : N              
+pc[5]                        : 49        : output : 3.3-V LVTTL       :         : 2         : N              
+pc[6]                        : 50        : output : 3.3-V LVTTL       :         : 2         : N              
+rom_read_enable              : 51        : output : 3.3-V LVTTL       :         : 2         : N              
+ir_load                      : 52        : output : 3.3-V LVTTL       :         : 2         : N              
+state[1]                     : 53        : output : 3.3-V LVTTL       :         : 2         : N              
+pc[7]                        : 54        : output : 3.3-V LVTTL       :         : 2         : N              
+state[0]                     : 55        : output : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 56        :        :                   :         : 2         :                
 VCCIO2                       : 57        : power  :                   : 3.3V    : 2         :                
 GND*                         : 58        :        :                   :         : 2         :                
-state[0]                     : 59        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 59        :        :                   :         : 2         :                
 GND*                         : 60        :        :                   :         : 2         :                
-ir_load[0]                   : 61        : output : 3.3-V LVTTL       :         : 2         : N              
-pc[0]                        : 62        : output : 3.3-V LVTTL       :         : 2         : N              
-pc[2]                        : 63        : output : 3.3-V LVTTL       :         : 2         : N              
-rom_read_enable              : 64        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 61        :        :                   :         : 2         :                
+GND*                         : 62        :        :                   :         : 2         :                
+GND*                         : 63        :        :                   :         : 2         :                
+GND*                         : 64        :        :                   :         : 1         :                

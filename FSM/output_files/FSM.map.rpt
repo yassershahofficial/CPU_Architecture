@@ -1,5 +1,5 @@
 Analysis & Synthesis report for FSM
-Sat Jun 21 15:14:24 2025
+Sat Jun 21 23:01:18 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -15,9 +15,8 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   7. Analysis & Synthesis Resource Utilization by Entity
   8. Registers Removed During Synthesis
   9. General Register Statistics
- 10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Parameter Settings for User Entity Instance: Top-level Entity: |FSM
- 12. Analysis & Synthesis Messages
+ 10. Parameter Settings for User Entity Instance: Top-level Entity: |FSM
+ 11. Analysis & Synthesis Messages
 
 
 
@@ -43,13 +42,13 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sat Jun 21 15:14:24 2025       ;
+; Analysis & Synthesis Status ; Successful - Sat Jun 21 23:01:18 2025       ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; FSM                                         ;
 ; Top-level Entity Name       ; FSM                                         ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 8                                           ;
-; Total pins                  ; 11                                          ;
+; Total logic elements        ; 12                                          ;
+; Total pins                  ; 14                                          ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -150,38 +149,39 @@ refer to the applicable agreement for further details.
 +----------------------------------+-----------------+------------------------+----------------------------------------------------------+---------+
 
 
-+-------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                 ;
-+---------------------------------------------+---------------+
-; Resource                                    ; Usage         ;
-+---------------------------------------------+---------------+
-; Total logic elements                        ; 8             ;
-;     -- Combinational with no register       ; 1             ;
-;     -- Register only                        ; 1             ;
-;     -- Combinational with a register        ; 6             ;
-;                                             ;               ;
-; Logic element usage by number of LUT inputs ;               ;
-;     -- 4 input functions                    ; 2             ;
-;     -- 3 input functions                    ; 1             ;
-;     -- 2 input functions                    ; 2             ;
-;     -- 1 input functions                    ; 2             ;
-;     -- 0 input functions                    ; 0             ;
-;                                             ;               ;
-; Logic elements by mode                      ;               ;
-;     -- normal mode                          ; 8             ;
-;     -- arithmetic mode                      ; 0             ;
-;     -- qfbk mode                            ; 0             ;
-;     -- register cascade mode                ; 0             ;
-;     -- synchronous clear/load mode          ; 0             ;
-;     -- asynchronous clear/load mode         ; 7             ;
-;                                             ;               ;
-; Total registers                             ; 7             ;
-; I/O pins                                    ; 11            ;
-; Maximum fan-out node                        ; state[0]~reg0 ;
-; Maximum fan-out                             ; 8             ;
-; Total fan-out                               ; 41            ;
-; Average fan-out                             ; 2.16          ;
-+---------------------------------------------+---------------+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Total logic elements                        ; 12    ;
+;     -- Combinational with no register       ; 1     ;
+;     -- Register only                        ; 1     ;
+;     -- Combinational with a register        ; 10    ;
+;                                             ;       ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 0     ;
+;     -- 3 input functions                    ; 2     ;
+;     -- 2 input functions                    ; 9     ;
+;     -- 1 input functions                    ; 0     ;
+;     -- 0 input functions                    ; 0     ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 6     ;
+;     -- arithmetic mode                      ; 6     ;
+;     -- qfbk mode                            ; 0     ;
+;     -- register cascade mode                ; 0     ;
+;     -- synchronous clear/load mode          ; 0     ;
+;     -- asynchronous clear/load mode         ; 11    ;
+;                                             ;       ;
+; Total registers                             ; 11    ;
+; Total logic cells in carry chains           ; 7     ;
+; I/O pins                                    ; 14    ;
+; Maximum fan-out node                        ; clk   ;
+; Maximum fan-out                             ; 11    ;
+; Total fan-out                               ; 66    ;
+; Average fan-out                             ; 2.54  ;
++---------------------------------------------+-------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -189,20 +189,19 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |FSM                       ; 8 (8)       ; 7            ; 0          ; 11   ; 0            ; 1 (1)        ; 1 (1)             ; 6 (6)            ; 0 (0)           ; 0 (0)      ; |FSM                ; FSM         ; work         ;
+; |FSM                       ; 12 (12)     ; 11           ; 0          ; 14   ; 0            ; 1 (1)        ; 1 (1)             ; 10 (10)          ; 7 (7)           ; 0 (0)      ; |FSM                ; FSM         ; work         ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+--------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                             ;
-+---------------------------------------+----------------------------------------+
-; Register name                         ; Reason for Removal                     ;
-+---------------------------------------+----------------------------------------+
-; ir_load[2]~reg0                       ; Stuck at GND due to stuck port data_in ;
-; ir_load[1]~reg0                       ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 2 ;                                        ;
-+---------------------------------------+----------------------------------------+
++------------------------------------------------------------------+
+; Registers Removed During Synthesis                               ;
++---------------------------------------+--------------------------+
+; Register name                         ; Reason for Removal       ;
++---------------------------------------+--------------------------+
+; rom_read_enable~reg0                  ; Merged with ir_load~reg0 ;
+; Total Number of Removed Registers = 1 ;                          ;
++---------------------------------------+--------------------------+
 
 
 +------------------------------------------------------+
@@ -210,23 +209,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 7     ;
+; Total registers                              ; 11    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 7     ;
+; Number of registers using Asynchronous Clear ; 11    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 2     ;
+; Number of registers using Clock Enable       ; 7     ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |FSM|ir_load[0]~reg0       ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
 +---------------------------------------------------------------------+
@@ -247,25 +237,22 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 21 15:14:15 2025
+    Info: Processing started: Sat Jun 21 23:01:09 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FSM -c FSM
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file fsm.v
     Info (12023): Found entity 1: FSM File: C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v Line: 1
 Info (12127): Elaborating entity "FSM" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at FSM.v(50): truncated value with size 32 to match size of target (3) File: C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v Line: 50
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "ir_load[1]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v Line: 27
-    Warning (13410): Pin "ir_load[2]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v Line: 27
-Info (21057): Implemented 19 device resources after synthesis - the final resource count might be different
+Warning (10230): Verilog HDL assignment warning at FSM.v(50): truncated value with size 32 to match size of target (8) File: C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v Line: 50
+Info (21057): Implemented 26 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 9 output pins
-    Info (21061): Implemented 8 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 5 warnings
+    Info (21059): Implemented 12 output pins
+    Info (21061): Implemented 12 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 4705 megabytes
-    Info: Processing ended: Sat Jun 21 15:14:24 2025
+    Info: Processing ended: Sat Jun 21 23:01:18 2025
     Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:20
+    Info: Total CPU time (on all processors): 00:00:19
 
 

@@ -1,4 +1,4 @@
-module CU(opcode, ram_write, ram_read, alu_enable, alu_op);
+module CU(opcode, ram_write, ram_read, alu_op, alu_enable);
 
 	input [3:0] opcode;
 
