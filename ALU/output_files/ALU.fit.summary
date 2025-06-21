@@ -1,0 +1,11 @@
+Fitter Status : Successful - Sat Jun 21 14:59:41 2025
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : ALU
+Top-level Entity Name : ALU
+Family : MAX V
+Device : 5M240ZM100C4
+Timing Models : Final
+Total logic elements : 173 / 240 ( 72 % )
+Total pins : 53 / 79 ( 67 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

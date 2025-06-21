@@ -1,0 +1,11 @@
+Fitter Status : Successful - Sat Jun 21 14:54:23 2025
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : RAM
+Top-level Entity Name : RAM
+Family : MAX V
+Device : 5M2210ZF256C4
+Timing Models : Final
+Total logic elements : 1,264 / 2,210 ( 57 % )
+Total pins : 41 / 203 ( 20 % )
+Total virtual pins : 0
+UFM blocks : 0 / 1 ( 0 % )

@@ -1,0 +1,27 @@
+module ROM(input wire clk, input wire read, input wire [5:0] addr, output reg [15:0] data);
+
+    always @(posedge clk) 
+	 begin
+        
+		  if (read) 
+		  begin
+            case (addr)
+                // Instruction format: [Operation Code 4 bits] [Destination 6 bits] [Source 6 bits]
+
+                6'd0: data <= 16'b0001111111111110; // MOV A, B
+                6'd1: data <= 16'b0010111111000101; // ADD A, 000101B [ A + memory RAM[5] ]
+                6'd2: data <= 16'b0011111111000110; // AND A, 000110B [ A & memory RAM[6] ] 
+                6'd3: data <= 16'b0100111110111101; // MOV B, C
+
+                default: data <= 16'b0000000000000000;
+					 
+            endcase
+        end 
+		  
+		  else
+		  begin
+            data <= 16'bz;
+        end
+    end
+
+endmodule

@@ -1,0 +1,30 @@
+|FSM
+clk => ir_load[0]~reg0.CLK
+clk => ir_load[1]~reg0.CLK
+clk => ir_load[2]~reg0.CLK
+clk => rom_read_enable~reg0.CLK
+clk => state[0]~reg0.CLK
+clk => state[1]~reg0.CLK
+clk => pc[0]~reg0.CLK
+clk => pc[1]~reg0.CLK
+clk => pc[2]~reg0.CLK
+reset => ir_load[0]~reg0.ACLR
+reset => ir_load[1]~reg0.ACLR
+reset => ir_load[2]~reg0.ACLR
+reset => rom_read_enable~reg0.ACLR
+reset => state[0]~reg0.ACLR
+reset => state[1]~reg0.ACLR
+reset => pc[0]~reg0.ACLR
+reset => pc[1]~reg0.ACLR
+reset => pc[2]~reg0.ACLR
+pc[0] <= pc[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[1] <= pc[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[2] <= pc[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ir_load[0] <= ir_load[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ir_load[1] <= ir_load[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ir_load[2] <= ir_load[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rom_read_enable <= rom_read_enable~reg0.DB_MAX_OUTPUT_PORT_TYPE
+state[0] <= state[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+state[1] <= state[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+

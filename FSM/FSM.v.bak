@@ -1,0 +1,49 @@
+module FSM (
+    
+);
+
+	input clock,
+	input reset,
+	output reg [2:0] pc,
+	output reg rom_read_enable,
+	output reg [1:0] state,
+	output reg ir_load
+
+	parameter FETCH = 2'b00, DECODE = 2'b01, EXECUTE = 2'b10;
+
+	always @(posedge clock or posedge reset) 
+	begin
+	
+		if (reset) 
+		begin
+			pc <= 0;
+			state <= FETCH;
+			rom_read_enable <= 0;
+			ir_load <= 0;
+		end 
+		
+		else 
+		begin
+		
+			case (state)
+				FETCH: begin
+					rom_read_enable <= 1;
+					ir_load <= 1;
+					state <= DECODE;
+				end
+				DECODE: begin
+					rom_read_enable <= 0;
+					ir_load <= 0;
+					state <= EXECUTE;
+				end
+				EXECUTE: begin
+					pc <= pc + 1;
+					state <= FETCH;
+				end
+			endcase
+			
+		end
+		
+	end
+
+endmodule
