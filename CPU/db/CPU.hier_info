@@ -39,6 +39,11 @@ alu_enable <= CU:cu_inst.alu_enable
 rom_address[0] <= FSM:fsm_inst.pc
 rom_address[1] <= FSM:fsm_inst.pc
 rom_address[2] <= FSM:fsm_inst.pc
+rom_address[3] <= FSM:fsm_inst.pc
+rom_address[4] <= FSM:fsm_inst.pc
+rom_address[5] <= FSM:fsm_inst.pc
+rom_address[6] <= FSM:fsm_inst.pc
+rom_address[7] <= FSM:fsm_inst.pc
 ram_addr[0] <= ram_addr.DB_MAX_OUTPUT_PORT_TYPE
 ram_addr[1] <= ram_addr.DB_MAX_OUTPUT_PORT_TYPE
 ram_addr[2] <= ram_addr.DB_MAX_OUTPUT_PORT_TYPE
@@ -68,33 +73,42 @@ alu_op[3] <= CU:cu_inst.alu_op
 
 
 |CPU|FSM:fsm_inst
-clk => ir_load[0]~reg0.CLK
-clk => ir_load[1]~reg0.CLK
-clk => ir_load[2]~reg0.CLK
+clk => ir_load~reg0.CLK
 clk => rom_read_enable~reg0.CLK
 clk => state[0]~reg0.CLK
 clk => state[1]~reg0.CLK
 clk => pc[0]~reg0.CLK
 clk => pc[1]~reg0.CLK
 clk => pc[2]~reg0.CLK
-reset => ir_load[0]~reg0.ACLR
-reset => ir_load[1]~reg0.ACLR
-reset => ir_load[2]~reg0.ACLR
+clk => pc[3]~reg0.CLK
+clk => pc[4]~reg0.CLK
+clk => pc[5]~reg0.CLK
+clk => pc[6]~reg0.CLK
+clk => pc[7]~reg0.CLK
+reset => ir_load~reg0.ACLR
 reset => rom_read_enable~reg0.ACLR
 reset => state[0]~reg0.ACLR
 reset => state[1]~reg0.ACLR
 reset => pc[0]~reg0.ACLR
 reset => pc[1]~reg0.ACLR
 reset => pc[2]~reg0.ACLR
+reset => pc[3]~reg0.ACLR
+reset => pc[4]~reg0.ACLR
+reset => pc[5]~reg0.ACLR
+reset => pc[6]~reg0.ACLR
+reset => pc[7]~reg0.ACLR
 pc[0] <= pc[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 pc[1] <= pc[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 pc[2] <= pc[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-ir_load[0] <= ir_load[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-ir_load[1] <= ir_load[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-ir_load[2] <= ir_load[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[3] <= pc[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[4] <= pc[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[5] <= pc[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[6] <= pc[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[7] <= pc[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 rom_read_enable <= rom_read_enable~reg0.DB_MAX_OUTPUT_PORT_TYPE
 state[0] <= state[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 state[1] <= state[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ir_load <= ir_load~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CPU|CU:cu_inst
@@ -104,10 +118,10 @@ opcode[2] => Decoder0.IN1
 opcode[3] => Decoder0.IN0
 ram_write <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
 ram_read <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
-alu_enable <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
 alu_op[0] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
 alu_op[1] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
 alu_op[2] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
 alu_op[3] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+alu_enable <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
 
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Sat Jun 21 15:20:21 2025
+Tue Jun 24 02:06:46 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -42,13 +42,13 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sat Jun 21 15:20:21 2025       ;
+; Analysis & Synthesis Status ; Successful - Tue Jun 24 02:06:46 2025       ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; CPU                                         ;
 ; Top-level Entity Name       ; CPU                                         ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 30                                          ;
-; Total pins                  ; 66                                          ;
+; Total logic elements        ; 35                                          ;
+; Total pins                  ; 71                                          ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -129,8 +129,8 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -140,15 +140,15 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                           ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                             ; Library ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------------+---------+
-; ../FSM/FSM.v                     ; yes             ; User Verilog HDL File  ; C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v ;         ;
-; ../CU/CU.v                       ; yes             ; User Verilog HDL File  ; C:/Users/yasser/Documents/Lab POCA/MiniProject/CU/CU.v   ;         ;
-; CPU.v                            ; yes             ; User Verilog HDL File  ; C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v ;         ;
-+----------------------------------+-----------------+------------------------+----------------------------------------------------------+---------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                        ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                          ; Library ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
+; ../FSM/FSM.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v ;         ;
+; ../CU/CU.v                       ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v   ;         ;
+; CPU.v                            ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v ;         ;
++----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -156,32 +156,33 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 30    ;
+; Total logic elements                        ; 35    ;
 ;     -- Combinational with no register       ; 14    ;
 ;     -- Register only                        ; 11    ;
-;     -- Combinational with a register        ; 5     ;
+;     -- Combinational with a register        ; 10    ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 8     ;
+;     -- 4 input functions                    ; 6     ;
 ;     -- 3 input functions                    ; 9     ;
-;     -- 2 input functions                    ; 2     ;
+;     -- 2 input functions                    ; 9     ;
 ;     -- 1 input functions                    ; 0     ;
 ;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 30    ;
-;     -- arithmetic mode                      ; 0     ;
+;     -- normal mode                          ; 29    ;
+;     -- arithmetic mode                      ; 6     ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
 ;     -- synchronous clear/load mode          ; 0     ;
-;     -- asynchronous clear/load mode         ; 6     ;
+;     -- asynchronous clear/load mode         ; 11    ;
 ;                                             ;       ;
-; Total registers                             ; 16    ;
-; I/O pins                                    ; 66    ;
+; Total registers                             ; 21    ;
+; Total logic cells in carry chains           ; 7     ;
+; I/O pins                                    ; 71    ;
 ; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 16    ;
-; Total fan-out                               ; 138   ;
-; Average fan-out                             ; 1.44  ;
+; Maximum fan-out                             ; 21    ;
+; Total fan-out                               ; 166   ;
+; Average fan-out                             ; 1.57  ;
 +---------------------------------------------+-------+
 
 
@@ -190,9 +191,9 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |CPU                       ; 30 (17)     ; 16           ; 0          ; 66   ; 0            ; 14 (7)       ; 11 (10)           ; 5 (0)            ; 0 (0)           ; 0 (0)      ; |CPU                ; CPU         ; work         ;
+; |CPU                       ; 35 (17)     ; 21           ; 0          ; 71   ; 0            ; 14 (7)       ; 11 (10)           ; 10 (0)           ; 7 (0)           ; 0 (0)      ; |CPU                ; CPU         ; work         ;
 ;    |CU:cu_inst|            ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |CPU|CU:cu_inst     ; CU          ; work         ;
-;    |FSM:fsm_inst|          ; 6 (6)       ; 6            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 5 (5)            ; 0 (0)           ; 0 (0)      ; |CPU|FSM:fsm_inst   ; FSM         ; work         ;
+;    |FSM:fsm_inst|          ; 11 (11)     ; 11           ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 10 (10)          ; 7 (7)           ; 0 (0)      ; |CPU|FSM:fsm_inst   ; FSM         ; work         ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -202,12 +203,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 16    ;
+; Total registers                              ; 21    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 6     ;
+; Number of registers using Asynchronous Clear ; 11    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 10    ;
+; Number of registers using Clock Enable       ; 17    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -224,14 +225,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "FSM:fsm_inst"                                                                                                                         ;
-+-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
-; Port            ; Type   ; Severity ; Details                                                                                                                    ;
-+-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
-; rom_read_enable ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                        ;
-; ir_load         ; Output ; Warning  ; Output or bidir port (3 bits) is wider than the port expression (1 bits) it drives; bit(s) "ir_load[2..1]" have no fanouts ;
-+-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FSM:fsm_inst"                                                                                  ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; rom_read_enable ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -240,47 +240,42 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 21 15:20:12 2025
+    Info: Processing started: Tue Jun 24 02:06:34 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Warning (10229): Verilog HDL Expression warning at ROM.v(18): truncated literal to match 16 bits File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 18
-Warning (10229): Verilog HDL Expression warning at ROM.v(19): truncated literal to match 16 bits File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 19
-Warning (10229): Verilog HDL Expression warning at ROM.v(20): truncated literal to match 16 bits File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 20
-Warning (10229): Verilog HDL Expression warning at ROM.v(21): truncated literal to match 16 bits File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 21
-Info (12021): Found 1 design units, including 1 entities, in source file /users/yasser/documents/lab poca/miniproject/rom/rom.v
-    Info (12023): Found entity 1: ROM File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file /users/yasser/documents/lab poca/miniproject/ram/ram.v
-    Info (12023): Found entity 1: RAM File: C:/Users/yasser/Documents/Lab POCA/MiniProject/RAM/RAM.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file /users/yasser/documents/lab poca/miniproject/fsm/fsm.v
-    Info (12023): Found entity 1: FSM File: C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file /users/yasser/documents/lab poca/miniproject/cu/cu.v
-    Info (12023): Found entity 1: CU File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CU/CU.v Line: 1
-Info (12021): Found 1 design units, including 1 entities, in source file /users/yasser/documents/lab poca/miniproject/alu/alu.v
-    Info (12023): Found entity 1: ALU File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ALU/ALU.v Line: 1
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/rom/rom.v
+    Info (12023): Found entity 1: ROM File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ROM/ROM.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/ram/ram.v
+    Info (12023): Found entity 1: RAM File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/fsm/fsm.v
+    Info (12023): Found entity 1: FSM File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/cu/cu.v
+    Info (12023): Found entity 1: CU File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/alu/alu.v
+    Info (12023): Found entity 1: ALU File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file cpu.v
-    Info (12023): Found entity 1: CPU File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 1
+    Info (12023): Found entity 1: CPU File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 1
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at CPU.v(19): object "src" assigned a value but never read File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 19
-Info (12128): Elaborating entity "FSM" for hierarchy "FSM:fsm_inst" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 35
-Warning (10230): Verilog HDL assignment warning at FSM.v(50): truncated value with size 32 to match size of target (3) File: C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v Line: 50
-Info (12128): Elaborating entity "CU" for hierarchy "CU:cu_inst" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 43
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (10036): Verilog HDL or VHDL warning at CPU.v(19): object "src" assigned a value but never read File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 19
+Info (12128): Elaborating entity "FSM" for hierarchy "FSM:fsm_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 35
+Warning (10230): Verilog HDL assignment warning at FSM.v(50): truncated value with size 32 to match size of target (8) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 50
+Info (12128): Elaborating entity "CU" for hierarchy "CU:cu_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 43
 Warning (21074): Design contains 6 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "rom_data[0]" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[1]" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[2]" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[3]" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[4]" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[5]" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 4
-Info (21057): Implemented 96 device resources after synthesis - the final resource count might be different
+    Warning (15610): No output dependent on input pin "rom_data[0]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
+    Warning (15610): No output dependent on input pin "rom_data[1]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
+    Warning (15610): No output dependent on input pin "rom_data[2]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
+    Warning (15610): No output dependent on input pin "rom_data[3]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
+    Warning (15610): No output dependent on input pin "rom_data[4]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
+    Warning (15610): No output dependent on input pin "rom_data[5]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
+Info (21057): Implemented 106 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 34 input pins
-    Info (21059): Implemented 32 output pins
-    Info (21061): Implemented 30 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 15 warnings
-    Info: Peak virtual memory: 4713 megabytes
-    Info: Processing ended: Sat Jun 21 15:20:21 2025
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:19
+    Info (21059): Implemented 37 output pins
+    Info (21061): Implemented 35 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
+    Info: Peak virtual memory: 4701 megabytes
+    Info: Processing ended: Tue Jun 24 02:06:46 2025
+    Info: Elapsed time: 00:00:12
+    Info: Total CPU time (on all processors): 00:00:25
 
 

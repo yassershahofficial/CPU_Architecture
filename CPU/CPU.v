@@ -42,7 +42,7 @@ module CPU(clk, reset, rom_data, ram_data_in, ram_write, ram_read, alu_enable, r
 		.alu_enable(alu_enable)
 	);
 
-	assign rom_address = pc;
+	assign rom_address = pc; //test
 	assign ram_addr = (state == 2'b10) ? dest : 6'b000000;
 	assign ram_data_out = ram_data_in; // Placeholder for full datapath
 

@@ -1,5 +1,5 @@
 Timing Analyzer report for CPU
-Sat Jun 21 15:20:26 2025
+Tue Jun 24 02:06:57 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -70,8 +70,8 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -95,7 +95,7 @@ refer to the applicable agreement for further details.
 +------------+-----------------+------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
 +------------+-----------------+------------+------+
-; 277.78 MHz ; 277.78 MHz      ; clk        ;      ;
+; 173.19 MHz ; 173.19 MHz      ; clk        ;      ;
 +------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -105,7 +105,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+--------+---------------+
 ; Clock ; Slack  ; End Point TNS ;
 +-------+--------+---------------+
-; clk   ; -2.600 ; -35.164       ;
+; clk   ; -4.774 ; -66.353       ;
 +-------+--------+---------------+
 
 
@@ -114,7 +114,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+-------+---------------+
 ; Clock ; Slack ; End Point TNS ;
 +-------+-------+---------------+
-; clk   ; 1.828 ; 0.000         ;
+; clk   ; 1.753 ; 0.000         ;
 +-------+-------+---------------+
 
 
@@ -139,76 +139,156 @@ No paths to report.
 +-------+--------+---------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------+
-; Setup: 'clk'                                                                                                                     ;
-+--------+-------------------------+-------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node               ; To Node                 ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+-------------------------+-------------------------+--------------+-------------+--------------+------------+------------+
-; -2.600 ; FSM:fsm_inst|ir_load[0] ; IR[10]                  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.340      ;
-; -2.322 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|state[0]   ; clk          ; clk         ; 1.000        ; 0.000      ; 3.062      ;
-; -2.310 ; FSM:fsm_inst|pc[0]      ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 1.000        ; 0.000      ; 3.050      ;
-; -2.293 ; FSM:fsm_inst|pc[2]      ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 1.000        ; 0.000      ; 3.033      ;
-; -2.213 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|pc[0]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.953      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[12]                  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[14]                  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[15]                  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[13]                  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[6]                   ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[7]                   ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[8]                   ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[9]                   ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[11]                  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.177 ; FSM:fsm_inst|ir_load[0] ; FSM:fsm_inst|ir_load[0] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.917      ;
-; -2.175 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|ir_load[0] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.915      ;
-; -2.162 ; FSM:fsm_inst|pc[1]      ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.902      ;
-; -2.158 ; FSM:fsm_inst|pc[1]      ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.898      ;
-; -2.052 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.792      ;
-; -1.937 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.677      ;
-; -1.911 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|ir_load[0] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.651      ;
-; -1.633 ; FSM:fsm_inst|pc[0]      ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.373      ;
-; -1.627 ; FSM:fsm_inst|pc[0]      ; FSM:fsm_inst|pc[0]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.367      ;
-; -1.521 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|state[1]   ; clk          ; clk         ; 1.000        ; 0.000      ; 2.261      ;
-; -1.391 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|pc[0]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.131      ;
-; -1.390 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.130      ;
-; -1.382 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|state[0]   ; clk          ; clk         ; 1.000        ; 0.000      ; 2.122      ;
-; -1.162 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 1.000        ; 0.000      ; 1.902      ;
-+--------+-------------------------+-------------------------+--------------+-------------+--------------+------------+------------+
++------------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'clk'                                                                                                                 ;
++--------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node             ; To Node               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; -4.774 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|ir_load  ; clk          ; clk         ; 1.000        ; 0.000      ; 5.514      ;
+; -3.908 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.648      ;
+; -3.908 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.648      ;
+; -3.908 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.648      ;
+; -3.898 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[1]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.638      ;
+; -3.898 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[2]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.638      ;
+; -3.898 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[3]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.638      ;
+; -3.898 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.638      ;
+; -3.898 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.638      ;
+; -3.898 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.638      ;
+; -3.898 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.638      ;
+; -3.848 ; FSM:fsm_inst|pc[4]    ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.588      ;
+; -3.848 ; FSM:fsm_inst|pc[4]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.588      ;
+; -3.848 ; FSM:fsm_inst|pc[4]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.588      ;
+; -3.719 ; FSM:fsm_inst|pc[5]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.459      ;
+; -3.654 ; FSM:fsm_inst|pc[3]    ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.394      ;
+; -3.654 ; FSM:fsm_inst|pc[3]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.394      ;
+; -3.654 ; FSM:fsm_inst|pc[3]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.394      ;
+; -3.646 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.386      ;
+; -3.646 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.386      ;
+; -3.646 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.386      ;
+; -3.594 ; FSM:fsm_inst|pc[5]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.334      ;
+; -3.521 ; FSM:fsm_inst|pc[2]    ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.261      ;
+; -3.521 ; FSM:fsm_inst|pc[2]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.261      ;
+; -3.521 ; FSM:fsm_inst|pc[2]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.261      ;
+; -3.501 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|ir_load  ; clk          ; clk         ; 1.000        ; 0.000      ; 4.241      ;
+; -3.465 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[0]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.205      ;
+; -3.433 ; FSM:fsm_inst|ir_load  ; IR[12]                ; clk          ; clk         ; 1.000        ; 0.000      ; 4.173      ;
+; -3.433 ; FSM:fsm_inst|ir_load  ; IR[15]                ; clk          ; clk         ; 1.000        ; 0.000      ; 4.173      ;
+; -3.433 ; FSM:fsm_inst|ir_load  ; IR[14]                ; clk          ; clk         ; 1.000        ; 0.000      ; 4.173      ;
+; -3.433 ; FSM:fsm_inst|ir_load  ; IR[13]                ; clk          ; clk         ; 1.000        ; 0.000      ; 4.173      ;
+; -3.417 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.157      ;
+; -3.308 ; FSM:fsm_inst|pc[6]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.048      ;
+; -3.292 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[3]    ; clk          ; clk         ; 1.000        ; 0.000      ; 4.032      ;
+; -3.167 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[2]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.907      ;
+; -3.163 ; FSM:fsm_inst|pc[3]    ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.903      ;
+; -3.155 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.895      ;
+; -3.030 ; FSM:fsm_inst|pc[2]    ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.770      ;
+; -3.030 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[3]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.770      ;
+; -2.911 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|state[0] ; clk          ; clk         ; 1.000        ; 0.000      ; 3.651      ;
+; -2.905 ; FSM:fsm_inst|pc[2]    ; FSM:fsm_inst|pc[3]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.645      ;
+; -2.905 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[2]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.645      ;
+; -2.703 ; FSM:fsm_inst|pc[5]    ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.443      ;
+; -2.674 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[0]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.414      ;
+; -2.636 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[1]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.376      ;
+; -2.636 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[2]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.376      ;
+; -2.636 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[3]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.376      ;
+; -2.636 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.376      ;
+; -2.636 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.376      ;
+; -2.636 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.376      ;
+; -2.636 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.376      ;
+; -2.604 ; FSM:fsm_inst|pc[4]    ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.344      ;
+; -2.560 ; FSM:fsm_inst|pc[6]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.300      ;
+; -2.276 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[1]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.016      ;
+; -2.272 ; FSM:fsm_inst|pc[3]    ; FSM:fsm_inst|pc[3]    ; clk          ; clk         ; 1.000        ; 0.000      ; 3.012      ;
+; -2.178 ; FSM:fsm_inst|ir_load  ; IR[6]                 ; clk          ; clk         ; 1.000        ; 0.000      ; 2.918      ;
+; -2.178 ; FSM:fsm_inst|ir_load  ; IR[7]                 ; clk          ; clk         ; 1.000        ; 0.000      ; 2.918      ;
+; -2.178 ; FSM:fsm_inst|ir_load  ; IR[8]                 ; clk          ; clk         ; 1.000        ; 0.000      ; 2.918      ;
+; -2.178 ; FSM:fsm_inst|ir_load  ; IR[9]                 ; clk          ; clk         ; 1.000        ; 0.000      ; 2.918      ;
+; -2.178 ; FSM:fsm_inst|ir_load  ; IR[10]                ; clk          ; clk         ; 1.000        ; 0.000      ; 2.918      ;
+; -2.178 ; FSM:fsm_inst|ir_load  ; IR[11]                ; clk          ; clk         ; 1.000        ; 0.000      ; 2.918      ;
+; -2.167 ; FSM:fsm_inst|pc[7]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 1.000        ; 0.000      ; 2.907      ;
+; -2.157 ; FSM:fsm_inst|ir_load  ; FSM:fsm_inst|ir_load  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.897      ;
+; -2.157 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[1]    ; clk          ; clk         ; 1.000        ; 0.000      ; 2.897      ;
+; -2.157 ; FSM:fsm_inst|pc[2]    ; FSM:fsm_inst|pc[2]    ; clk          ; clk         ; 1.000        ; 0.000      ; 2.897      ;
+; -1.873 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[0]    ; clk          ; clk         ; 1.000        ; 0.000      ; 2.613      ;
+; -1.864 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|state[0] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.604      ;
+; -1.087 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|state[1] ; clk          ; clk         ; 1.000        ; 0.000      ; 1.827      ;
++--------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------+
-; Hold: 'clk'                                                                                                                     ;
-+-------+-------------------------+-------------------------+--------------+-------------+--------------+------------+------------+
-; Slack ; From Node               ; To Node                 ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+-------+-------------------------+-------------------------+--------------+-------------+--------------+------------+------------+
-; 1.828 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 0.000        ; 0.000      ; 1.902      ;
-; 2.048 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|state[0]   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.122      ;
-; 2.056 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.130      ;
-; 2.057 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|pc[0]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.131      ;
-; 2.187 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|state[1]   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.261      ;
-; 2.293 ; FSM:fsm_inst|pc[0]      ; FSM:fsm_inst|pc[0]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.367      ;
-; 2.299 ; FSM:fsm_inst|pc[0]      ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.373      ;
-; 2.577 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|ir_load[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.651      ;
-; 2.603 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.677      ;
-; 2.718 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.792      ;
-; 2.824 ; FSM:fsm_inst|pc[1]      ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.898      ;
-; 2.828 ; FSM:fsm_inst|pc[1]      ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.902      ;
-; 2.841 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|ir_load[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.915      ;
-; 2.843 ; FSM:fsm_inst|ir_load[0] ; FSM:fsm_inst|ir_load[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.917      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[12]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[14]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[15]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[13]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[6]                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[7]                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[8]                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[9]                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[11]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.879 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|pc[0]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.953      ;
-; 2.959 ; FSM:fsm_inst|pc[2]      ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 0.000        ; 0.000      ; 3.033      ;
-; 2.976 ; FSM:fsm_inst|pc[0]      ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 0.000        ; 0.000      ; 3.050      ;
-; 2.988 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|state[0]   ; clk          ; clk         ; 0.000        ; 0.000      ; 3.062      ;
-; 3.266 ; FSM:fsm_inst|ir_load[0] ; IR[10]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 3.340      ;
-+-------+-------------------------+-------------------------+--------------+-------------+--------------+------------+------------+
++-----------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'clk'                                                                                                                 ;
++-------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node             ; To Node               ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
+; 1.753 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|state[1] ; clk          ; clk         ; 0.000        ; 0.000      ; 1.827      ;
+; 2.530 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|state[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.604      ;
+; 2.539 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[0]    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.613      ;
+; 2.823 ; FSM:fsm_inst|ir_load  ; FSM:fsm_inst|ir_load  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.897      ;
+; 2.823 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[1]    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.897      ;
+; 2.823 ; FSM:fsm_inst|pc[2]    ; FSM:fsm_inst|pc[2]    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.897      ;
+; 2.833 ; FSM:fsm_inst|pc[7]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 0.000        ; 0.000      ; 2.907      ;
+; 2.844 ; FSM:fsm_inst|ir_load  ; IR[6]                 ; clk          ; clk         ; 0.000        ; 0.000      ; 2.918      ;
+; 2.844 ; FSM:fsm_inst|ir_load  ; IR[7]                 ; clk          ; clk         ; 0.000        ; 0.000      ; 2.918      ;
+; 2.844 ; FSM:fsm_inst|ir_load  ; IR[8]                 ; clk          ; clk         ; 0.000        ; 0.000      ; 2.918      ;
+; 2.844 ; FSM:fsm_inst|ir_load  ; IR[9]                 ; clk          ; clk         ; 0.000        ; 0.000      ; 2.918      ;
+; 2.844 ; FSM:fsm_inst|ir_load  ; IR[10]                ; clk          ; clk         ; 0.000        ; 0.000      ; 2.918      ;
+; 2.844 ; FSM:fsm_inst|ir_load  ; IR[11]                ; clk          ; clk         ; 0.000        ; 0.000      ; 2.918      ;
+; 2.938 ; FSM:fsm_inst|pc[3]    ; FSM:fsm_inst|pc[3]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.012      ;
+; 2.942 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[1]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.016      ;
+; 3.226 ; FSM:fsm_inst|pc[6]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.300      ;
+; 3.270 ; FSM:fsm_inst|pc[4]    ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.344      ;
+; 3.302 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[1]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.376      ;
+; 3.302 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[2]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.376      ;
+; 3.302 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[3]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.376      ;
+; 3.302 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.376      ;
+; 3.302 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.376      ;
+; 3.302 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.376      ;
+; 3.302 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.376      ;
+; 3.340 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[0]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.414      ;
+; 3.369 ; FSM:fsm_inst|pc[5]    ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.443      ;
+; 3.544 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[2]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.618      ;
+; 3.544 ; FSM:fsm_inst|pc[2]    ; FSM:fsm_inst|pc[3]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.618      ;
+; 3.577 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|state[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 3.651      ;
+; 3.657 ; FSM:fsm_inst|pc[2]    ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.731      ;
+; 3.657 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[3]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.731      ;
+; 3.770 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.844      ;
+; 3.803 ; FSM:fsm_inst|pc[3]    ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.877      ;
+; 3.807 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[2]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.881      ;
+; 3.920 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[3]    ; clk          ; clk         ; 0.000        ; 0.000      ; 3.994      ;
+; 3.947 ; FSM:fsm_inst|pc[6]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.021      ;
+; 4.033 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.107      ;
+; 4.099 ; FSM:fsm_inst|ir_load  ; IR[12]                ; clk          ; clk         ; 0.000        ; 0.000      ; 4.173      ;
+; 4.099 ; FSM:fsm_inst|ir_load  ; IR[15]                ; clk          ; clk         ; 0.000        ; 0.000      ; 4.173      ;
+; 4.099 ; FSM:fsm_inst|ir_load  ; IR[14]                ; clk          ; clk         ; 0.000        ; 0.000      ; 4.173      ;
+; 4.099 ; FSM:fsm_inst|ir_load  ; IR[13]                ; clk          ; clk         ; 0.000        ; 0.000      ; 4.173      ;
+; 4.131 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|pc[0]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.205      ;
+; 4.160 ; FSM:fsm_inst|pc[2]    ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.234      ;
+; 4.160 ; FSM:fsm_inst|pc[2]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.234      ;
+; 4.160 ; FSM:fsm_inst|pc[2]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.234      ;
+; 4.167 ; FSM:fsm_inst|state[1] ; FSM:fsm_inst|ir_load  ; clk          ; clk         ; 0.000        ; 0.000      ; 4.241      ;
+; 4.234 ; FSM:fsm_inst|pc[5]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.308      ;
+; 4.273 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.347      ;
+; 4.273 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.347      ;
+; 4.273 ; FSM:fsm_inst|pc[1]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.347      ;
+; 4.306 ; FSM:fsm_inst|pc[3]    ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.380      ;
+; 4.306 ; FSM:fsm_inst|pc[3]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.380      ;
+; 4.306 ; FSM:fsm_inst|pc[3]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.380      ;
+; 4.347 ; FSM:fsm_inst|pc[5]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.421      ;
+; 4.514 ; FSM:fsm_inst|pc[4]    ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.588      ;
+; 4.514 ; FSM:fsm_inst|pc[4]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.588      ;
+; 4.514 ; FSM:fsm_inst|pc[4]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.588      ;
+; 4.536 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.610      ;
+; 4.536 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.610      ;
+; 4.536 ; FSM:fsm_inst|pc[0]    ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.610      ;
+; 4.564 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[1]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.638      ;
+; 4.564 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[2]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.638      ;
+; 4.564 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[3]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.638      ;
+; 4.564 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[4]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.638      ;
+; 4.564 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[5]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.638      ;
+; 4.564 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[6]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.638      ;
+; 4.564 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|pc[7]    ; clk          ; clk         ; 0.000        ; 0.000      ; 4.638      ;
+; 5.440 ; FSM:fsm_inst|state[0] ; FSM:fsm_inst|ir_load  ; clk          ; clk         ; 0.000        ; 0.000      ; 5.514      ;
++-------+-----------------------+-----------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-------------------------------------------------------------------+
@@ -216,7 +296,7 @@ No paths to report.
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 28       ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 92       ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -226,7 +306,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 28       ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 92       ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -251,9 +331,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 27    ; 27   ;
-; Unconstrained Input Port Paths  ; 32    ; 32   ;
-; Unconstrained Output Ports      ; 32    ; 32   ;
-; Unconstrained Output Port Paths ; 64    ; 64   ;
+; Unconstrained Input Port Paths  ; 37    ; 37   ;
+; Unconstrained Output Ports      ; 37    ; 37   ;
+; Unconstrained Output Port Paths ; 69    ; 69   ;
 +---------------------------------+-------+------+
 
 
@@ -338,6 +418,11 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; rom_address[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; rom_address[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; rom_address[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rom_address[3]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rom_address[4]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rom_address[5]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rom_address[6]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rom_address[7]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------------+---------------------------------------------------------------------------------------+
 
 
@@ -413,6 +498,11 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; rom_address[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; rom_address[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; rom_address[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rom_address[3]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rom_address[4]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rom_address[5]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rom_address[6]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; rom_address[7]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 +------------------+---------------------------------------------------------------------------------------+
 
 
@@ -422,11 +512,11 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 21 15:20:25 2025
+    Info: Processing started: Tue Jun 24 02:06:55 2025
 Info: Command: quartus_sta CPU -c CPU
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'CPU.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
@@ -436,14 +526,14 @@ Info (332105): Deriving Clocks
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -2.600
+Info (332146): Worst-case setup slack is -4.774
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.600             -35.164 clk 
-Info (332146): Worst-case hold slack is 1.828
+    Info (332119):    -4.774             -66.353 clk 
+Info (332146): Worst-case hold slack is 1.753
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.828               0.000 clk 
+    Info (332119):     1.753               0.000 clk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.289
@@ -455,8 +545,8 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 3 warnings
     Info: Peak virtual memory: 4674 megabytes
-    Info: Processing ended: Sat Jun 21 15:20:26 2025
-    Info: Elapsed time: 00:00:01
+    Info: Processing ended: Tue Jun 24 02:06:57 2025
+    Info: Elapsed time: 00:00:02
     Info: Total CPU time (on all processors): 00:00:01
 
 
