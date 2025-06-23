@@ -1,7 +1,7 @@
 module CPU(clk, reset, rom_data, ram_data_in, ram_write, ram_read, alu_enable, rom_address, ram_addr, ram_data_out, alu_op);
 
 	input clk, reset;
-	input [15:0] rom_data, ram_data_in;
+	output [15:0] rom_data, ram_data_in;
 
 	output ram_write, ram_read, alu_enable;
 	output [7:0] rom_address;
@@ -35,7 +35,11 @@ module CPU(clk, reset, rom_data, ram_data_in, ram_write, ram_read, alu_enable, r
 	);
 
 	CU cu_inst (
+		.clk(clk), //pass clk to CU for rom, ram
 		.opcode(opcode),
+		.rom_address(rom_address),
+		.rom_data(rom_data), //add rom_data'
+		.rom_read_enable(rom_read_enable), //rom read
 		.ram_write(ram_write),
 		.ram_read(ram_read),
 		.alu_op(alu_op),

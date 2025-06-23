@@ -1,7 +1,10 @@
-module CU(opcode, ram_write, ram_read, alu_op, alu_enable);
+module CU(clk, opcode, rom_address, rom_data, rom_read_enable, ram_write, ram_read, alu_op, alu_enable);
 
 	input [3:0] opcode;
+	input [7:0] rom_address;
+	input clk, rom_read_enable; //pass more parameters need to pass to rom
 
+	output [15:0] rom_data;
 	output reg ram_write, ram_read, alu_enable;
 	output reg [3:0] alu_op;
 
@@ -111,7 +114,14 @@ module CU(opcode, ram_write, ram_read, alu_op, alu_enable);
 			end
 			
 		endcase
-		
+	
 	end
+	
+	ROM rom_inst ( //ROM Integration to CU
+		.clk(clk),
+		.read(rom_read_enable),
+		.addr(rom_address),
+		.data_out(rom_data),
+	);
 
 endmodule
