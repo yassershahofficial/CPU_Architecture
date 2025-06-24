@@ -1,11 +1,21 @@
-module CU(clk, opcode, rom_address, rom_data, rom_read_enable, ram_write, ram_read, alu_op, alu_enable);
+module CU(clk, opcode, rom_address, rom_data, rom_read_enable, ram_write_addr, ram_read_addr, ram_write, ram_read, alu_op, alu_enable);
 
 	input [3:0] opcode;
+	input clk; //pass clock for ram & rom
+	
+	//rom
 	input [7:0] rom_address;
-	input clk, rom_read_enable; //pass more parameters need to pass to rom
-
+	input rom_read_enable; 
 	output [15:0] rom_data;
+	
+	//ram
+	input [5:0] ram_write_addr;
+	input [5:0] ram_read_addr;
 	output reg ram_write, ram_read, alu_enable;
+	
+	
+	//alu
+	output reg alu_enable;
 	output reg [3:0] alu_op;
 
 	always @(*) 
@@ -123,5 +133,16 @@ module CU(clk, opcode, rom_address, rom_data, rom_read_enable, ram_write, ram_re
 		.addr(rom_address),
 		.data_out(rom_data),
 	);
+	
+	RAM ram_inst ( //RAM Integration to CU
+		.clk(clk),
+		.write(ram_write),
+		.read(ram_read),
+		.read_addr(ram_read_addr),
+		.write_addr(ram_write_addr),
+		.data_in(),
+		.data_out(),
+	);
+
 
 endmodule

@@ -1,20 +1,22 @@
-module RAM(clk, write, read, addr, data_in, data_out);
+module RAM(clk, write, read, read_addr, write_addr, data_in, data_out);
 
 	input clk, write, read;
-	input [5:0] addr;
+	input [5:0] read_addr;
+	input [5:0] write_addr;
 	input [15:0] data_in;
 
 	output reg [15:0] data_out;
 	reg [15:0] memory [0:63];
 
 	always @(posedge clk) 
-	begin
+	begin 
+	
+		if (read)
+			data_out <= memory[read_addr]; //read first then write
 	
 		if (write)
-			memory[addr] <= data_in;
+			memory[write_addr] <= data_in;
 			
-		if (read)
-			data_out <= memory[addr];
 		
 	end
 
