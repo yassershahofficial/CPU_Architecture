@@ -3,7 +3,7 @@ module ALU(a, b, alu_op, result, zero);
 	input [15:0] a, b;
 	input [3:0] alu_op;
 	
-	output reg [15:0] result;
+	output reg [31:0] result;
 	output zero;
 
 	assign zero = (result == 0);

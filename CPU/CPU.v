@@ -10,7 +10,7 @@ module CPU(clk, reset, rom_data, ram_data_in, ram_write, ram_read, rom_address, 
 	output [15:0] ram_data_out, ram_data_in;
 	output [3:0] alu_op;
 	
-	output wire [15:0] result; //remove this
+	output wire [31:0] result; //remove this
 	output wire [15:0] alu_a;
 	output wire [15:0] alu_b;
 

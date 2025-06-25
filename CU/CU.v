@@ -21,7 +21,7 @@ module CU(clk, opcode, dest, src, cu_state, rom_address, rom_data, rom_read_enab
 	output reg [3:0] alu_op;
 	output reg [15:0] alu_a;
 	output reg [15:0] alu_b;
-	output wire [15:0] result;
+	output wire [31:0] result;
 	wire zero;
 	
 
