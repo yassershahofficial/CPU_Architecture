@@ -77,7 +77,6 @@ module CU(clk, opcode, dest, src, cu_state, rom_address, rom_data, rom_read_enab
 					end
 					3'b011:
 					begin
-						alu_b = ram_data_out;
 						alu_op = 4'b0001;
 						ram_addr = dest;
 						ram_write = 1;
@@ -111,7 +110,6 @@ module CU(clk, opcode, dest, src, cu_state, rom_address, rom_data, rom_read_enab
 					end
 					3'b011:
 					begin
-						alu_b = ram_data_out;
 						alu_op = 4'b0010;
 						ram_addr = dest;
 						ram_write = 1;
@@ -121,63 +119,282 @@ module CU(clk, opcode, dest, src, cu_state, rom_address, rom_data, rom_read_enab
 				endcase
 			end
 			
-			//AND
-			4'b0100: 
+			4'b0100: //AND Instruction - AND dest, src does dest x src saves into dest
 			begin 
-				alu_op = 4'b0011;
-				ram_read = 1;
+				case (cu_state)
+					3'b000:
+					begin
+						ram_read = 1;
+						ram_addr = dest;
+						cu_state = 3'b001;
+					end
+					3'b001:
+					begin
+						alu_a = ram_data_out;
+						ram_read = 1;
+						ram_addr = src;
+						cu_state = 3'b010;
+					end
+					3'b010:
+					begin
+						alu_b = ram_data_out;
+						alu_op = 4'b0011;
+						cu_state = 3'b011;
+					end
+					3'b011:
+					begin
+						alu_op = 4'b0011;
+						ram_addr = dest;
+						ram_write = 1;
+						ram_data_in = result;
+						cu_state = 3'b111;
+					end
+				endcase
 			end
 			
 			//OR
-			4'b0101: 
+			4'b0101: //OR Instruction - OR dest, src does dest || src saves into dest
 			begin 
-				alu_op = 4'b0100;
-				ram_read = 1;
+				case (cu_state)
+					3'b000:
+					begin
+						ram_read = 1;
+						ram_addr = dest;
+						cu_state = 3'b001;
+					end
+					3'b001:
+					begin
+						alu_a = ram_data_out;
+						ram_read = 1;
+						ram_addr = src;
+						cu_state = 3'b010;
+					end
+					3'b010:
+					begin
+						alu_b = ram_data_out;
+						alu_op = 4'b0100;
+						cu_state = 3'b011;
+					end
+					3'b011:
+					begin
+						alu_op = 4'b0100;
+						ram_addr = dest;
+						ram_write = 1;
+						ram_data_in = result;
+						cu_state = 3'b111;
+					end
+				endcase
 			end
 			
-			//XOR
-			4'b0110: 
+			4'b0110: //XRL Instruction - XOR dest, src does dest ^ src saves into dest
 			begin
-				alu_op = 4'b0101;
-				ram_read = 1;
+				case (cu_state)
+					3'b000:
+					begin
+						ram_read = 1;
+						ram_addr = dest;
+						cu_state = 3'b001;
+					end
+					3'b001:
+					begin
+						alu_a = ram_data_out;
+						ram_read = 1;
+						ram_addr = src;
+						cu_state = 3'b010;
+					end
+					3'b010:
+					begin
+						alu_b = ram_data_out;
+						alu_op = 4'b0101;
+						cu_state = 3'b011;
+					end
+					3'b011:
+					begin
+						alu_op = 4'b0101;
+						ram_addr = dest;
+						ram_write = 1;
+						ram_data_in = result;
+						cu_state = 3'b111;
+					end
+				endcase
 			end
 			
-			//NOT
-			4'b0111: 
+			4'b0111: //NOT/Complement Instruction - CPL dest, src - Complements value inside src saves into dest
 			begin 
-				alu_op = 4'b0110;
-				ram_read = 1;
+				case (cu_state)
+					3'b000:
+					begin
+						ram_read = 1;
+						ram_addr = src;
+						cu_state = 3'b001;
+					end
+					3'b001:
+					begin
+						alu_a = ram_data_out;
+						alu_op = 4'b0110;
+						cu_state = 3'b010;
+					end
+					3'b010:
+					begin
+						alu_b = ram_data_out;
+						alu_op = 4'b0110;
+						ram_addr = dest;
+						ram_write = 1;
+						ram_data_in = result;
+						cu_state = 3'b111;
+					end
+				endcase
 			end
 			
-			//SHL
-			4'b1000: 
+			4'b1000: //Shift left Instruction - SHL reg to shift, how many bits to shift left
 			begin 
-				alu_op = 4'b0111;
-				ram_read = 1;
+				case (cu_state)
+					3'b000:
+					begin
+						ram_read = 1;
+						ram_addr = dest;
+						cu_state = 3'b001;
+					end
+					3'b001:
+					begin
+						alu_a = ram_data_out;
+						ram_read = 1;
+						ram_addr = src;
+						cu_state = 3'b010;
+					end
+					3'b010:
+					begin
+						alu_b = ram_data_out;
+						alu_op = 4'b0111;
+						cu_state = 3'b011;
+					end
+					3'b011:
+					begin
+						alu_op = 4'b0111;
+						ram_addr = dest;
+						ram_write = 1;
+						ram_data_in = result;
+						cu_state = 3'b111;
+					end
+				endcase
 			end
 			
-			//SHR
-			4'b1001: 
+			4'b1001: //Shift right Instruction - SHR reg to shift, how many bits to shift right
 			begin 
-				alu_op = 4'b1000;
-				ram_read = 1;
+				case (cu_state)
+					3'b000:
+					begin
+						ram_read = 1;
+						ram_addr = dest;
+						cu_state = 3'b001;
+					end
+					3'b001:
+					begin
+						alu_a = ram_data_out;
+						ram_read = 1;
+						ram_addr = src;
+						cu_state = 3'b010;
+					end
+					3'b010:
+					begin
+						alu_b = ram_data_out;
+						alu_op = 4'b1000;
+						cu_state = 3'b011;
+					end
+					3'b011:
+					begin
+						alu_op = 4'b1000;
+						ram_addr = dest;
+						ram_write = 1;
+						ram_data_in = result;
+						cu_state = 3'b111;
+					end
+				endcase
 			end
 			
-			//Less Than
-			4'b1010: 
+			4'b1010: //MUL Instruction - MUL dest, src - Multiplies dest reg x src reg, least significant byte saved onto src most significant to dest 
 			begin 
-				alu_op = 4'b1001;
-				ram_read = 1;
+				case (cu_state)
+					3'b000:
+					begin
+						ram_read = 1;
+						ram_addr = dest;
+						cu_state = 3'b001;
+					end
+					3'b001:
+					begin
+						alu_a = ram_data_out;
+						ram_read = 1;
+						ram_addr = src;
+						cu_state = 3'b010;
+					end
+					3'b010:
+					begin
+						alu_b = ram_data_out;
+						alu_op = 4'b1001;
+						cu_state = 3'b011;
+					end
+					3'b011:
+					begin
+						alu_op = 4'b1001;
+						ram_addr = dest;
+						ram_write = 1;
+						ram_data_in = result[31:16];
+						cu_state = 3'b100;
+					end
+					3'b100:
+					begin
+						alu_op = 4'b1001;
+						ram_addr = src;
+						ram_write = 1;
+						ram_data_in = result[15:0];
+						cu_state = 3'b111;
+					end
+				endcase
 			end
 			
-			//Equal
-			4'b1011: 
+			4'b1011: //DIV Instruction - DIV dest, src - Division dest reg / src reg, least significant byte saved onto src most significant to dest
 			begin 
-				alu_op = 4'b1010;
-				ram_read = 1;
+				case (cu_state)
+					3'b000:
+					begin
+						ram_read = 1;
+						ram_addr = dest;
+						cu_state = 3'b001;
+					end
+					3'b001:
+					begin
+						alu_a = ram_data_out;
+						ram_read = 1;
+						ram_addr = src;
+						cu_state = 3'b010;
+					end
+					3'b010:
+					begin
+						alu_b = ram_data_out;
+						alu_op = 4'b1010;
+						cu_state = 3'b011;
+					end
+					3'b011:
+					begin
+						alu_op = 4'b1010;
+						ram_addr = dest;
+						ram_write = 1;
+						ram_data_in = result[31:16];
+						cu_state = 3'b100;
+					end
+					3'b100:
+					begin
+						alu_op = 4'b1010;
+						ram_addr = src;
+						ram_write = 1;
+						ram_data_in = result[15:0];
+						cu_state = 3'b111;
+					end
+				endcase
 			end
 			
-			4'b1100: //MVI Instruction - MVI dest, #value
+			4'b1100: //MVI Instruction - MVI dest, #value - saves #value into dest
 			begin
 				case (cu_state)
 					3'b000:
@@ -189,7 +406,6 @@ module CU(clk, opcode, dest, src, cu_state, rom_address, rom_data, rom_read_enab
 					end
 				endcase
 			end
-			
 			
 			default: 
 			begin

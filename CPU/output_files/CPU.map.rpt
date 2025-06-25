@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Wed Jun 25 18:05:07 2025
+Thu Jun 26 01:55:03 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -18,9 +18,12 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
  10. General Register Statistics
  11. Multiplexer Restructuring Statistics (Restructuring Performed)
  12. Parameter Settings for User Entity Instance: FSM:fsm_inst
- 13. Port Connectivity Checks: "CU:cu_inst|ALU:alu_inst"
- 14. Port Connectivity Checks: "FSM:fsm_inst"
- 15. Analysis & Synthesis Messages
+ 13. Parameter Settings for Inferred Entity Instance: CU:cu_inst|ALU:alu_inst|lpm_divide:Div0
+ 14. Parameter Settings for Inferred Entity Instance: CU:cu_inst|ALU:alu_inst|lpm_mult:Mult0
+ 15. lpm_mult Parameter Settings by Entity Instance
+ 16. Port Connectivity Checks: "CU:cu_inst|ALU:alu_inst"
+ 17. Port Connectivity Checks: "FSM:fsm_inst"
+ 18. Analysis & Synthesis Messages
 
 
 
@@ -46,13 +49,13 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Wed Jun 25 18:05:07 2025       ;
+; Analysis & Synthesis Status ; Successful - Thu Jun 26 01:55:03 2025       ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; CPU                                         ;
 ; Top-level Entity Name       ; CPU                                         ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 1,247                                       ;
-; Total pins                  ; 126                                         ;
+; Total logic elements        ; 2,158                                       ;
+; Total pins                  ; 130                                         ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -144,18 +147,47 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                        ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                          ; Library ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
-; ../ROM/ROM.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ROM/ROM.v ;         ;
-; ../RAM/RAM.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v ;         ;
-; ../FSM/FSM.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v ;         ;
-; ../CU/CU.v                       ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v   ;         ;
-; ../ALU/ALU.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v ;         ;
-; CPU.v                            ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v ;         ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                   ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                               ; Library ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------+---------+
+; ../ROM/ROM.v                     ; yes             ; User Verilog HDL File        ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ROM/ROM.v                      ;         ;
+; ../RAM/RAM.v                     ; yes             ; User Verilog HDL File        ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v                      ;         ;
+; ../FSM/FSM.v                     ; yes             ; User Verilog HDL File        ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v                      ;         ;
+; ../CU/CU.v                       ; yes             ; User Verilog HDL File        ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v                        ;         ;
+; ../ALU/ALU.v                     ; yes             ; User Verilog HDL File        ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v                      ;         ;
+; CPU.v                            ; yes             ; User Verilog HDL File        ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v                      ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
+; aglobal181.inc                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc      ;         ;
+; db/lpm_divide_00m.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/lpm_divide_00m.tdf      ;         ;
+; db/sign_div_unsign_dnh.tdf       ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/sign_div_unsign_dnh.tdf ;         ;
+; db/alt_u_div_ple.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/alt_u_div_ple.tdf       ;         ;
+; db/add_sub_i4c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_i4c.tdf         ;         ;
+; db/add_sub_j4c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_j4c.tdf         ;         ;
+; db/add_sub_36c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_36c.tdf         ;         ;
+; db/add_sub_46c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_46c.tdf         ;         ;
+; db/add_sub_56c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_56c.tdf         ;         ;
+; db/add_sub_66c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_66c.tdf         ;         ;
+; db/add_sub_76c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_76c.tdf         ;         ;
+; db/add_sub_86c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_86c.tdf         ;         ;
+; db/add_sub_k4c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_k4c.tdf         ;         ;
+; db/add_sub_l4c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_l4c.tdf         ;         ;
+; db/add_sub_m4c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_m4c.tdf         ;         ;
+; db/add_sub_n4c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_n4c.tdf         ;         ;
+; db/add_sub_o4c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_o4c.tdf         ;         ;
+; db/add_sub_p4c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_p4c.tdf         ;         ;
+; db/add_sub_q4c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_q4c.tdf         ;         ;
+; db/add_sub_26c.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_26c.tdf         ;         ;
+; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mult.tdf        ;         ;
+; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_add_sub.inc     ;         ;
+; multcore.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/multcore.inc        ;         ;
+; bypassff.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/bypassff.inc        ;         ;
+; altshift.inc                     ; yes             ; Megafunction                 ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altshift.inc        ;         ;
+; db/mult_ios.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/mult_ios.tdf            ;         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -163,48 +195,70 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 1247  ;
-;     -- Combinational with no register       ; 649   ;
-;     -- Register only                        ; 545   ;
-;     -- Combinational with a register        ; 53    ;
+; Total logic elements                        ; 2158  ;
+;     -- Combinational with no register       ; 1559  ;
+;     -- Register only                        ; 543   ;
+;     -- Combinational with a register        ; 56    ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 496   ;
-;     -- 3 input functions                    ; 139   ;
-;     -- 2 input functions                    ; 66    ;
-;     -- 1 input functions                    ; 1     ;
+;     -- 4 input functions                    ; 863   ;
+;     -- 3 input functions                    ; 581   ;
+;     -- 2 input functions                    ; 114   ;
+;     -- 1 input functions                    ; 57    ;
 ;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 1210  ;
-;     -- arithmetic mode                      ; 37    ;
+;     -- normal mode                          ; 1798  ;
+;     -- arithmetic mode                      ; 360   ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
-;     -- synchronous clear/load mode          ; 4     ;
+;     -- synchronous clear/load mode          ; 2     ;
 ;     -- asynchronous clear/load mode         ; 13    ;
 ;                                             ;       ;
-; Total registers                             ; 598   ;
-; Total logic cells in carry chains           ; 40    ;
-; I/O pins                                    ; 126   ;
+; Total registers                             ; 599   ;
+; Total logic cells in carry chains           ; 401   ;
+; I/O pins                                    ; 130   ;
 ; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 598   ;
-; Total fan-out                               ; 4399  ;
-; Average fan-out                             ; 3.20  ;
+; Maximum fan-out                             ; 599   ;
+; Total fan-out                               ; 7348  ;
+; Average fan-out                             ; 3.21  ;
 +---------------------------------------------+-------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                         ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name          ; Entity Name ; Library Name ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------+-------------+--------------+
-; |CPU                       ; 1247 (25)   ; 598          ; 0          ; 126  ; 0            ; 649 (25)     ; 545 (0)           ; 53 (0)           ; 40 (0)          ; 0 (0)      ; |CPU                         ; CPU         ; work         ;
-;    |CU:cu_inst|            ; 1207 (98)   ; 585          ; 0          ; 0    ; 0            ; 622 (37)     ; 544 (32)          ; 41 (29)          ; 33 (0)          ; 0 (0)      ; |CPU|CU:cu_inst              ; CU          ; work         ;
-;       |ALU:alu_inst|       ; 167 (167)   ; 0            ; 0          ; 0    ; 0            ; 167 (167)    ; 0 (0)             ; 0 (0)            ; 33 (33)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst ; ALU         ; work         ;
-;       |RAM:ram_inst|       ; 912 (912)   ; 512          ; 0          ; 0    ; 0            ; 400 (400)    ; 512 (512)         ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |CPU|CU:cu_inst|RAM:ram_inst ; RAM         ; work         ;
-;       |ROM:rom_inst|       ; 30 (30)     ; 12           ; 0          ; 0    ; 0            ; 18 (18)      ; 0 (0)             ; 12 (12)          ; 0 (0)           ; 0 (0)      ; |CPU|CU:cu_inst|ROM:rom_inst ; ROM         ; work         ;
-;    |FSM:fsm_inst|          ; 15 (15)     ; 13           ; 0          ; 0    ; 0            ; 2 (2)        ; 1 (1)             ; 12 (12)          ; 7 (7)           ; 0 (0)      ; |CPU|FSM:fsm_inst            ; FSM         ; work         ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------+-------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                                                           ;
++-----------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; Compilation Hierarchy Node                    ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name                                                                                                                                 ; Entity Name         ; Library Name ;
++-----------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
+; |CPU                                          ; 2158 (22)   ; 599          ; 0          ; 130  ; 0            ; 1559 (22)    ; 543 (0)           ; 56 (0)           ; 401 (0)         ; 0 (0)      ; |CPU                                                                                                                                                ; CPU                 ; work         ;
+;    |CU:cu_inst|                               ; 2121 (158)  ; 586          ; 0          ; 0    ; 0            ; 1535 (96)    ; 542 (30)          ; 44 (32)          ; 394 (2)         ; 0 (0)      ; |CPU|CU:cu_inst                                                                                                                                     ; CU                  ; work         ;
+;       |ALU:alu_inst|                          ; 1022 (376)  ; 0            ; 0          ; 0    ; 0            ; 1022 (376)   ; 0 (0)             ; 0 (0)            ; 392 (34)        ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst                                                                                                                        ; ALU                 ; work         ;
+;          |lpm_divide:Div0|                    ; 311 (0)     ; 0            ; 0          ; 0    ; 0            ; 311 (0)      ; 0 (0)             ; 0 (0)            ; 175 (0)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0                                                                                                        ; lpm_divide          ; work         ;
+;             |lpm_divide_00m:auto_generated|   ; 311 (0)     ; 0            ; 0          ; 0    ; 0            ; 311 (0)      ; 0 (0)             ; 0 (0)            ; 175 (0)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated                                                                          ; lpm_divide_00m      ; work         ;
+;                |sign_div_unsign_dnh:divider|  ; 311 (0)     ; 0            ; 0          ; 0    ; 0            ; 311 (0)      ; 0 (0)             ; 0 (0)            ; 175 (0)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider                                              ; sign_div_unsign_dnh ; work         ;
+;                   |alt_u_div_ple:divider|     ; 311 (134)   ; 0            ; 0          ; 0    ; 0            ; 311 (134)    ; 0 (0)             ; 0 (0)            ; 175 (0)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider                        ; alt_u_div_ple       ; work         ;
+;                      |add_sub_26c:add_sub_9|  ; 13 (13)     ; 0            ; 0          ; 0    ; 0            ; 13 (13)      ; 0 (0)             ; 0 (0)            ; 13 (13)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_26c:add_sub_9  ; add_sub_26c         ; work         ;
+;                      |add_sub_36c:add_sub_10| ; 14 (14)     ; 0            ; 0          ; 0    ; 0            ; 14 (14)      ; 0 (0)             ; 0 (0)            ; 14 (14)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_36c:add_sub_10 ; add_sub_36c         ; work         ;
+;                      |add_sub_46c:add_sub_11| ; 15 (15)     ; 0            ; 0          ; 0    ; 0            ; 15 (15)      ; 0 (0)             ; 0 (0)            ; 15 (15)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_46c:add_sub_11 ; add_sub_46c         ; work         ;
+;                      |add_sub_56c:add_sub_12| ; 16 (16)     ; 0            ; 0          ; 0    ; 0            ; 16 (16)      ; 0 (0)             ; 0 (0)            ; 16 (16)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_56c:add_sub_12 ; add_sub_56c         ; work         ;
+;                      |add_sub_66c:add_sub_13| ; 17 (17)     ; 0            ; 0          ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 0 (0)            ; 17 (17)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_66c:add_sub_13 ; add_sub_66c         ; work         ;
+;                      |add_sub_76c:add_sub_14| ; 18 (18)     ; 0            ; 0          ; 0    ; 0            ; 18 (18)      ; 0 (0)             ; 0 (0)            ; 18 (18)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_76c:add_sub_14 ; add_sub_76c         ; work         ;
+;                      |add_sub_86c:add_sub_15| ; 19 (19)     ; 0            ; 0          ; 0    ; 0            ; 19 (19)      ; 0 (0)             ; 0 (0)            ; 19 (19)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_86c:add_sub_15 ; add_sub_86c         ; work         ;
+;                      |add_sub_i4c:add_sub_0|  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_i4c:add_sub_0  ; add_sub_i4c         ; work         ;
+;                      |add_sub_j4c:add_sub_1|  ; 1 (1)       ; 0            ; 0          ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_j4c:add_sub_1  ; add_sub_j4c         ; work         ;
+;                      |add_sub_k4c:add_sub_2|  ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 6 (6)           ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_k4c:add_sub_2  ; add_sub_k4c         ; work         ;
+;                      |add_sub_l4c:add_sub_3|  ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 7 (7)           ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_l4c:add_sub_3  ; add_sub_l4c         ; work         ;
+;                      |add_sub_m4c:add_sub_4|  ; 8 (8)       ; 0            ; 0          ; 0    ; 0            ; 8 (8)        ; 0 (0)             ; 0 (0)            ; 8 (8)           ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_m4c:add_sub_4  ; add_sub_m4c         ; work         ;
+;                      |add_sub_n4c:add_sub_5|  ; 9 (9)       ; 0            ; 0          ; 0    ; 0            ; 9 (9)        ; 0 (0)             ; 0 (0)            ; 9 (9)           ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_n4c:add_sub_5  ; add_sub_n4c         ; work         ;
+;                      |add_sub_o4c:add_sub_6|  ; 10 (10)     ; 0            ; 0          ; 0    ; 0            ; 10 (10)      ; 0 (0)             ; 0 (0)            ; 10 (10)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_o4c:add_sub_6  ; add_sub_o4c         ; work         ;
+;                      |add_sub_p4c:add_sub_7|  ; 11 (11)     ; 0            ; 0          ; 0    ; 0            ; 11 (11)      ; 0 (0)             ; 0 (0)            ; 11 (11)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_p4c:add_sub_7  ; add_sub_p4c         ; work         ;
+;                      |add_sub_q4c:add_sub_8|  ; 12 (12)     ; 0            ; 0          ; 0    ; 0            ; 12 (12)      ; 0 (0)             ; 0 (0)            ; 12 (12)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_divide:Div0|lpm_divide_00m:auto_generated|sign_div_unsign_dnh:divider|alt_u_div_ple:divider|add_sub_q4c:add_sub_8  ; add_sub_q4c         ; work         ;
+;          |lpm_mult:Mult0|                     ; 335 (0)     ; 0            ; 0          ; 0    ; 0            ; 335 (0)      ; 0 (0)             ; 0 (0)            ; 183 (0)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_mult:Mult0                                                                                                         ; lpm_mult            ; work         ;
+;             |mult_ios:auto_generated|         ; 335 (335)   ; 0            ; 0          ; 0    ; 0            ; 335 (335)    ; 0 (0)             ; 0 (0)            ; 183 (183)       ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst|lpm_mult:Mult0|mult_ios:auto_generated                                                                                 ; mult_ios            ; work         ;
+;       |RAM:ram_inst|                          ; 912 (912)   ; 512          ; 0          ; 0    ; 0            ; 400 (400)    ; 512 (512)         ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |CPU|CU:cu_inst|RAM:ram_inst                                                                                                                        ; RAM                 ; work         ;
+;       |ROM:rom_inst|                          ; 29 (29)     ; 12           ; 0          ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 12 (12)          ; 0 (0)           ; 0 (0)      ; |CPU|CU:cu_inst|ROM:rom_inst                                                                                                                        ; ROM                 ; work         ;
+;    |FSM:fsm_inst|                             ; 15 (15)     ; 13           ; 0          ; 0    ; 0            ; 2 (2)        ; 1 (1)             ; 12 (12)          ; 7 (7)           ; 0 (0)      ; |CPU|FSM:fsm_inst                                                                                                                                   ; FSM                 ; work         ;
++-----------------------------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -213,16 +267,6 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------------------------------+----------------------+------------------------+
 ; Latch Name                                          ; Latch Enable Signal  ; Free of Timing Hazards ;
 +-----------------------------------------------------+----------------------+------------------------+
-; IR[6]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
-; IR[7]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
-; IR[8]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
-; IR[9]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
-; IR[10]                                              ; FSM:fsm_inst|ir_load ; yes                    ;
-; IR[11]                                              ; FSM:fsm_inst|ir_load ; yes                    ;
-; IR[0]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
-; IR[1]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
-; IR[2]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
-; IR[3]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
 ; CU:cu_inst|RAM:ram_inst|data_out[0]                 ; CU:cu_inst|ram_read  ; yes                    ;
 ; CU:cu_inst|RAM:ram_inst|data_out[1]                 ; CU:cu_inst|ram_read  ; yes                    ;
 ; CU:cu_inst|RAM:ram_inst|data_out[2]                 ; CU:cu_inst|ram_read  ; yes                    ;
@@ -241,9 +285,21 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; CU:cu_inst|RAM:ram_inst|data_out[15]                ; CU:cu_inst|ram_read  ; yes                    ;
 ; IR[13]                                              ; FSM:fsm_inst|ir_load ; yes                    ;
 ; IR[15]                                              ; FSM:fsm_inst|ir_load ; yes                    ;
-; IR[12]                                              ; FSM:fsm_inst|ir_load ; yes                    ;
 ; IR[14]                                              ; FSM:fsm_inst|ir_load ; yes                    ;
-; Number of user-specified and inferred latches = 30  ;                      ;                        ;
+; IR[0]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
+; IR[12]                                              ; FSM:fsm_inst|ir_load ; yes                    ;
+; IR[1]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
+; IR[2]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
+; IR[3]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
+; IR[4]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
+; IR[5]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
+; IR[7]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
+; IR[6]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
+; IR[8]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
+; IR[9]                                               ; FSM:fsm_inst|ir_load ; yes                    ;
+; IR[11]                                              ; FSM:fsm_inst|ir_load ; yes                    ;
+; IR[10]                                              ; FSM:fsm_inst|ir_load ; yes                    ;
+; Number of user-specified and inferred latches = 32  ;                      ;                        ;
 +-----------------------------------------------------+----------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
@@ -253,8 +309,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +-----------------------------------------+-------------------------------------------------+
 ; Register name                           ; Reason for Removal                              ;
 +-----------------------------------------+-------------------------------------------------+
-; CU:cu_inst|ROM:rom_inst|data_out[4,5]   ; Stuck at GND due to stuck port data_in          ;
-; CU:cu_inst|ROM:rom_inst|data_out[10,11] ; Merged with CU:cu_inst|ROM:rom_inst|data_out[9] ;
+; CU:cu_inst|ROM:rom_inst|data_out[5]     ; Merged with CU:cu_inst|ROM:rom_inst|data_out[4] ;
+; CU:cu_inst|ROM:rom_inst|data_out[9..11] ; Merged with CU:cu_inst|ROM:rom_inst|data_out[3] ;
 ; FSM:fsm_inst|current_state[0]           ; Merged with FSM:fsm_inst|ir_load                ;
 ; CU:cu_inst|ram_addr[4]                  ; Merged with CU:cu_inst|ram_addr[5]              ;
 ; CU:cu_inst|RAM:ram_inst|memory~608      ; Stuck at GND due to stuck port clock_enable     ;
@@ -778,9 +834,9 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 598   ;
+; Total registers                              ; 599   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 4     ;
+; Number of registers using Synchronous Load   ; 2     ;
 ; Number of registers using Asynchronous Clear ; 13    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 581   ;
@@ -793,15 +849,17 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |CPU|CU:cu_inst|alu_b[13]          ;
-; 3:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |CPU|CU:cu_inst|alu_a[11]          ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; Yes        ; |CPU|FSM:fsm_inst|current_state[1] ;
-; 19:1               ; 2 bits    ; 24 LEs        ; 4 LEs                ; 20 LEs                 ; Yes        ; |CPU|CU:cu_inst|ram_addr[5]        ;
-; 19:1               ; 4 bits    ; 48 LEs        ; 8 LEs                ; 40 LEs                 ; Yes        ; |CPU|CU:cu_inst|ram_addr[3]        ;
-; 18:1               ; 12 bits   ; 144 LEs       ; 24 LEs               ; 120 LEs                ; Yes        ; |CPU|CU:cu_inst|ram_data_in[14]    ;
-; 18:1               ; 4 bits    ; 48 LEs        ; 8 LEs                ; 40 LEs                 ; Yes        ; |CPU|CU:cu_inst|ram_data_in[0]     ;
-; 13:1               ; 7 bits    ; 56 LEs        ; 35 LEs               ; 21 LEs                 ; No         ; |CPU|CU:cu_inst|ALU:alu_inst|Mux13 ;
-; 13:1               ; 7 bits    ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; No         ; |CPU|CU:cu_inst|ALU:alu_inst|Mux10 ;
+; 20:1               ; 10 bits   ; 130 LEs       ; 20 LEs               ; 110 LEs                ; Yes        ; |CPU|CU:cu_inst|ram_data_in[10]    ;
+; 20:1               ; 6 bits    ; 78 LEs        ; 12 LEs               ; 66 LEs                 ; Yes        ; |CPU|CU:cu_inst|ram_data_in[2]     ;
+; 16:1               ; 6 bits    ; 60 LEs        ; 12 LEs               ; 48 LEs                 ; Yes        ; |CPU|CU:cu_inst|ram_addr[0]        ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 0 LEs                ; 48 LEs                 ; Yes        ; |CPU|CU:cu_inst|alu_b[9]           ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 0 LEs                ; 48 LEs                 ; Yes        ; |CPU|CU:cu_inst|alu_a[15]          ;
+; 10:1               ; 8 bits    ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; No         ; |CPU|CU:cu_inst|ALU:alu_inst|Mux1  ;
+; 10:1               ; 6 bits    ; 36 LEs        ; 24 LEs               ; 12 LEs                 ; No         ; |CPU|CU:cu_inst|ALU:alu_inst|Mux13 ;
+; 21:1               ; 8 bits    ; 112 LEs       ; 56 LEs               ; 56 LEs                 ; No         ; |CPU|CU:cu_inst|ALU:alu_inst|Mux18 ;
+; 22:1               ; 4 bits    ; 56 LEs        ; 36 LEs               ; 20 LEs                 ; No         ; |CPU|CU:cu_inst|ALU:alu_inst|Mux24 ;
+; 23:1               ; 2 bits    ; 30 LEs        ; 18 LEs               ; 12 LEs                 ; No         ; |CPU|CU:cu_inst|ALU:alu_inst|Mux28 ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------------+
 
 
@@ -815,6 +873,84 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; EXECUTE        ; 10    ; Unsigned Binary                  ;
 +----------------+-------+----------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: CU:cu_inst|ALU:alu_inst|lpm_divide:Div0 ;
++------------------------+----------------+------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                           ;
++------------------------+----------------+------------------------------------------------+
+; LPM_WIDTHN             ; 16             ; Untyped                                        ;
+; LPM_WIDTHD             ; 16             ; Untyped                                        ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_PIPELINE           ; 0              ; Untyped                                        ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                        ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                        ;
+; CBXI_PARAMETER         ; lpm_divide_00m ; Untyped                                        ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                        ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                        ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                     ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                   ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                   ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                 ;
++------------------------+----------------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: CU:cu_inst|ALU:alu_inst|lpm_mult:Mult0 ;
++------------------------------------------------+----------+-----------------------------+
+; Parameter Name                                 ; Value    ; Type                        ;
++------------------------------------------------+----------+-----------------------------+
+; AUTO_CARRY_CHAINS                              ; ON       ; AUTO_CARRY                  ;
+; IGNORE_CARRY_BUFFERS                           ; OFF      ; IGNORE_CARRY                ;
+; AUTO_CASCADE_CHAINS                            ; ON       ; AUTO_CASCADE                ;
+; IGNORE_CASCADE_BUFFERS                         ; OFF      ; IGNORE_CASCADE              ;
+; LPM_WIDTHA                                     ; 16       ; Untyped                     ;
+; LPM_WIDTHB                                     ; 16       ; Untyped                     ;
+; LPM_WIDTHP                                     ; 32       ; Untyped                     ;
+; LPM_WIDTHR                                     ; 32       ; Untyped                     ;
+; LPM_WIDTHS                                     ; 1        ; Untyped                     ;
+; LPM_REPRESENTATION                             ; UNSIGNED ; Untyped                     ;
+; LPM_PIPELINE                                   ; 0        ; Untyped                     ;
+; LATENCY                                        ; 0        ; Untyped                     ;
+; INPUT_A_IS_CONSTANT                            ; NO       ; Untyped                     ;
+; INPUT_B_IS_CONSTANT                            ; NO       ; Untyped                     ;
+; USE_EAB                                        ; OFF      ; Untyped                     ;
+; MAXIMIZE_SPEED                                 ; 6        ; Untyped                     ;
+; DEVICE_FAMILY                                  ; MAX V    ; Untyped                     ;
+; CARRY_CHAIN                                    ; MANUAL   ; Untyped                     ;
+; APEX20K_TECHNOLOGY_MAPPER                      ; LUT      ; TECH_MAPPER_APEX20K         ;
+; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO     ; Untyped                     ;
+; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0        ; Untyped                     ;
+; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0        ; Untyped                     ;
+; CBXI_PARAMETER                                 ; mult_ios ; Untyped                     ;
+; INPUT_A_FIXED_VALUE                            ; Bx       ; Untyped                     ;
+; INPUT_B_FIXED_VALUE                            ; Bx       ; Untyped                     ;
+; USE_AHDL_IMPLEMENTATION                        ; OFF      ; Untyped                     ;
++------------------------------------------------+----------+-----------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------+
+; lpm_mult Parameter Settings by Entity Instance                                 ;
++---------------------------------------+----------------------------------------+
+; Name                                  ; Value                                  ;
++---------------------------------------+----------------------------------------+
+; Number of entity instances            ; 1                                      ;
+; Entity Instance                       ; CU:cu_inst|ALU:alu_inst|lpm_mult:Mult0 ;
+;     -- LPM_WIDTHA                     ; 16                                     ;
+;     -- LPM_WIDTHB                     ; 16                                     ;
+;     -- LPM_WIDTHP                     ; 32                                     ;
+;     -- LPM_REPRESENTATION             ; UNSIGNED                               ;
+;     -- INPUT_A_IS_CONSTANT            ; NO                                     ;
+;     -- INPUT_B_IS_CONSTANT            ; NO                                     ;
+;     -- USE_EAB                        ; OFF                                    ;
+;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO                                   ;
+;     -- INPUT_A_FIXED_VALUE            ; Bx                                     ;
+;     -- INPUT_B_FIXED_VALUE            ; Bx                                     ;
++---------------------------------------+----------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------+
@@ -841,7 +977,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Wed Jun 25 18:04:54 2025
+    Info: Processing started: Thu Jun 26 01:54:47 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -851,39 +987,47 @@ Info (12021): Found 1 design units, including 1 entities, in source file /users/
     Info (12023): Found entity 1: RAM File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/fsm/fsm.v
     Info (12023): Found entity 1: FSM File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 1
-Warning (10275): Verilog HDL Module Instantiation warning at CU.v(212): ignored dangling comma in List of Port Connections File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 212
-Warning (10275): Verilog HDL Module Instantiation warning at CU.v(221): ignored dangling comma in List of Port Connections File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 221
-Warning (10275): Verilog HDL Module Instantiation warning at CU.v(229): ignored dangling comma in List of Port Connections File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 229
+Warning (10275): Verilog HDL Module Instantiation warning at CU.v(427): ignored dangling comma in List of Port Connections File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 427
+Warning (10275): Verilog HDL Module Instantiation warning at CU.v(436): ignored dangling comma in List of Port Connections File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 436
+Warning (10275): Verilog HDL Module Instantiation warning at CU.v(444): ignored dangling comma in List of Port Connections File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 444
 Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/cu/cu.v
     Info (12023): Found entity 1: CU File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/alu/alu.v
     Info (12023): Found entity 1: ALU File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 1
-Warning (10275): Verilog HDL Module Instantiation warning at CPU.v(63): ignored dangling comma in List of Port Connections File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 63
+Warning (10275): Verilog HDL Module Instantiation warning at CPU.v(61): ignored dangling comma in List of Port Connections File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 61
 Info (12021): Found 1 design units, including 1 entities, in source file cpu.v
     Info (12023): Found entity 1: CPU File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 1
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
-Warning (10240): Verilog HDL Always Construct warning at CPU.v(31): inferring latch(es) for variable "IR", which holds its previous value in one or more paths through the always construct File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[0]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[1]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[2]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[3]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[4]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[5]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[6]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[7]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[8]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[9]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[10]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[11]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[12]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[13]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[14]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (10041): Inferred latch for "IR[15]" at CPU.v(31) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Info (12128): Elaborating entity "FSM" for hierarchy "FSM:fsm_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 44
+Warning (10240): Verilog HDL Always Construct warning at CPU.v(29): inferring latch(es) for variable "IR", which holds its previous value in one or more paths through the always construct File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[0]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[1]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[2]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[3]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[4]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[5]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[6]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[7]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[8]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[9]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[10]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[11]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[12]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[13]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[14]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (10041): Inferred latch for "IR[15]" at CPU.v(29) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (12128): Elaborating entity "FSM" for hierarchy "FSM:fsm_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 42
 Warning (10230): Verilog HDL assignment warning at FSM.v(58): truncated value with size 32 to match size of target (8) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 58
-Info (12128): Elaborating entity "CU" for hierarchy "CU:cu_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 63
-Info (12128): Elaborating entity "ROM" for hierarchy "CU:cu_inst|ROM:rom_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 212
-Info (12128): Elaborating entity "RAM" for hierarchy "CU:cu_inst|RAM:ram_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 221
+Info (12128): Elaborating entity "CU" for hierarchy "CU:cu_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 61
+Warning (10230): Verilog HDL assignment warning at CU.v(83): truncated value with size 32 to match size of target (16) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 83
+Warning (10230): Verilog HDL assignment warning at CU.v(116): truncated value with size 32 to match size of target (16) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 116
+Warning (10230): Verilog HDL assignment warning at CU.v(149): truncated value with size 32 to match size of target (16) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 149
+Warning (10230): Verilog HDL assignment warning at CU.v(183): truncated value with size 32 to match size of target (16) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 183
+Warning (10230): Verilog HDL assignment warning at CU.v(216): truncated value with size 32 to match size of target (16) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 216
+Warning (10230): Verilog HDL assignment warning at CU.v(243): truncated value with size 32 to match size of target (16) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 243
+Warning (10230): Verilog HDL assignment warning at CU.v(276): truncated value with size 32 to match size of target (16) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 276
+Warning (10230): Verilog HDL assignment warning at CU.v(309): truncated value with size 32 to match size of target (16) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 309
+Info (12128): Elaborating entity "ROM" for hierarchy "CU:cu_inst|ROM:rom_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 427
+Info (12128): Elaborating entity "RAM" for hierarchy "CU:cu_inst|RAM:ram_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 436
 Warning (10240): Verilog HDL Always Construct warning at RAM.v(12): inferring latch(es) for variable "data_out", which holds its previous value in one or more paths through the always construct File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 12
 Info (10041): Inferred latch for "data_out[0]" at RAM.v(12) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 12
 Info (10041): Inferred latch for "data_out[1]" at RAM.v(12) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 12
@@ -901,23 +1045,82 @@ Info (10041): Inferred latch for "data_out[12]" at RAM.v(12) File: C:/Users/Haki
 Info (10041): Inferred latch for "data_out[13]" at RAM.v(12) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 12
 Info (10041): Inferred latch for "data_out[14]" at RAM.v(12) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 12
 Info (10041): Inferred latch for "data_out[15]" at RAM.v(12) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 12
-Info (12128): Elaborating entity "ALU" for hierarchy "CU:cu_inst|ALU:alu_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 229
+Info (12128): Elaborating entity "ALU" for hierarchy "CU:cu_inst|ALU:alu_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 444
+Info (278001): Inferred 2 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "CU:cu_inst|ALU:alu_inst|Div0" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 23
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "CU:cu_inst|ALU:alu_inst|Mult0" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 22
+Info (12130): Elaborated megafunction instantiation "CU:cu_inst|ALU:alu_inst|lpm_divide:Div0" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 23
+Info (12133): Instantiated megafunction "CU:cu_inst|ALU:alu_inst|lpm_divide:Div0" with the following parameter: File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 23
+    Info (12134): Parameter "LPM_WIDTHN" = "16"
+    Info (12134): Parameter "LPM_WIDTHD" = "16"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_00m.tdf
+    Info (12023): Found entity 1: lpm_divide_00m File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/lpm_divide_00m.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_dnh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_dnh File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/sign_div_unsign_dnh.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_ple.tdf
+    Info (12023): Found entity 1: alt_u_div_ple File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/alt_u_div_ple.tdf Line: 54
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_i4c.tdf
+    Info (12023): Found entity 1: add_sub_i4c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_i4c.tdf Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_j4c.tdf
+    Info (12023): Found entity 1: add_sub_j4c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_j4c.tdf Line: 22
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_36c.tdf
+    Info (12023): Found entity 1: add_sub_36c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_36c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_46c.tdf
+    Info (12023): Found entity 1: add_sub_46c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_46c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_56c.tdf
+    Info (12023): Found entity 1: add_sub_56c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_56c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_66c.tdf
+    Info (12023): Found entity 1: add_sub_66c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_66c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_76c.tdf
+    Info (12023): Found entity 1: add_sub_76c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_76c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_86c.tdf
+    Info (12023): Found entity 1: add_sub_86c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_86c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_k4c.tdf
+    Info (12023): Found entity 1: add_sub_k4c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_k4c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_l4c.tdf
+    Info (12023): Found entity 1: add_sub_l4c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_l4c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_m4c.tdf
+    Info (12023): Found entity 1: add_sub_m4c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_m4c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_n4c.tdf
+    Info (12023): Found entity 1: add_sub_n4c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_n4c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_o4c.tdf
+    Info (12023): Found entity 1: add_sub_o4c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_o4c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_p4c.tdf
+    Info (12023): Found entity 1: add_sub_p4c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_p4c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_q4c.tdf
+    Info (12023): Found entity 1: add_sub_q4c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_q4c.tdf Line: 24
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_26c.tdf
+    Info (12023): Found entity 1: add_sub_26c File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/add_sub_26c.tdf Line: 24
+Info (12130): Elaborated megafunction instantiation "CU:cu_inst|ALU:alu_inst|lpm_mult:Mult0" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 22
+Info (12133): Instantiated megafunction "CU:cu_inst|ALU:alu_inst|lpm_mult:Mult0" with the following parameter: File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 22
+    Info (12134): Parameter "LPM_WIDTHA" = "16"
+    Info (12134): Parameter "LPM_WIDTHB" = "16"
+    Info (12134): Parameter "LPM_WIDTHP" = "32"
+    Info (12134): Parameter "LPM_WIDTHR" = "32"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_ios.tdf
+    Info (12023): Found entity 1: mult_ios File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/db/mult_ios.tdf Line: 28
+Info (13014): Ignored 480 buffer(s)
+    Info (13019): Ignored 480 SOFT buffer(s)
 Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
-    Info (13026): Duplicate LATCH primitive "IR[10]" merged with LATCH primitive "IR[9]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-    Info (13026): Duplicate LATCH primitive "IR[11]" merged with LATCH primitive "IR[9]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 31
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "rom_data[4]" is stuck at GND File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
-    Warning (13410): Pin "rom_data[5]" is stuck at GND File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
-    Warning (13410): Pin "ram_read_addr[4]" is stuck at GND File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 9
-    Warning (13410): Pin "ram_read_addr[5]" is stuck at GND File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 9
-Info (21057): Implemented 1373 device resources after synthesis - the final resource count might be different
+    Info (13026): Duplicate LATCH primitive "IR[9]" merged with LATCH primitive "IR[3]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+    Info (13026): Duplicate LATCH primitive "IR[10]" merged with LATCH primitive "IR[3]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+    Info (13026): Duplicate LATCH primitive "IR[11]" merged with LATCH primitive "IR[3]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+    Info (13026): Duplicate LATCH primitive "IR[5]" merged with LATCH primitive "IR[4]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 29
+Info (21057): Implemented 2288 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 124 output pins
-    Info (21061): Implemented 1247 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 13 warnings
-    Info: Peak virtual memory: 4713 megabytes
-    Info: Processing ended: Wed Jun 25 18:05:07 2025
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:28
+    Info (21059): Implemented 128 output pins
+    Info (21061): Implemented 2158 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 16 warnings
+    Info: Peak virtual memory: 4730 megabytes
+    Info: Processing ended: Thu Jun 26 01:55:03 2025
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:32
 
 

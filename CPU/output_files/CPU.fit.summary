@@ -1,11 +1,11 @@
-Fitter Status : Successful - Wed Jun 25 18:05:16 2025
+Fitter Status : Successful - Thu Jun 26 01:55:18 2025
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : CPU
 Top-level Entity Name : CPU
 Family : MAX V
 Device : 5M2210ZF256C4
 Timing Models : Final
-Total logic elements : 958 / 2,210 ( 43 % )
-Total pins : 126 / 203 ( 62 % )
+Total logic elements : 1,871 / 2,210 ( 85 % )
+Total pins : 130 / 203 ( 64 % )
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )

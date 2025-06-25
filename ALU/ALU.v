@@ -17,10 +17,10 @@ module ALU(a, b, alu_op, result, zero);
 			4'b0100: result = a | b; //OR
 			4'b0101: result = a ^ b; //XOR
 			4'b0110: result = ~a; //NOT (on operand A)
-			4'b0111: result = a << 1; //Logical shift left
-			4'b1000: result = a >> 1; //Logical shift right
-			4'b1001: result = (a < b) ? 16'd1 : 16'd0; //Less than
-			4'b1010: result = (a == b) ? 16'd1 : 16'd0; //Equal
+			4'b0111: result = a << b; //Logical shift left
+			4'b1000: result = a >> b; //Logical shift right
+			4'b1001: result = a * b;
+			4'b1010: result = a / b;
 			default: result = 0;
 			
 		endcase
