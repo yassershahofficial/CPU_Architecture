@@ -22,8 +22,9 @@ module ROM(clk, read, addr, data_out);
 				8'h07:  data_out <= 16'b0100000001000101; //AND R1,R5
 				8'h08:  data_out <= 16'b0101000001000110; //OR R1,R6
 				8'h09:  data_out <= 16'b1100111111001010; //MVI A,#10H
-				8'h012: data_out <= 16'b0111111111111111; //CPL A, A
-				8'h013: data_out <= 16'b1010111111111110; //MUL A,B
+				8'h010: data_out <= 16'b0111111111111111; //CPL A, A
+				8'h011:  data_out <= 16'b1100111110111111; //MVI B,#3FH
+				8'h012: data_out <= 16'b1010111111111110; //MUL A,B
 				
 				
 				//Testbench
