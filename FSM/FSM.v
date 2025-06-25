@@ -2,7 +2,7 @@ module FSM(clk, reset, pc, rom_read_enable, current_state, next_state, ir_load, 
 
 	input clk, reset;
 	
-	input [1:0] cu_state;
+	input [2:0] cu_state;
 	
 	output reg [7:0] pc;
 	output reg [1:0] current_state, next_state;
@@ -53,7 +53,7 @@ module FSM(clk, reset, pc, rom_read_enable, current_state, next_state, ir_load, 
 				begin
 					ir_load <= 0;
 					current_state <= EXECUTE;
-					if (cu_state == 2'b11) begin
+					if (cu_state == 3'b111) begin
 						next_state <= FETCH;
 						pc <= pc + 1;
 					end

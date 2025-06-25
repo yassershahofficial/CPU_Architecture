@@ -23,7 +23,7 @@ module CPU(clk, reset, rom_data, ram_data_in, ram_write, ram_read, rom_address, 
 	wire [5:0] dest = IR[11:6];
 	wire [5:0] src = IR[5:0];
 	
-	wire [1:0] cu_state;
+	wire [2:0] cu_state;
 
 	always @(*) 
 	begin
