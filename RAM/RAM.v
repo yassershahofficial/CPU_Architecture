@@ -1,8 +1,7 @@
-module RAM(clk, write, read, read_addr, write_addr, data_in, data_out);
+module RAM(clk, write, read, addr, data_in, data_out);
 
 	input clk, write, read;
-	input [5:0] read_addr;
-	input [5:0] write_addr;
+	input [5:0] addr;
 	input [15:0] data_in;
 
 	output reg [15:0] data_out;
@@ -11,7 +10,7 @@ module RAM(clk, write, read, read_addr, write_addr, data_in, data_out);
 	always @(*) 
 	begin 
 		if (read)
-			data_out <= memory[read_addr]; //async read
+			data_out <= memory[addr]; //async read
 		
 	end
 
@@ -19,7 +18,7 @@ module RAM(clk, write, read, read_addr, write_addr, data_in, data_out);
 	begin 
 	
 		if (write)
-			memory[write_addr] <= data_in;
+			memory[addr] <= data_in;
 			
 		
 	end
