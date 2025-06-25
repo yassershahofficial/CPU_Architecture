@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Tue Jun 24 02:06:46 2025
+Wed Jun 25 15:47:22 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -13,10 +13,14 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Parameter Settings for User Entity Instance: FSM:fsm_inst
- 10. Port Connectivity Checks: "FSM:fsm_inst"
- 11. Analysis & Synthesis Messages
+  8. User-Specified and Inferred Latches
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: FSM:fsm_inst
+ 13. Port Connectivity Checks: "CU:cu_inst|ALU:alu_inst"
+ 14. Port Connectivity Checks: "FSM:fsm_inst"
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -42,13 +46,13 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Tue Jun 24 02:06:46 2025       ;
+; Analysis & Synthesis Status ; Successful - Wed Jun 25 15:47:22 2025       ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; CPU                                         ;
 ; Top-level Entity Name       ; CPU                                         ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 35                                          ;
-; Total pins                  ; 71                                          ;
+; Total logic elements        ; 821                                         ;
+; Total pins                  ; 79                                          ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -145,8 +149,11 @@ refer to the applicable agreement for further details.
 +----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                          ; Library ;
 +----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
+; ../ROM/ROM.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ROM/ROM.v ;         ;
+; ../RAM/RAM.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v ;         ;
 ; ../FSM/FSM.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v ;         ;
 ; ../CU/CU.v                       ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v   ;         ;
+; ../ALU/ALU.v                     ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v ;         ;
 ; CPU.v                            ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v ;         ;
 +----------------------------------+-----------------+------------------------+-------------------------------------------------------+---------+
 
@@ -156,46 +163,934 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 35    ;
-;     -- Combinational with no register       ; 14    ;
-;     -- Register only                        ; 11    ;
-;     -- Combinational with a register        ; 10    ;
+; Total logic elements                        ; 821   ;
+;     -- Combinational with no register       ; 542   ;
+;     -- Register only                        ; 257   ;
+;     -- Combinational with a register        ; 22    ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 6     ;
-;     -- 3 input functions                    ; 9     ;
-;     -- 2 input functions                    ; 9     ;
-;     -- 1 input functions                    ; 0     ;
+;     -- 4 input functions                    ; 400   ;
+;     -- 3 input functions                    ; 126   ;
+;     -- 2 input functions                    ; 36    ;
+;     -- 1 input functions                    ; 2     ;
 ;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 29    ;
-;     -- arithmetic mode                      ; 6     ;
+;     -- normal mode                          ; 799   ;
+;     -- arithmetic mode                      ; 22    ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
-;     -- synchronous clear/load mode          ; 0     ;
-;     -- asynchronous clear/load mode         ; 11    ;
+;     -- synchronous clear/load mode          ; 1     ;
+;     -- asynchronous clear/load mode         ; 12    ;
 ;                                             ;       ;
-; Total registers                             ; 21    ;
-; Total logic cells in carry chains           ; 7     ;
-; I/O pins                                    ; 71    ;
+; Total registers                             ; 279   ;
+; Total logic cells in carry chains           ; 24    ;
+; I/O pins                                    ; 79    ;
 ; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 21    ;
-; Total fan-out                               ; 166   ;
-; Average fan-out                             ; 1.57  ;
+; Maximum fan-out                             ; 279   ;
+; Total fan-out                               ; 2949  ;
+; Average fan-out                             ; 3.28  ;
 +---------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |CPU                       ; 35 (17)     ; 21           ; 0          ; 71   ; 0            ; 14 (7)       ; 11 (10)           ; 10 (0)           ; 7 (0)           ; 0 (0)      ; |CPU                ; CPU         ; work         ;
-;    |CU:cu_inst|            ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |CPU|CU:cu_inst     ; CU          ; work         ;
-;    |FSM:fsm_inst|          ; 11 (11)     ; 11           ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 10 (10)          ; 7 (7)           ; 0 (0)      ; |CPU|FSM:fsm_inst   ; FSM         ; work         ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                         ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name          ; Entity Name ; Library Name ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------+-------------+--------------+
+; |CPU                       ; 821 (23)    ; 279          ; 0          ; 79   ; 0            ; 542 (23)     ; 257 (0)           ; 22 (0)           ; 24 (0)          ; 0 (0)      ; |CPU                         ; CPU         ; work         ;
+;    |CU:cu_inst|            ; 785 (69)    ; 267          ; 0          ; 0    ; 0            ; 518 (69)     ; 256 (0)           ; 11 (0)           ; 17 (0)          ; 0 (0)      ; |CPU|CU:cu_inst              ; CU          ; work         ;
+;       |ALU:alu_inst|       ; 121 (121)   ; 0            ; 0          ; 0    ; 0            ; 121 (121)    ; 0 (0)             ; 0 (0)            ; 17 (17)         ; 0 (0)      ; |CPU|CU:cu_inst|ALU:alu_inst ; ALU         ; work         ;
+;       |RAM:ram_inst|       ; 567 (567)   ; 256          ; 0          ; 0    ; 0            ; 311 (311)    ; 256 (256)         ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |CPU|CU:cu_inst|RAM:ram_inst ; RAM         ; work         ;
+;       |ROM:rom_inst|       ; 28 (28)     ; 11           ; 0          ; 0    ; 0            ; 17 (17)      ; 0 (0)             ; 11 (11)          ; 0 (0)           ; 0 (0)      ; |CPU|CU:cu_inst|ROM:rom_inst ; ROM         ; work         ;
+;    |FSM:fsm_inst|          ; 13 (13)     ; 12           ; 0          ; 0    ; 0            ; 1 (1)        ; 1 (1)             ; 11 (11)          ; 7 (7)           ; 0 (0)      ; |CPU|FSM:fsm_inst            ; FSM         ; work         ;
++----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+------------------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                          ;
++-----------------------------------------------------+-------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal           ; Free of Timing Hazards ;
++-----------------------------------------------------+-------------------------------+------------------------+
+; CU:cu_inst|ram_data_in[0]                           ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[1]                           ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[2]                           ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[3]                           ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[4]                           ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[5]                           ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[6]                           ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[7]                           ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[8]                           ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[9]                           ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[10]                          ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[11]                          ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[12]                          ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[13]                          ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[14]                          ; CU:cu_inst|WideOr0            ; yes                    ;
+; CU:cu_inst|ram_data_in[15]                          ; CU:cu_inst|WideOr0            ; yes                    ;
+; IR[12]                                              ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[13]                                              ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[14]                                              ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[15]                                              ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[6]                                               ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[7]                                               ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[8]                                               ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[9]                                               ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[10]                                              ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[11]                                              ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[0]                                               ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[1]                                               ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[2]                                               ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; IR[3]                                               ; FSM:fsm_inst|current_state[0] ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[0]                 ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[1]                 ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[2]                 ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[3]                 ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[4]                 ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[5]                 ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[6]                 ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[7]                 ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[8]                 ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[9]                 ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[10]                ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[11]                ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[12]                ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[13]                ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[14]                ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|RAM:ram_inst|data_out[15]                ; CU:cu_inst|WideOr1            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[0]                   ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[1]                   ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[2]                   ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[3]                   ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[4]                   ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[5]                   ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[6]                   ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[7]                   ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[8]                   ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[9]                   ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[10]                  ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[11]                  ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[12]                  ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[13]                  ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[14]                  ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|ALU:alu_inst|result[15]                  ; CU:cu_inst|WideOr2            ; yes                    ;
+; CU:cu_inst|alu_b[0]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[0]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[1]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[1]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[2]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[2]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[3]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[3]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[4]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[4]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[5]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[5]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[6]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[6]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[7]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[7]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[8]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[8]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[9]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[9]                                 ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[10]                                ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[10]                                ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[11]                                ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[11]                                ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[12]                                ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[12]                                ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[13]                                ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[13]                                ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[14]                                ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[14]                                ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_b[15]                                ; CU:cu_inst|Decoder2           ; yes                    ;
+; CU:cu_inst|alu_a[15]                                ; CU:cu_inst|Decoder2           ; yes                    ;
+; Number of user-specified and inferred latches = 94  ;                               ;                        ;
++-----------------------------------------------------+-------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++-------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                        ;
++-----------------------------------------+-------------------------------------------------+
+; Register name                           ; Reason for Removal                              ;
++-----------------------------------------+-------------------------------------------------+
+; CU:cu_inst|ROM:rom_inst|data_out[4,5]   ; Stuck at GND due to stuck port data_in          ;
+; CU:cu_inst|ROM:rom_inst|data_out[9..11] ; Merged with CU:cu_inst|ROM:rom_inst|data_out[8] ;
+; FSM:fsm_inst|ir_load                    ; Merged with FSM:fsm_inst|current_state[0]       ;
+; FSM:fsm_inst|next_state[1]              ; Merged with FSM:fsm_inst|current_state[0]       ;
+; CU:cu_inst|RAM:ram_inst|memory~672      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~656      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~640      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~688      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~592      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~608      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~576      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~624      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~544      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~528      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~512      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~560      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~720      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~736      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~704      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~752      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~336      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~400      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~272      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~464      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~416      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~352      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~288      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~480      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~384      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~320      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~256      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~448      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~368      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~432      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~304      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~496      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~353      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~609      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~673      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~417      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~545      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~289      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~481      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~737      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~657      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~401      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~337      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~593      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~529      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~273      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~465      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~721      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~321      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~577      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~641      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~385      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~513      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~257      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~449      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~705      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~689      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~433      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~369      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~625      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~561      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~305      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~497      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~753      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~402      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~658      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~674      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~418      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~642      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~386      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~434      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~690      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~354      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~338      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~322      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~370      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~594      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~610      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~578      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~626      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~530      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~546      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~514      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~562      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~290      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~274      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~258      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~306      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~738      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~722      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~706      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~754      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~466      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~482      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~450      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~498      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~403      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~339      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~275      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~467      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~355      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~419      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~291      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~483      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~323      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~387      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~259      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~451      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~435      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~371      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~307      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~499      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~611      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~675      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~547      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~739      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~659      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~595      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~531      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~723      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~579      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~643      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~515      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~707      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~691      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~627      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~563      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~755      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~596      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~340      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~404      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~660      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~276      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~532      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~724      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~468      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~420      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~676      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~612      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~356      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~292      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~548      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~740      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~484      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~388      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~644      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~580      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~324      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~260      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~516      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~708      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~452      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~436      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~372      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~308      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~500      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~628      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~692      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~564      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~756      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~357      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~341      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~325      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~373      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~597      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~613      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~581      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~629      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~405      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~661      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~677      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~421      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~645      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~389      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~437      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~693      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~533      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~549      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~517      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~565      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~293      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~277      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~261      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~309      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~741      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~725      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~709      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~757      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~469      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~485      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~453      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~501      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~614      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~678      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~550      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~742      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~662      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~598      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~534      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~726      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~582      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~646      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~518      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~710      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~694      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~630      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~566      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~758      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~406      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~342      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~278      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~470      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~358      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~422      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~294      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~486      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~326      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~390      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~262      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~454      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~438      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~374      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~310      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~502      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~423      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~679      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~615      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~359      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~295      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~551      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~743      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~487      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~599      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~343      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~407      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~663      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~279      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~535      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~727      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~471      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~391      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~647      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~583      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~327      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~263      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~519      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~711      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~455      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~439      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~375      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~311      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~503      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~631      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~695      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~567      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~759      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~408      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~664      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~680      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~424      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~648      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~392      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~440      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~696      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~360      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~344      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~328      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~376      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~600      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~616      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~584      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~632      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~536      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~552      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~520      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~568      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~296      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~280      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~264      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~312      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~744      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~728      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~712      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~760      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~472      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~488      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~456      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~504      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~409      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~345      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~281      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~473      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~361      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~425      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~297      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~489      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~329      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~393      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~265      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~457      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~441      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~377      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~313      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~505      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~617      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~681      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~553      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~745      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~665      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~601      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~537      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~729      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~585      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~649      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~521      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~713      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~697      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~633      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~569      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~761      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~602      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~346      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~410      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~666      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~282      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~538      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~730      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~474      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~426      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~682      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~618      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~362      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~298      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~554      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~746      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~490      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~394      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~650      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~586      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~330      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~266      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~522      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~714      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~458      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~442      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~378      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~314      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~506      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~634      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~698      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~570      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~762      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~363      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~347      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~331      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~379      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~603      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~619      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~587      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~635      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~411      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~667      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~683      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~427      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~651      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~395      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~443      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~699      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~539      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~555      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~523      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~571      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~299      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~283      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~267      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~315      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~747      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~731      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~715      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~763      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~475      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~491      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~459      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~507      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~620      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~684      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~556      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~748      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~668      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~604      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~540      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~732      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~588      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~652      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~524      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~716      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~700      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~636      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~572      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~764      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~412      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~348      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~284      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~476      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~364      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~428      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~300      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~492      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~332      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~396      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~268      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~460      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~444      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~380      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~316      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~508      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~429      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~685      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~621      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~365      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~301      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~557      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~749      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~493      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~605      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~349      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~413      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~669      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~285      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~541      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~733      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~477      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~397      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~653      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~589      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~333      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~269      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~525      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~717      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~461      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~445      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~381      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~317      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~509      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~637      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~701      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~573      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~765      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~414      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~670      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~686      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~430      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~654      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~398      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~446      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~702      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~366      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~350      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~334      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~382      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~606      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~622      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~590      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~638      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~542      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~558      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~526      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~574      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~302      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~286      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~270      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~318      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~750      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~734      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~718      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~766      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~478      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~494      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~462      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~510      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~415      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~351      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~287      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~479      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~367      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~431      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~303      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~495      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~335      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~399      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~271      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~463      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~447      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~383      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~319      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~511      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~623      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~687      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~559      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~751      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~671      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~607      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~543      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~735      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~591      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~655      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~527      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~719      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~703      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~639      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~575      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~767      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~96       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~80       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~64       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~112      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~144      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~160      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~128      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~176      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~864      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~928      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~912      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~848      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~832      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~896      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~944      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~880      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~97       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~865      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~161      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~929      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~145      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~913      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~81       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~849      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~65       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~833      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~129      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~897      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~177      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~945      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~113      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~881      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~146      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~914      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~162      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~930      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~130      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~898      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~178      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~946      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~82       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~98       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~66       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~114      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~866      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~850      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~834      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~882      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~99       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~163      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~147      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~83       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~67       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~131      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~179      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~115      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~867      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~851      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~835      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~883      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~915      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~931      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~899      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~947      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~84       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~852      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~148      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~916      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~164      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~932      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~100      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~868      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~132      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~900      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~68       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~836      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~116      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~180      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~948      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~884      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~85       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~101      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~69       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~117      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~869      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~853      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~837      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~885      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~149      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~917      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~165      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~933      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~133      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~901      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~181      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~949      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~102      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~166      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~150      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~86       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~70       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~134      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~182      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~118      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~870      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~854      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~838      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~886      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~918      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~934      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~902      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~950      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~167      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~935      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~103      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~871      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~87       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~855      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~151      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~919      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~135      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~903      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~71       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~839      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~119      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~183      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~951      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~887      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~152      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~920      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~168      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~936      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~136      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~904      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~184      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~952      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~88       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~104      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~72       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~120      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~872      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~856      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~840      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~888      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~105      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~169      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~153      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~89       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~73       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~137      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~185      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~121      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~873      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~857      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~841      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~889      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~921      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~937      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~905      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~953      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~90       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~858      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~154      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~922      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~170      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~938      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~106      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~874      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~138      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~906      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~74       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~842      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~122      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~186      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~954      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~890      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~91       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~107      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~75       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~123      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~875      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~859      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~843      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~891      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~155      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~923      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~171      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~939      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~139      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~907      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~187      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~955      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~108      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~172      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~156      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~92       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~76       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~140      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~188      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~124      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~876      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~860      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~844      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~892      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~924      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~940      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~908      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~956      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~173      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~941      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~109      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~877      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~93       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~861      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~157      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~925      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~141      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~909      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~77       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~845      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~125      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~189      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~957      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~893      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~158      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~926      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~174      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~942      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~142      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~910      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~190      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~958      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~94       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~110      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~78       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~126      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~878      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~862      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~846      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~894      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~111      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~175      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~159      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~95       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~79       ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~143      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~191      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~127      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~879      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~863      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~847      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~895      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~927      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~943      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~911      ; Stuck at GND due to stuck port clock_enable     ;
+; CU:cu_inst|RAM:ram_inst|memory~959      ; Stuck at GND due to stuck port clock_enable     ;
+; Total Number of Removed Registers = 775 ;                                                 ;
++-----------------------------------------+-------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -203,14 +1098,27 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 21    ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 279   ;
+; Number of registers using Synchronous Clear  ; 1     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 11    ;
+; Number of registers using Asynchronous Clear ; 12    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 17    ;
+; Number of registers using Clock Enable       ; 275   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
+; 3:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |CPU|CU:cu_inst|Mux4              ;
+; 10:1               ; 4 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; No         ; |CPU|CU:cu_inst|Selector2         ;
+; 13:1               ; 7 bits    ; 56 LEs        ; 35 LEs               ; 21 LEs                 ; No         ; |CPU|CU:cu_inst|ALU:alu_inst|Mux1 ;
+; 13:1               ; 7 bits    ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; No         ; |CPU|CU:cu_inst|ALU:alu_inst|Mux6 ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; No         ; |CPU|CU:cu_inst|Mux0              ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------+
 
 
 +-----------------------------------------------------------+
@@ -225,13 +1133,22 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+---------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "FSM:fsm_inst"                                                                                  ;
-+-----------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port            ; Type   ; Severity ; Details                                                                             ;
-+-----------------+--------+----------+-------------------------------------------------------------------------------------+
-; rom_read_enable ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-----------------+--------+----------+-------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "CU:cu_inst|ALU:alu_inst"                                                            ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; zero ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FSM:fsm_inst"                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port       ; Type   ; Severity ; Details                                                                             ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
+; next_state ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -240,7 +1157,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Tue Jun 24 02:06:34 2025
+    Info: Processing started: Wed Jun 25 15:46:54 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
@@ -250,6 +1167,9 @@ Info (12021): Found 1 design units, including 1 entities, in source file /users/
     Info (12023): Found entity 1: RAM File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/fsm/fsm.v
     Info (12023): Found entity 1: FSM File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 1
+Warning (10275): Verilog HDL Module Instantiation warning at CU.v(159): ignored dangling comma in List of Port Connections File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 159
+Warning (10275): Verilog HDL Module Instantiation warning at CU.v(169): ignored dangling comma in List of Port Connections File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 169
+Warning (10275): Verilog HDL Module Instantiation warning at CU.v(178): ignored dangling comma in List of Port Connections File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 178
 Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/cu/cu.v
     Info (12023): Found entity 1: CU File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/alu/alu.v
@@ -257,25 +1177,243 @@ Info (12021): Found 1 design units, including 1 entities, in source file /users/
 Info (12021): Found 1 design units, including 1 entities, in source file cpu.v
     Info (12023): Found entity 1: CPU File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 1
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at CPU.v(19): object "src" assigned a value but never read File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 19
-Info (12128): Elaborating entity "FSM" for hierarchy "FSM:fsm_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 35
-Warning (10230): Verilog HDL assignment warning at FSM.v(50): truncated value with size 32 to match size of target (8) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 50
-Info (12128): Elaborating entity "CU" for hierarchy "CU:cu_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 43
-Warning (21074): Design contains 6 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "rom_data[0]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[1]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[2]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[3]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[4]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[5]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
-Info (21057): Implemented 106 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 34 input pins
-    Info (21059): Implemented 37 output pins
-    Info (21061): Implemented 35 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 4701 megabytes
-    Info: Processing ended: Tue Jun 24 02:06:46 2025
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:25
+Warning (10240): Verilog HDL Always Construct warning at CPU.v(25): inferring latch(es) for variable "IR", which holds its previous value in one or more paths through the always construct File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[0]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[1]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[2]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[3]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[4]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[5]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[6]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[7]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[8]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[9]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[10]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[11]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[12]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[13]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[14]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (10041): Inferred latch for "IR[15]" at CPU.v(25) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Info (12128): Elaborating entity "FSM" for hierarchy "FSM:fsm_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 37
+Warning (10230): Verilog HDL assignment warning at FSM.v(53): truncated value with size 32 to match size of target (8) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 53
+Info (12128): Elaborating entity "CU" for hierarchy "CU:cu_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 53
+Warning (10240): Verilog HDL Always Construct warning at CU.v(30): inferring latch(es) for variable "ram_data_in", which holds its previous value in one or more paths through the always construct File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Warning (10240): Verilog HDL Always Construct warning at CU.v(30): inferring latch(es) for variable "alu_a", which holds its previous value in one or more paths through the always construct File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Warning (10240): Verilog HDL Always Construct warning at CU.v(30): inferring latch(es) for variable "alu_b", which holds its previous value in one or more paths through the always construct File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[0]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[1]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[2]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[3]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[4]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[5]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[6]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[7]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[8]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[9]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[10]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[11]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[12]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[13]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[14]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_b[15]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[0]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[1]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[2]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[3]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[4]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[5]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[6]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[7]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[8]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[9]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[10]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[11]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[12]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[13]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[14]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "alu_a[15]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[0]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[1]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[2]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[3]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[4]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[5]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[6]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[7]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[8]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[9]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[10]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[11]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[12]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[13]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[14]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (10041): Inferred latch for "ram_data_in[15]" at CU.v(30) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Info (12128): Elaborating entity "ROM" for hierarchy "CU:cu_inst|ROM:rom_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 159
+Info (12128): Elaborating entity "RAM" for hierarchy "CU:cu_inst|RAM:ram_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 169
+Warning (10240): Verilog HDL Always Construct warning at RAM.v(13): inferring latch(es) for variable "data_out", which holds its previous value in one or more paths through the always construct File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[0]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[1]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[2]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[3]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[4]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[5]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[6]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[7]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[8]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[9]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[10]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[11]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[12]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[13]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[14]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (10041): Inferred latch for "data_out[15]" at RAM.v(13) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+Info (12128): Elaborating entity "ALU" for hierarchy "CU:cu_inst|ALU:alu_inst" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 178
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(15): inferring latch(es) for variable "result", which holds its previous value in one or more paths through the always construct File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[0]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[1]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[2]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[3]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[4]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[5]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[6]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[7]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[8]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[9]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[10]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[11]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[12]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[13]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[14]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (10041): Inferred latch for "result[15]" at ALU.v(15) File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+Info (13025): Duplicate LATCH primitives merged into single LATCH primitive
+    Info (13026): Duplicate LATCH primitive "IR[9]" merged with LATCH primitive "IR[8]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+    Info (13026): Duplicate LATCH primitive "IR[10]" merged with LATCH primitive "IR[8]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+    Info (13026): Duplicate LATCH primitive "IR[11]" merged with LATCH primitive "IR[8]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[0]" merged with LATCH primitive "CU:cu_inst|alu_b[0]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[1]" merged with LATCH primitive "CU:cu_inst|alu_b[1]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[2]" merged with LATCH primitive "CU:cu_inst|alu_b[2]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[3]" merged with LATCH primitive "CU:cu_inst|alu_b[3]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[4]" merged with LATCH primitive "CU:cu_inst|alu_b[4]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[5]" merged with LATCH primitive "CU:cu_inst|alu_b[5]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[6]" merged with LATCH primitive "CU:cu_inst|alu_b[6]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[7]" merged with LATCH primitive "CU:cu_inst|alu_b[7]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[8]" merged with LATCH primitive "CU:cu_inst|alu_b[8]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[9]" merged with LATCH primitive "CU:cu_inst|alu_b[9]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_b[10]" merged with LATCH primitive "CU:cu_inst|alu_a[10]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[11]" merged with LATCH primitive "CU:cu_inst|alu_b[11]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[12]" merged with LATCH primitive "CU:cu_inst|alu_b[12]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[13]" merged with LATCH primitive "CU:cu_inst|alu_b[13]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[14]" merged with LATCH primitive "CU:cu_inst|alu_b[14]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Info (13026): Duplicate LATCH primitive "CU:cu_inst|alu_a[15]" merged with LATCH primitive "CU:cu_inst|alu_b[15]" File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+Warning (13012): Latch CU:cu_inst|ram_data_in[0] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[1] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[2] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[3] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[4] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[5] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[6] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[7] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[8] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[9] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[10] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[11] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[12] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[13] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[14] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ram_data_in[15] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 30
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[15] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[0] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[1] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[2] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[3] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[4] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[5] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[6] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[7] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[8] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[9] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[10] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[11] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[12] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[13] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[14] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|RAM:ram_inst|data_out[15] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 13
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal FSM:fsm_inst|current_state[0] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/FSM/FSM.v Line: 28
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[0] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[1] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[2] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[3] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[4] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[5] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[6] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[7] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[8] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[9] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[10] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[11] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[12] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[13] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[14] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13012): Latch CU:cu_inst|ALU:alu_inst|result[15] has unsafe behavior File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ALU/ALU.v Line: 15
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal IR[13] File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 25
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "rom_data[4]" is stuck at GND File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
+    Warning (13410): Pin "rom_data[5]" is stuck at GND File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 4
+    Warning (13410): Pin "ram_read_addr[4]" is stuck at GND File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 9
+    Warning (13410): Pin "ram_read_addr[5]" is stuck at GND File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CPU/CPU.v Line: 9
+Info (21057): Implemented 900 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 77 output pins
+    Info (21061): Implemented 821 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 112 warnings
+    Info: Peak virtual memory: 4712 megabytes
+    Info: Processing ended: Wed Jun 25 15:47:22 2025
+    Info: Elapsed time: 00:00:28
+    Info: Total CPU time (on all processors): 00:00:27
 
 

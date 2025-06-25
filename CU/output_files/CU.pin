@@ -58,71 +58,107 @@
  ---------------------------------------------------------------------------------
 
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-CHIP  "CU"  ASSIGNED TO AN: 5M40ZE64C4
+CHIP  "CU"  ASSIGNED TO AN: 5M80ZT100C4
 
 Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
 -------------------------------------------------------------------------------------------------------------
-GND*                         : 1         :        :                   :         : 1         :                
+GND                          : 1         : gnd    :                   :         :           :                
 GND*                         : 2         :        :                   :         : 1         :                
-GND*                         : 3         :        :                   :         : 1         :                
+rom_data[6]                  : 3         : output : 3.3-V LVTTL       :         : 1         : N              
 GND*                         : 4         :        :                   :         : 1         :                
 GND*                         : 5         :        :                   :         : 1         :                
-VCCIO1                       : 6         : power  :                   : 3.3V    : 1         :                
-GND*                         : 7         :        :                   :         : 1         :                
-VCCINT                       : 8         : power  :                   : 1.8V    :           :                
-opcode[3]                    : 9         : input  : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : 10        :        :                   :         : 1         :                
-GND*                         : 11        :        :                   :         : 1         :                
-GND*                         : 12        :        :                   :         : 1         :                
-alu_op[1]                    : 13        : output : 3.3-V LVTTL       :         : 1         : N              
-TMS                          : 14        : input  :                   :         : 1         :                
-TDI                          : 15        : input  :                   :         : 1         :                
-TCK                          : 16        : input  :                   :         : 1         :                
-TDO                          : 17        : output :                   :         : 1         :                
-GND*                         : 18        :        :                   :         : 1         :                
+GND*                         : 6         :        :                   :         : 1         :                
+rom_address[5]               : 7         : input  : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 8         :        :                   :         : 1         :                
+VCCIO1                       : 9         : power  :                   : 3.3V    : 1         :                
+GND                          : 10        : gnd    :                   :         :           :                
+GND                          : 11        : gnd    :                   :         :           :                
+rom_data[1]                  : 12        : output : 3.3-V LVTTL       :         : 1         : N              
+VCCINT                       : 13        : power  :                   : 1.8V    :           :                
+clk                          : 14        : input  : 3.3-V LVTTL       :         : 1         : N              
+rom_data[4]                  : 15        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 16        :        :                   :         : 1         :                
+GND*                         : 17        :        :                   :         : 1         :                
+alu_op[0]                    : 18        : output : 3.3-V LVTTL       :         : 1         : N              
 GND*                         : 19        :        :                   :         : 1         :                
 GND*                         : 20        :        :                   :         : 1         :                
 GND*                         : 21        :        :                   :         : 1         :                
-alu_op[0]                    : 22        : output : 3.3-V LVTTL       :         : 1         : N              
-VCCIO1                       : 23        : power  :                   : 3.3V    : 1         :                
-alu_enable                   : 24        : output : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : 25        :        :                   :         : 1         :                
-opcode[1]                    : 26        : input  : 3.3-V LVTTL       :         : 1         : N              
-opcode[0]                    : 27        : input  : 3.3-V LVTTL       :         : 1         : N              
-opcode[2]                    : 28        : input  : 3.3-V LVTTL       :         : 1         : N              
+TMS                          : 22        : input  :                   :         : 1         :                
+TDI                          : 23        : input  :                   :         : 1         :                
+TCK                          : 24        : input  :                   :         : 1         :                
+TDO                          : 25        : output :                   :         : 1         :                
+GND*                         : 26        :        :                   :         : 1         :                
+GND*                         : 27        :        :                   :         : 1         :                
+GND*                         : 28        :        :                   :         : 1         :                
 GND*                         : 29        :        :                   :         : 1         :                
 GND*                         : 30        :        :                   :         : 1         :                
-alu_op[2]                    : 31        : output : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : 32        :        :                   :         : 1         :                
-alu_op[3]                    : 33        : output : 3.3-V LVTTL       :         : 1         : N              
-GND*                         : 34        :        :                   :         : 2         :                
-GND*                         : 35        :        :                   :         : 2         :                
-GND*                         : 36        :        :                   :         : 2         :                
-GND*                         : 37        :        :                   :         : 2         :                
-GND*                         : 38        :        :                   :         : 2         :                
-VCCIO2                       : 39        : power  :                   : 3.3V    : 2         :                
-ram_read                     : 40        : output : 3.3-V LVTTL       :         : 2         : N              
-VCCINT                       : 41        : power  :                   : 1.8V    :           :                
-GND*                         : 42        :        :                   :         : 2         :                
-GND*                         : 43        :        :                   :         : 2         :                
-GND*                         : 44        :        :                   :         : 2         :                
-GND*                         : 45        :        :                   :         : 2         :                
-GND*                         : 46        :        :                   :         : 2         :                
-GND*                         : 47        :        :                   :         : 2         :                
-GND*                         : 48        :        :                   :         : 2         :                
-GND*                         : 49        :        :                   :         : 2         :                
-GND*                         : 50        :        :                   :         : 2         :                
-ram_write                    : 51        : output : 3.3-V LVTTL       :         : 2         : N              
+VCCIO1                       : 31        : power  :                   : 3.3V    : 1         :                
+GND                          : 32        : gnd    :                   :         :           :                
+GND*                         : 33        :        :                   :         : 1         :                
+alu_enable                   : 34        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 35        :        :                   :         : 1         :                
+GND*                         : 36        :        :                   :         : 1         :                
+GND*                         : 37        :        :                   :         : 1         :                
+opcode[2]                    : 38        : input  : 3.3-V LVTTL       :         : 1         : N              
+alu_op[1]                    : 39        : output : 3.3-V LVTTL       :         : 1         : N              
+ram_write                    : 40        : output : 3.3-V LVTTL       :         : 1         : N              
+alu_op[2]                    : 41        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 42        :        :                   :         : 1         :                
+opcode[3]                    : 43        : input  : 3.3-V LVTTL       :         : 1         : N              
+opcode[0]                    : 44        : input  : 3.3-V LVTTL       :         : 1         : N              
+VCCIO1                       : 45        : power  :                   : 3.3V    : 1         :                
+GND                          : 46        : gnd    :                   :         :           :                
+GND*                         : 47        :        :                   :         : 1         :                
+ram_read                     : 48        : output : 3.3-V LVTTL       :         : 1         : N              
+GND*                         : 49        :        :                   :         : 1         :                
+GND*                         : 50        :        :                   :         : 1         :                
+GND*                         : 51        :        :                   :         : 1         :                
 GND*                         : 52        :        :                   :         : 2         :                
 GND*                         : 53        :        :                   :         : 2         :                
-GND*                         : 54        :        :                   :         : 2         :                
-GND*                         : 55        :        :                   :         : 2         :                
+alu_op[3]                    : 54        : output : 3.3-V LVTTL       :         : 2         : N              
+opcode[1]                    : 55        : input  : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : 56        :        :                   :         : 2         :                
-VCCIO2                       : 57        : power  :                   : 3.3V    : 2         :                
+GND*                         : 57        :        :                   :         : 2         :                
 GND*                         : 58        :        :                   :         : 2         :                
-GND*                         : 59        :        :                   :         : 2         :                
-GND*                         : 60        :        :                   :         : 2         :                
+VCCIO2                       : 59        : power  :                   : 3.3V    : 2         :                
+GND                          : 60        : gnd    :                   :         :           :                
 GND*                         : 61        :        :                   :         : 2         :                
 GND*                         : 62        :        :                   :         : 2         :                
-GND*                         : 63        :        :                   :         : 2         :                
-GND*                         : 64        :        :                   :         : 1         :                
+VCCINT                       : 63        : power  :                   : 1.8V    :           :                
+GND*                         : 64        :        :                   :         : 2         :                
+GND                          : 65        : gnd    :                   :         :           :                
+GND*                         : 66        :        :                   :         : 2         :                
+GND*                         : 67        :        :                   :         : 2         :                
+GND*                         : 68        :        :                   :         : 2         :                
+GND*                         : 69        :        :                   :         : 2         :                
+rom_data[13]                 : 70        : output : 3.3-V LVTTL       :         : 2         : N              
+rom_data[9]                  : 71        : output : 3.3-V LVTTL       :         : 2         : N              
+rom_data[15]                 : 72        : output : 3.3-V LVTTL       :         : 2         : N              
+rom_data[7]                  : 73        : output : 3.3-V LVTTL       :         : 2         : N              
+rom_data[8]                  : 74        : output : 3.3-V LVTTL       :         : 2         : N              
+rom_data[14]                 : 75        : output : 3.3-V LVTTL       :         : 2         : N              
+rom_data[11]                 : 76        : output : 3.3-V LVTTL       :         : 2         : N              
+rom_data[10]                 : 77        : output : 3.3-V LVTTL       :         : 2         : N              
+rom_data[12]                 : 78        : output : 3.3-V LVTTL       :         : 2         : N              
+GND                          : 79        : gnd    :                   :         :           :                
+VCCIO2                       : 80        : power  :                   : 3.3V    : 2         :                
+GND*                         : 81        :        :                   :         : 2         :                
+rom_address[7]               : 82        : input  : 3.3-V LVTTL       :         : 2         : N              
+rom_address[6]               : 83        : input  : 3.3-V LVTTL       :         : 2         : N              
+rom_read_enable              : 84        : input  : 3.3-V LVTTL       :         : 2         : N              
+rom_data[5]                  : 85        : output : 3.3-V LVTTL       :         : 2         : N              
+rom_address[4]               : 86        : input  : 3.3-V LVTTL       :         : 2         : N              
+rom_data[2]                  : 87        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 88        :        :                   :         : 2         :                
+rom_data[0]                  : 89        : output : 3.3-V LVTTL       :         : 2         : N              
+rom_address[2]               : 90        : input  : 3.3-V LVTTL       :         : 2         : N              
+rom_address[0]               : 91        : input  : 3.3-V LVTTL       :         : 2         : N              
+rom_address[3]               : 92        : input  : 3.3-V LVTTL       :         : 2         : N              
+GND                          : 93        : gnd    :                   :         :           :                
+VCCIO2                       : 94        : power  :                   : 3.3V    : 2         :                
+rom_data[3]                  : 95        : output : 3.3-V LVTTL       :         : 2         : N              
+rom_address[1]               : 96        : input  : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : 97        :        :                   :         : 2         :                
+GND*                         : 98        :        :                   :         : 2         :                
+GND*                         : 99        :        :                   :         : 2         :                
+GND*                         : 100       :        :                   :         : 2         :                

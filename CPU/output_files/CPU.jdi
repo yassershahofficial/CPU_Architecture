@@ -1,8 +1,8 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="70fe291f87c1f9a67372"/>
+    <hash md5_digest_80b="a2624c6ad517e403cbf6"/>
   </project>
   <file_info>
-    <file device="5M240ZT144C4" path="CPU.sof" usercode="0xFFFFFFFF"/>
+    <file device="5M1270ZT144C4" path="CPU.sof" usercode="0xFFFFFFFF"/>
   </file_info>
 </sld_project_info>

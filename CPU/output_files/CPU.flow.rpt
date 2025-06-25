@@ -1,5 +1,5 @@
 Flow report for CPU
-Tue Jun 24 02:06:57 2025
+Wed Jun 25 15:47:38 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,16 +40,16 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------+
 ; Flow Summary                                                        ;
 +-----------------------+---------------------------------------------+
-; Flow Status           ; Successful - Tue Jun 24 02:06:54 2025       ;
+; Flow Status           ; Successful - Wed Jun 25 15:47:35 2025       ;
 ; Quartus Prime Version ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name         ; CPU                                         ;
 ; Top-level Entity Name ; CPU                                         ;
 ; Family                ; MAX V                                       ;
-; Total logic elements  ; 24 / 240 ( 10 % )                           ;
-; Total pins            ; 71 / 114 ( 62 % )                           ;
+; Total logic elements  ; 645 / 1,270 ( 51 % )                        ;
+; Total pins            ; 79 / 114 ( 69 % )                           ;
 ; Total virtual pins    ; 0                                           ;
 ; UFM blocks            ; 0 / 1 ( 0 % )                               ;
-; Device                ; 5M240ZT144C4                                ;
+; Device                ; 5M1270ZT144C4                               ;
 ; Timing Models         ; Final                                       ;
 +-----------------------+---------------------------------------------+
 
@@ -59,7 +59,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/24/2025 02:06:35 ;
+; Start date & time ; 06/25/2025 15:46:56 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; CPU                 ;
 +-------------------+---------------------+
@@ -70,7 +70,7 @@ refer to the applicable agreement for further details.
 +--------------------------+-------------------------------+---------------+-------------+------------+
 ; Assignment Name          ; Value                         ; Default Value ; Entity Name ; Section Id ;
 +--------------------------+-------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID    ; 1096502459513.175070199414240 ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID    ; 1096502459513.175083761618748 ; --            ; --          ; --         ;
 ; PROJECT_OUTPUT_DIRECTORY ; output_files                  ; --            ; --          ; --         ;
 +--------------------------+-------------------------------+---------------+-------------+------------+
 
@@ -80,11 +80,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:12     ; 1.0                     ; 4701 MB             ; 00:00:25                           ;
-; Fitter               ; 00:00:05     ; 1.0                     ; 6158 MB             ; 00:00:03                           ;
-; Assembler            ; 00:00:01     ; 1.0                     ; 4654 MB             ; 00:00:01                           ;
-; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 4674 MB             ; 00:00:01                           ;
-; Total                ; 00:00:20     ; --                      ; --                  ; 00:00:30                           ;
+; Analysis & Synthesis ; 00:00:28     ; 1.0                     ; 4712 MB             ; 00:00:27                           ;
+; Fitter               ; 00:00:10     ; 1.2                     ; 6165 MB             ; 00:00:14                           ;
+; Assembler            ; 00:00:01     ; 1.0                     ; 4656 MB             ; 00:00:01                           ;
+; Timing Analyzer      ; 00:00:02     ; 1.0                     ; 4680 MB             ; 00:00:02                           ;
+; Total                ; 00:00:41     ; --                      ; --                  ; 00:00:44                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

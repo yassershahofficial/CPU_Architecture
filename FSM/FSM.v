@@ -1,9 +1,9 @@
-module FSM(clk, reset, pc, rom_read_enable, state, ir_load);
+module FSM(clk, reset, pc, rom_read_enable, current_state, next_state, ir_load);
 
 	input clk, reset;
 	
 	output reg [7:0] pc;
-	output reg [1:0] state;
+	output reg [1:0] current_state, next_state;
 	output reg rom_read_enable, ir_load;
 
 	parameter FETCH = 2'b00, DECODE = 2'b01, EXECUTE = 2'b10;
@@ -15,7 +15,8 @@ module FSM(clk, reset, pc, rom_read_enable, state, ir_load);
 		begin
 		
 			pc <= 0;
-			state <= FETCH;
+			current_state <= FETCH;
+			next_state <= FETCH;
 			rom_read_enable <= 0;
 			ir_load <= 0;
 			
@@ -24,14 +25,15 @@ module FSM(clk, reset, pc, rom_read_enable, state, ir_load);
 		else 
 		begin
 		
-			case (state)
+			case (next_state)
 			
 				FETCH: 
 				begin
 				
 					rom_read_enable <= 1;
-					ir_load <= 1;
-					state <= DECODE;
+					ir_load <= 0;
+					current_state <= FETCH;
+					next_state <= DECODE;
 					
 				end
 				
@@ -39,16 +41,18 @@ module FSM(clk, reset, pc, rom_read_enable, state, ir_load);
 				begin
 				
 					rom_read_enable <= 0;
-					ir_load <= 0;
-					state <= EXECUTE;
+					ir_load <= 1;
+					current_state <= DECODE;
+					next_state <= EXECUTE;
 					
 				end
 				
 				EXECUTE: 
 				begin
-				
+					ir_load <= 0;
 					pc <= pc + 1;
-					state <= FETCH;
+					current_state <= EXECUTE;
+					next_state <= FETCH;
 					
 				end
 			endcase

@@ -1,7 +1,8 @@
-module CU(clk, opcode, rom_address, rom_data, rom_read_enable, ram_write_addr, ram_read_addr, ram_write, ram_read, alu_op, alu_enable);
+module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_write, ram_read, ram_data_in, ram_data_out, alu_op, alu_enable);
 
 	input [3:0] opcode;
 	input clk; //pass clock for ram & rom
+	input [5:0] dest, src;
 	
 	//rom
 	input [7:0] rom_address;
@@ -9,14 +10,19 @@ module CU(clk, opcode, rom_address, rom_data, rom_read_enable, ram_write_addr, r
 	output [15:0] rom_data;
 	
 	//ram
-	input [5:0] ram_write_addr;
-	input [5:0] ram_read_addr;
-	output reg ram_write, ram_read, alu_enable;
-	
+	reg [5:0] ram_write_addr;
+	reg [5:0] ram_read_addr;
+	output reg [15:0] ram_data_in;
+	output [15:0] ram_data_out;
+	output reg ram_write, ram_read;
 	
 	//alu
 	output reg alu_enable;
 	output reg [3:0] alu_op;
+	reg [15:0] alu_a;
+	reg [15:0] alu_b;
+	wire [15:0] result;
+	wire zero;
 
 	always @(*) 
 	begin
@@ -25,22 +31,32 @@ module CU(clk, opcode, rom_address, rom_data, rom_read_enable, ram_write_addr, r
 		ram_read = 0;
 		alu_enable = 0;
 		alu_op = 4'b0000;
+		ram_write_addr = 6'b0;
+		ram_read_addr = 6'b0;
 
 		case(opcode)
 		
-			//MOV
-			4'b0001:  
+			4'b0001: //MOV Instruction - MOV Dest register, source register
 			begin 
 				ram_write = 1;
 				ram_read = 1;
+				ram_read_addr = src;
+				ram_data_in = ram_data_out;
+				ram_write_addr = dest;
 			end
 			
-			//ADD
-			4'b0010: 
+			4'b0010: //ADD Instruction - ADD dest, src adds dest + s saves it into A
 			begin 
 				alu_enable = 1;
 				alu_op = 4'b0001;
 				ram_read = 1;
+				ram_read_addr = src;
+				alu_a = ram_data_out;
+				ram_read_addr = dest;
+				alu_b = ram_data_out;
+				ram_write = 1;
+				ram_write_addr = dest;
+				ram_data_in = result;
 			end
 			
 			//SUB
@@ -115,6 +131,14 @@ module CU(clk, opcode, rom_address, rom_data, rom_read_enable, ram_write_addr, r
 				ram_read = 1;
 			end
 			
+			4'b1100: //MVI Instruction - MVI dest, #value
+			begin 
+				ram_write = 1;
+				ram_write_addr = dest;
+				ram_data_in = src;
+			end
+			
+			
 			default: 
 			begin
 				ram_write = 0;
@@ -140,8 +164,17 @@ module CU(clk, opcode, rom_address, rom_data, rom_read_enable, ram_write_addr, r
 		.read(ram_read),
 		.read_addr(ram_read_addr),
 		.write_addr(ram_write_addr),
-		.data_in(),
-		.data_out(),
+		.data_in(ram_data_in),
+		.data_out(ram_data_out),
+	);
+	
+	ALU alu_inst  ( //ALU Integration to CU
+		.a(alu_a),
+		.b(alu_b),
+		.alu_enable(alu_enable),
+		.alu_op(alu_op),
+		.result(result),
+		.zero(zero),
 	);
 
 

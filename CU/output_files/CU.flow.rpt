@@ -1,5 +1,5 @@
 Flow report for CU
-Sat Jun 21 23:02:46 2025
+Tue Jun 24 02:55:01 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,17 +40,11 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------+
 ; Flow Summary                                                        ;
 +-----------------------+---------------------------------------------+
-; Flow Status           ; Successful - Sat Jun 21 23:02:45 2025       ;
+; Flow Status           ; Flow Failed - Tue Jun 24 02:55:01 2025      ;
 ; Quartus Prime Version ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name         ; CU                                          ;
 ; Top-level Entity Name ; CU                                          ;
 ; Family                ; MAX V                                       ;
-; Total logic elements  ; 7 / 40 ( 18 % )                             ;
-; Total pins            ; 11 / 54 ( 20 % )                            ;
-; Total virtual pins    ; 0                                           ;
-; UFM blocks            ; 0 / 1 ( 0 % )                               ;
-; Device                ; 5M40ZE64C4                                  ;
-; Timing Models         ; Final                                       ;
 +-----------------------+---------------------------------------------+
 
 
@@ -59,20 +53,20 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 06/21/2025 23:02:33 ;
+; Start date & time ; 06/24/2025 02:54:51 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; CU                  ;
 +-------------------+---------------------+
 
 
-+-------------------------------------------------------------------------------------------------------+
-; Flow Non-Default Global Settings                                                                      ;
-+--------------------------+---------------------------------+---------------+-------------+------------+
-; Assignment Name          ; Value                           ; Default Value ; Entity Name ; Section Id ;
-+--------------------------+---------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID    ; 277302801996092.175051815322016 ; --            ; --          ; --         ;
-; PROJECT_OUTPUT_DIRECTORY ; output_files                    ; --            ; --          ; --         ;
-+--------------------------+---------------------------------+---------------+-------------+------------+
++-----------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                    ;
++--------------------------+-------------------------------+---------------+-------------+------------+
+; Assignment Name          ; Value                         ; Default Value ; Entity Name ; Section Id ;
++--------------------------+-------------------------------+---------------+-------------+------------+
+; COMPILER_SIGNATURE_ID    ; 1096502459513.175070489102264 ; --            ; --          ; --         ;
+; PROJECT_OUTPUT_DIRECTORY ; output_files                  ; --            ; --          ; --         ;
++--------------------------+-------------------------------+---------------+-------------+------------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------+
@@ -80,11 +74,8 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:08     ; 1.0                     ; 4705 MB             ; 00:00:19                           ;
-; Fitter               ; 00:00:01     ; 1.0                     ; 5322 MB             ; 00:00:01                           ;
-; Assembler            ; 00:00:01     ; 1.0                     ; 4654 MB             ; 00:00:00                           ;
-; Timing Analyzer      ; 00:00:00     ; 1.0                     ; 4673 MB             ; 00:00:01                           ;
-; Total                ; 00:00:10     ; --                      ; --                  ; 00:00:21                           ;
+; Analysis & Synthesis ; 00:00:11     ; 1.0                     ; 4694 MB             ; 00:00:23                           ;
+; Total                ; 00:00:11     ; --                      ; --                  ; 00:00:23                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -93,10 +84,7 @@ refer to the applicable agreement for further details.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; LAPTOP-MS11L0L0  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; LAPTOP-MS11L0L0  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; LAPTOP-MS11L0L0  ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; LAPTOP-MS11L0L0  ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; LAPTOP-HAKIM     ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 
@@ -104,9 +92,6 @@ refer to the applicable agreement for further details.
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off CU -c CU
-quartus_fit --read_settings_files=off --write_settings_files=off CU -c CU
-quartus_asm --read_settings_files=off --write_settings_files=off CU -c CU
-quartus_sta CU -c CU
 
 
 

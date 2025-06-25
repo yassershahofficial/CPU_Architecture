@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CU
-Sat Jun 21 23:02:41 2025
+Tue Jun 24 02:55:01 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -11,10 +11,7 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
   5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Analysis & Synthesis Messages
+  6. Analysis & Synthesis Messages
 
 
 
@@ -40,15 +37,11 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sat Jun 21 23:02:41 2025       ;
+; Analysis & Synthesis Status ; Failed - Tue Jun 24 02:55:01 2025           ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; CU                                          ;
 ; Top-level Entity Name       ; CU                                          ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 7                                           ;
-; Total pins                  ; 11                                          ;
-; Total virtual pins          ; 0                                           ;
-; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
 
 
@@ -127,8 +120,8 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 ; Processors                 ; Number      ;
 +----------------------------+-------------+
-; Number detected on machine ; 8           ;
-; Maximum allowed            ; 4           ;
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
 ;                            ;             ;
 ; Average used               ; 1.00        ;
 ; Maximum used               ; 1           ;
@@ -138,72 +131,13 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                         ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                           ; Library ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------+---------+
-; CU.v                             ; yes             ; User Verilog HDL File  ; C:/Users/yasser/Documents/Lab POCA/MiniProject/CU/CU.v ;         ;
-+----------------------------------+-----------------+------------------------+--------------------------------------------------------+---------+
-
-
-+---------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary             ;
-+---------------------------------------------+-----------+
-; Resource                                    ; Usage     ;
-+---------------------------------------------+-----------+
-; Total logic elements                        ; 7         ;
-;     -- Combinational with no register       ; 7         ;
-;     -- Register only                        ; 0         ;
-;     -- Combinational with a register        ; 0         ;
-;                                             ;           ;
-; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 6         ;
-;     -- 3 input functions                    ; 1         ;
-;     -- 2 input functions                    ; 0         ;
-;     -- 1 input functions                    ; 0         ;
-;     -- 0 input functions                    ; 0         ;
-;                                             ;           ;
-; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 7         ;
-;     -- arithmetic mode                      ; 0         ;
-;     -- qfbk mode                            ; 0         ;
-;     -- register cascade mode                ; 0         ;
-;     -- synchronous clear/load mode          ; 0         ;
-;     -- asynchronous clear/load mode         ; 0         ;
-;                                             ;           ;
-; Total registers                             ; 0         ;
-; I/O pins                                    ; 11        ;
-; Maximum fan-out node                        ; opcode[1] ;
-; Maximum fan-out                             ; 7         ;
-; Total fan-out                               ; 34        ;
-; Average fan-out                             ; 1.89      ;
-+---------------------------------------------+-----------+
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |CU                        ; 7 (7)       ; 0            ; 0          ; 11   ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |CU                 ; CU          ; work         ;
-+----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
++---------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                      ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                        ; Library ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------+---------+
+; CU.v                             ; yes             ; User Verilog HDL File  ; C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v ;         ;
++----------------------------------+-----------------+------------------------+-----------------------------------------------------+---------+
 
 
 +-------------------------------+
@@ -212,21 +146,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 21 23:02:33 2025
+    Info: Processing started: Tue Jun 24 02:54:50 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CU -c CU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/ram/ram.v
+    Info (12023): Found entity 1: RAM File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/RAM/RAM.v Line: 1
+Warning (10275): Verilog HDL Module Instantiation warning at CU.v(125): ignored dangling comma in List of Port Connections File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 125
 Info (12021): Found 1 design units, including 1 entities, in source file cu.v
-    Info (12023): Found entity 1: CU File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CU/CU.v Line: 1
+    Info (12023): Found entity 1: CU File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file /users/hakim/desktop/cpu/cpu_architecture/rom/rom.v
+    Info (12023): Found entity 1: ROM File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/ROM/ROM.v Line: 1
 Info (12127): Elaborating entity "CU" for the top level hierarchy
-Info (21057): Implemented 18 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 4 input pins
-    Info (21059): Implemented 7 output pins
-    Info (21061): Implemented 7 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4705 megabytes
-    Info: Processing ended: Sat Jun 21 23:02:41 2025
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:19
+Error (10663): Verilog HDL Port Connection error at CU.v(124): output or inout port "data_out" must be connected to a structural net expression File: C:/Users/Hakim/Desktop/cpu/CPU_Architecture/CU/CU.v Line: 124
+Error (12153): Can't elaborate top-level user hierarchy
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 2 warnings
+    Error: Peak virtual memory: 4694 megabytes
+    Error: Processing ended: Tue Jun 24 02:55:01 2025
+    Error: Elapsed time: 00:00:11
+    Error: Total CPU time (on all processors): 00:00:23
 
 
