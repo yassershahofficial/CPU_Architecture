@@ -1,8 +1,10 @@
-module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_write, ram_read, ram_data_in, ram_data_out, alu_op);
+module CU(clk, opcode, dest, src, cu_state, rom_address, rom_data, rom_read_enable, ram_write, ram_read, ram_data_in, ram_data_out, alu_op, result, alu_a, alu_b);
 
 	input [3:0] opcode;
 	input clk; //pass clock for ram & rom
 	input [5:0] dest, src;
+	
+	output reg [1:0] cu_state = 2'b00; //keeps track of when CU is done 11 = done
 	
 	//rom
 	input [7:0] rom_address;
@@ -10,57 +12,114 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 	output [15:0] rom_data;
 	
 	//ram
-	reg [5:0] ram_write_addr;
-	reg [5:0] ram_read_addr;
+	reg [5:0] ram_addr;
 	output reg [15:0] ram_data_in;
 	output [15:0] ram_data_out;
 	output reg ram_write, ram_read;
 	
 	//alu
 	output reg [3:0] alu_op;
-	reg [15:0] alu_a;
-	reg [15:0] alu_b;
-	wire [15:0] result;
+	output reg [15:0] alu_a;
+	output reg [15:0] alu_b;
+	output wire [15:0] result;
 	wire zero;
+	
 
-	always @(*) 
+	always @(posedge clk) 
 	begin
 	
 		ram_write = 0;
 		ram_read = 0;
 		alu_op = 4'b0000;
-		ram_write_addr = 6'b0;
-		ram_read_addr = 6'b0;
+		ram_addr = 6'b0;
 
 		case(opcode)
 		
 			4'b0001: //MOV Instruction - MOV Dest register, source register
 			begin 
-				ram_write = 1;
-				ram_read = 1;
-				ram_read_addr = src;
-				ram_data_in = ram_data_out;
-				ram_write_addr = dest;
+				case (cu_state)
+					2'b00:
+					begin
+						ram_read = 1;
+						ram_addr = src;
+						cu_state = 2'b01;
+					end
+					2'b01:
+					begin
+						ram_data_in = ram_data_out;
+						ram_write = 1;
+						ram_addr = dest;
+						cu_state = 2'b11; //Done execution
+					end
+				endcase
 			end
 			
-			4'b0010: //ADD Instruction - ADD dest, src adds dest + s saves it into A
+			4'b0010: //ADD Instruction - ADD dest, src adds dest + src saves it into dest
 			begin 
-				alu_op = 4'b0001;
-				ram_read = 1;
-				ram_read_addr = src;
-				alu_a = ram_data_out;
-				ram_read_addr = dest;
-				alu_b = ram_data_out;
-				ram_write = 1;
-				ram_write_addr = dest;
-				ram_data_in = result;
+				case (cu_state)
+					2'b00:
+					begin
+						ram_read = 1;
+						ram_addr = dest;
+						cu_state = 2'b01;
+					end
+					2'b01:
+					begin
+						alu_a = ram_data_out;
+						ram_read = 1;
+						ram_addr = src;
+						cu_state = 2'b10;
+					end
+					2'b10:
+					begin
+						alu_b = ram_data_out;
+						alu_op = 4'b0001;
+						cu_state = 2'b11;
+					end
+					2'b11:
+					begin
+						alu_b = ram_data_out;
+						alu_op = 4'b0001;
+						ram_addr = dest;
+						ram_write = 1;
+						ram_data_in = result;
+						cu_state = 2'b11;
+					end
+				endcase
 			end
 			
-			//SUB
-			4'b0011: 
+			4'b0011: //SUB Instruction - SUB dest, src does dest - src saves it into dest
 			begin 
-				alu_op = 4'b0010;
-				ram_read = 1;
+				case (cu_state)
+					2'b00:
+					begin
+						ram_read = 1;
+						ram_addr = dest;
+						cu_state = 2'b01;
+					end
+					2'b01:
+					begin
+						alu_a = ram_data_out;
+						ram_read = 1;
+						ram_addr = src;
+						cu_state = 2'b10;
+					end
+					2'b10:
+					begin
+						alu_b = ram_data_out;
+						alu_op = 4'b0010;
+						cu_state = 2'b11;
+					end
+					2'b11:
+					begin
+						alu_b = ram_data_out;
+						alu_op = 4'b0010;
+						ram_addr = dest;
+						ram_write = 1;
+						ram_data_in = result;
+						cu_state = 2'b11;
+					end
+				endcase
 			end
 			
 			//AND
@@ -120,10 +179,16 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 			end
 			
 			4'b1100: //MVI Instruction - MVI dest, #value
-			begin 
-				ram_write = 1;
-				ram_write_addr = dest;
-				ram_data_in = src;
+			begin
+				case (cu_state)
+					2'b00:
+					begin
+						ram_write = 1;
+						ram_addr = dest;
+						ram_data_in = src;
+						cu_state = 2'b11;
+					end
+				endcase
 			end
 			
 			
@@ -132,6 +197,7 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 				ram_write = 0;
 				ram_read = 0;
 				alu_op = 4'b0000;
+				cu_state = 2'b00;
 			end
 			
 		endcase
@@ -149,8 +215,7 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 		.clk(clk),
 		.write(ram_write),
 		.read(ram_read),
-		.read_addr(ram_read_addr),
-		.write_addr(ram_write_addr),
+		.addr(ram_addr),
 		.data_in(ram_data_in),
 		.data_out(ram_data_out),
 	);

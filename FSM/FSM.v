@@ -1,6 +1,8 @@
-module FSM(clk, reset, pc, rom_read_enable, current_state, next_state, ir_load);
+module FSM(clk, reset, pc, rom_read_enable, current_state, next_state, ir_load, cu_state);
 
 	input clk, reset;
+	
+	input [1:0] cu_state;
 	
 	output reg [7:0] pc;
 	output reg [1:0] current_state, next_state;
@@ -50,9 +52,13 @@ module FSM(clk, reset, pc, rom_read_enable, current_state, next_state, ir_load);
 				EXECUTE: 
 				begin
 					ir_load <= 0;
-					pc <= pc + 1;
 					current_state <= EXECUTE;
-					next_state <= FETCH;
+					if (cu_state == 2'b11) begin
+						next_state <= FETCH;
+						pc <= pc + 1;
+					end
+					else
+						next_state <= EXECUTE; //stay in execute until CU is done
 					
 				end
 			endcase

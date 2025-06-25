@@ -2,28 +2,40 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
+Type  : Setup 'CU:cu_inst|ram_read'
+Slack : -10.440
+TNS   : -151.905
+
 Type  : Setup 'clk'
-Slack : -11.647
-TNS   : -2707.637
+Slack : -9.014
+TNS   : -4314.901
 
-Type  : Setup 'FSM:fsm_inst|current_state[0]'
-Slack : -9.999
-TNS   : -489.608
-
-Type  : Hold 'FSM:fsm_inst|current_state[0]'
-Slack : -2.895
-TNS   : -78.580
+Type  : Setup 'FSM:fsm_inst|ir_load'
+Slack : -1.402
+TNS   : -11.565
 
 Type  : Hold 'clk'
-Slack : -0.711
-TNS   : -1.462
+Slack : -0.151
+TNS   : -0.151
+
+Type  : Hold 'FSM:fsm_inst|ir_load'
+Slack : 0.111
+TNS   : 0.000
+
+Type  : Hold 'CU:cu_inst|ram_read'
+Slack : 2.668
+TNS   : 0.000
 
 Type  : Minimum Pulse Width 'clk'
 Slack : -2.289
 TNS   : -2.289
 
-Type  : Minimum Pulse Width 'FSM:fsm_inst|current_state[0]'
-Slack : -0.411
-TNS   : -52.206
+Type  : Minimum Pulse Width 'CU:cu_inst|ram_read'
+Slack : 0.500
+TNS   : 0.000
+
+Type  : Minimum Pulse Width 'FSM:fsm_inst|ir_load'
+Slack : 0.500
+TNS   : 0.000
 
 ------------------------------------------------------------
