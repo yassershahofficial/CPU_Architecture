@@ -1,4 +1,4 @@
-module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_write, ram_read, ram_data_in, ram_data_out, alu_op, alu_enable);
+module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_write, ram_read, ram_data_in, ram_data_out, alu_op);
 
 	input [3:0] opcode;
 	input clk; //pass clock for ram & rom
@@ -17,7 +17,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 	output reg ram_write, ram_read;
 	
 	//alu
-	output reg alu_enable;
 	output reg [3:0] alu_op;
 	reg [15:0] alu_a;
 	reg [15:0] alu_b;
@@ -29,7 +28,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 	
 		ram_write = 0;
 		ram_read = 0;
-		alu_enable = 0;
 		alu_op = 4'b0000;
 		ram_write_addr = 6'b0;
 		ram_read_addr = 6'b0;
@@ -47,7 +45,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 			
 			4'b0010: //ADD Instruction - ADD dest, src adds dest + s saves it into A
 			begin 
-				alu_enable = 1;
 				alu_op = 4'b0001;
 				ram_read = 1;
 				ram_read_addr = src;
@@ -62,7 +59,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 			//SUB
 			4'b0011: 
 			begin 
-				alu_enable = 1;
 				alu_op = 4'b0010;
 				ram_read = 1;
 			end
@@ -70,7 +66,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 			//AND
 			4'b0100: 
 			begin 
-				alu_enable = 1;
 				alu_op = 4'b0011;
 				ram_read = 1;
 			end
@@ -78,7 +73,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 			//OR
 			4'b0101: 
 			begin 
-				alu_enable = 1;
 				alu_op = 4'b0100;
 				ram_read = 1;
 			end
@@ -86,7 +80,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 			//XOR
 			4'b0110: 
 			begin
-				alu_enable = 1;
 				alu_op = 4'b0101;
 				ram_read = 1;
 			end
@@ -94,7 +87,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 			//NOT
 			4'b0111: 
 			begin 
-				alu_enable = 1;
 				alu_op = 4'b0110;
 				ram_read = 1;
 			end
@@ -102,7 +94,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 			//SHL
 			4'b1000: 
 			begin 
-				alu_enable = 1;
 				alu_op = 4'b0111;
 				ram_read = 1;
 			end
@@ -110,7 +101,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 			//SHR
 			4'b1001: 
 			begin 
-				alu_enable = 1;
 				alu_op = 4'b1000;
 				ram_read = 1;
 			end
@@ -118,7 +108,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 			//Less Than
 			4'b1010: 
 			begin 
-				alu_enable = 1;
 				alu_op = 4'b1001;
 				ram_read = 1;
 			end
@@ -126,7 +115,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 			//Equal
 			4'b1011: 
 			begin 
-				alu_enable = 1;
 				alu_op = 4'b1010;
 				ram_read = 1;
 			end
@@ -143,7 +131,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 			begin
 				ram_write = 0;
 				ram_read = 0;
-				alu_enable = 0;
 				alu_op = 4'b0000;
 			end
 			
@@ -171,7 +158,6 @@ module CU(clk, opcode, dest, src, rom_address, rom_data, rom_read_enable, ram_wr
 	ALU alu_inst  ( //ALU Integration to CU
 		.a(alu_a),
 		.b(alu_b),
-		.alu_enable(alu_enable),
 		.alu_op(alu_op),
 		.result(result),
 		.zero(zero),

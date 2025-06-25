@@ -1,9 +1,9 @@
-module CPU(clk, reset, rom_data, ram_data_in, ram_write, ram_read, alu_enable, rom_address, ir_load, rom_read_enable, ram_write_addr, ram_read_addr, ram_data_out, alu_op);
+module CPU(clk, reset, rom_data, ram_data_in, ram_write, ram_read, rom_address, ir_load, rom_read_enable, ram_write_addr, ram_read_addr, ram_data_out, alu_op);
 
 	input clk, reset;
 	output [15:0] rom_data;
 
-	output ram_write, ram_read, alu_enable;
+	output ram_write, ram_read;
 	output [7:0] rom_address;
 	output [5:0] ram_write_addr;
 	output [5:0] ram_read_addr;
@@ -49,7 +49,6 @@ module CPU(clk, reset, rom_data, ram_data_in, ram_write, ram_read, alu_enable, r
 		.ram_data_in(ram_data_in),
 		.ram_data_out(ram_data_out),
 		.alu_op(alu_op),
-		.alu_enable(alu_enable)
 	);
 
 	assign rom_address = pc;
