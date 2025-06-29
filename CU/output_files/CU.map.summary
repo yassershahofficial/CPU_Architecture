@@ -1,9 +1,5 @@
-Analysis & Synthesis Status : Successful - Sat Jun 21 23:02:41 2025
+Analysis & Synthesis Status : Failed - Tue Jun 24 02:55:01 2025
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : CU
 Top-level Entity Name : CU
 Family : MAX V
-Total logic elements : 7
-Total pins : 11
-Total virtual pins : 0
-UFM blocks : 0 / 1 ( 0 % )

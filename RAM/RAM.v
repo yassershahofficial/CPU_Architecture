@@ -6,15 +6,20 @@ module RAM(clk, write, read, addr, data_in, data_out);
 
 	output reg [15:0] data_out;
 	reg [15:0] memory [0:63];
+	
+	always @(*) 
+	begin 
+		if (read)
+			data_out <= memory[addr]; //async read
+		
+	end
 
 	always @(posedge clk) 
-	begin
+	begin 
 	
 		if (write)
 			memory[addr] <= data_in;
 			
-		if (read)
-			data_out <= memory[addr];
 		
 	end
 

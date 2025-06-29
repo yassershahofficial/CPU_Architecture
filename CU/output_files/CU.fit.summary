@@ -1,11 +1,11 @@
-Fitter Status : Successful - Sat Jun 21 23:02:43 2025
+Fitter Status : Successful - Tue Jun 24 02:50:15 2025
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : CU
 Top-level Entity Name : CU
 Family : MAX V
-Device : 5M40ZE64C4
+Device : 5M80ZT100C4
 Timing Models : Final
-Total logic elements : 7 / 40 ( 18 % )
-Total pins : 11 / 54 ( 20 % )
+Total logic elements : 29 / 80 ( 36 % )
+Total pins : 37 / 79 ( 47 % )
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )
