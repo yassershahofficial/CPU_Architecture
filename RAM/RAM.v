@@ -7,21 +7,24 @@ module RAM(clk, write, read, addr, data_in, data_out);
 	output reg [15:0] data_out;
 	reg [15:0] memory [0:63];
 
+	integer i;
+	
+	initial 
+	begin
+		// Produce Unique Values for all my RAM contents
+		for (i = 0; i < 64; i = i + 1) 
+		begin
+			memory[i] = i * 3 + 7; 
+		end
+	end
+
 	always @(posedge clk) 
 	begin
 	
-		if (write)
-			memory[addr] <= data_in;
-			
-		if (read)
-			data_out <= memory[addr];
+		if (write) memory[addr] <= data_in;
+		
+		if (read) data_out <= memory[addr];
 		
 	end
 
 endmodule
-
-//RAM Address = (Register Banks)
-//RAM[63] = Accumulator (Register A)
-//RAM[62] = Register B
-//RAM[61] = Register C
-//RAM[60] = Register D

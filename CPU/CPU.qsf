@@ -49,3 +49,4 @@ set_global_assignment -name VERILOG_FILE ../FSM/FSM.v
 set_global_assignment -name VERILOG_FILE ../CU/CU.v
 set_global_assignment -name VERILOG_FILE ../ALU/ALU.v
 set_global_assignment -name VERILOG_FILE CPU.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf

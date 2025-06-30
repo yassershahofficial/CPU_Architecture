@@ -1,9 +1,9 @@
-Analysis & Synthesis Status : Successful - Sat Jun 21 15:20:21 2025
+Analysis & Synthesis Status : Successful - Mon Jun 30 11:45:37 2025
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : CPU
 Top-level Entity Name : CPU
 Family : MAX V
-Total logic elements : 30
-Total pins : 66
+Total logic elements : 738
+Total pins : 103
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )

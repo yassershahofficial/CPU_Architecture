@@ -1,9 +1,9 @@
-Analysis & Synthesis Status : Successful - Sat Jun 21 23:01:18 2025
+Analysis & Synthesis Status : Successful - Mon Jun 30 11:44:44 2025
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : FSM
 Top-level Entity Name : FSM
 Family : MAX V
-Total logic elements : 12
-Total pins : 14
+Total logic elements : 13
+Total pins : 15
 Total virtual pins : 0
 UFM blocks : 0 / 1 ( 0 % )

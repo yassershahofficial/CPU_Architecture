@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ALU
-Sat Jun 21 14:59:39 2025
+Wed Jun 25 20:29:25 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -41,13 +41,13 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sat Jun 21 14:59:39 2025       ;
+; Analysis & Synthesis Status ; Successful - Wed Jun 25 20:29:25 2025       ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; ALU                                         ;
 ; Top-level Entity Name       ; ALU                                         ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 173                                         ;
-; Total pins                  ; 53                                          ;
+; Total logic elements        ; 186                                         ;
+; Total pins                  ; 54                                          ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -153,20 +153,20 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Total logic elements                        ; 173       ;
-;     -- Combinational with no register       ; 173       ;
+; Total logic elements                        ; 186       ;
+;     -- Combinational with no register       ; 186       ;
 ;     -- Register only                        ; 0         ;
 ;     -- Combinational with a register        ; 0         ;
 ;                                             ;           ;
 ; Logic element usage by number of LUT inputs ;           ;
-;     -- 4 input functions                    ; 88        ;
+;     -- 4 input functions                    ; 93        ;
 ;     -- 3 input functions                    ; 35        ;
-;     -- 2 input functions                    ; 49        ;
+;     -- 2 input functions                    ; 57        ;
 ;     -- 1 input functions                    ; 1         ;
 ;     -- 0 input functions                    ; 0         ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 142       ;
+;     -- normal mode                          ; 155       ;
 ;     -- arithmetic mode                      ; 31        ;
 ;     -- qfbk mode                            ; 0         ;
 ;     -- register cascade mode                ; 0         ;
@@ -175,10 +175,10 @@ refer to the applicable agreement for further details.
 ;                                             ;           ;
 ; Total registers                             ; 0         ;
 ; Total logic cells in carry chains           ; 33        ;
-; I/O pins                                    ; 53        ;
+; I/O pins                                    ; 54        ;
 ; Maximum fan-out node                        ; alu_op[1] ;
 ; Maximum fan-out                             ; 43        ;
-; Total fan-out                               ; 573       ;
+; Total fan-out                               ; 609       ;
 ; Average fan-out                             ; 2.54      ;
 +---------------------------------------------+-----------+
 
@@ -188,7 +188,7 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |ALU                       ; 173 (173)   ; 0            ; 0          ; 53   ; 0            ; 173 (173)    ; 0 (0)             ; 0 (0)            ; 33 (33)         ; 0 (0)      ; |ALU                ; ALU         ; work         ;
+; |ALU                       ; 186 (186)   ; 0            ; 0          ; 54   ; 0            ; 186 (186)    ; 0 (0)             ; 0 (0)            ; 33 (33)         ; 0 (0)      ; |ALU                ; ALU         ; work         ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -213,8 +213,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 13:1               ; 7 bits    ; 56 LEs        ; 35 LEs               ; 21 LEs                 ; No         ; |ALU|Mux9                  ;
-; 13:1               ; 7 bits    ; 56 LEs        ; 28 LEs               ; 28 LEs                 ; No         ; |ALU|Mux6                  ;
+; 14:1               ; 7 bits    ; 63 LEs        ; 42 LEs               ; 21 LEs                 ; No         ; |ALU|result                ;
+; 14:1               ; 7 bits    ; 63 LEs        ; 35 LEs               ; 28 LEs                 ; No         ; |ALU|result                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -224,20 +224,20 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 21 14:59:30 2025
+    Info: Processing started: Wed Jun 25 20:29:16 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ALU -c ALU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file alu.v
     Info (12023): Found entity 1: ALU File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ALU/ALU.v Line: 1
 Info (12127): Elaborating entity "ALU" for the top level hierarchy
-Info (21057): Implemented 226 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 36 input pins
+Info (21057): Implemented 240 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 37 input pins
     Info (21059): Implemented 17 output pins
-    Info (21061): Implemented 173 logic cells
+    Info (21061): Implemented 186 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4709 megabytes
-    Info: Processing ended: Sat Jun 21 14:59:39 2025
+    Info: Processing ended: Wed Jun 25 20:29:25 2025
     Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:18
 

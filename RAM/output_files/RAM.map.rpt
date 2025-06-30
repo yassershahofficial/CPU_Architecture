@@ -1,5 +1,5 @@
 Analysis & Synthesis report for RAM
-Sat Jun 21 14:54:16 2025
+Sun Jun 29 21:33:16 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,7 +40,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sat Jun 21 14:54:16 2025       ;
+; Analysis & Synthesis Status ; Successful - Sun Jun 29 21:33:16 2025       ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; RAM                                         ;
 ; Top-level Entity Name       ; RAM                                         ;
@@ -154,14 +154,14 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------+
 ; Total logic elements                        ; 1776  ;
 ;     -- Combinational with no register       ; 736   ;
-;     -- Register only                        ; 1024  ;
-;     -- Combinational with a register        ; 16    ;
+;     -- Register only                        ; 785   ;
+;     -- Combinational with a register        ; 255   ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
 ;     -- 4 input functions                    ; 752   ;
 ;     -- 3 input functions                    ; 0     ;
 ;     -- 2 input functions                    ; 0     ;
-;     -- 1 input functions                    ; 0     ;
+;     -- 1 input functions                    ; 239   ;
 ;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
@@ -186,7 +186,7 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |RAM                       ; 1776 (1776) ; 1040         ; 0          ; 41   ; 0            ; 736 (736)    ; 1024 (1024)       ; 16 (16)          ; 0 (0)           ; 0 (0)      ; |RAM                ; RAM         ; work         ;
+; |RAM                       ; 1776 (1776) ; 1040         ; 0          ; 41   ; 0            ; 736 (736)    ; 785 (785)         ; 255 (255)        ; 0 (0)           ; 0 (0)      ; |RAM                ; RAM         ; work         ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -212,21 +212,22 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 21 14:54:07 2025
+    Info: Processing started: Sun Jun 29 21:33:06 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off RAM -c RAM
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file ram.v
     Info (12023): Found entity 1: RAM File: C:/Users/yasser/Documents/Lab POCA/MiniProject/RAM/RAM.v Line: 1
 Info (12127): Elaborating entity "RAM" for the top level hierarchy
+Warning (10230): Verilog HDL assignment warning at RAM.v(17): truncated value with size 32 to match size of target (16) File: C:/Users/yasser/Documents/Lab POCA/MiniProject/RAM/RAM.v Line: 17
 Info (21057): Implemented 1817 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 25 input pins
     Info (21059): Implemented 16 output pins
     Info (21061): Implemented 1776 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4713 megabytes
-    Info: Processing ended: Sat Jun 21 14:54:16 2025
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:19
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 4711 megabytes
+    Info: Processing ended: Sun Jun 29 21:33:16 2025
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:21
 
 

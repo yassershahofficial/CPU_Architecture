@@ -18,7 +18,7 @@
 #
 # Quartus Prime
 # Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-# Date created = 21:19:10  June 20, 2025
+# Date created = 20:26:28  June 25, 2025
 #
 # -------------------------------------------------------------------------- #
 #
@@ -40,7 +40,8 @@ set_global_assignment -name FAMILY "MAX V"
 set_global_assignment -name DEVICE auto
 set_global_assignment -name TOP_LEVEL_ENTITY ALU
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 18.1.0
-set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:19:10  JUNE 20, 2025"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "20:26:28  JUNE 25, 2025"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name VERILOG_FILE ALU.v
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveform.vwf

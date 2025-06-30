@@ -1,0 +1,35 @@
+# do RAM.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 21:34:02 on Jun 29,2025
+# vlog -work work RAM.vo 
+# -- Compiling module RAM
+# 
+# Top level modules:
+# 	RAM
+# End time: 21:34:02 on Jun 29,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 21:34:02 on Jun 29,2025
+# vlog -work work Waveform.vwf.vt 
+# -- Compiling module RAM_vlg_vec_tst
+# 
+# Top level modules:
+# 	RAM_vlg_vec_tst
+# End time: 21:34:02 on Jun 29,2025, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -novopt -c -t 1ps -L maxv_ver -L altera_ver -L altera_mf_ver -L 220model_ver -L sgate_ver -L altera_lnsim_ver work.RAM_vlg_vec_tst 
+# Start time: 21:34:02 on Jun 29,2025
+# Loading work.RAM_vlg_vec_tst
+# Loading work.RAM
+# Loading maxv_ver.maxv_io
+# Loading maxv_ver.maxv_lcell
+# Loading maxv_ver.maxv_asynch_lcell
+# Loading maxv_ver.maxv_lcell_register
+# ** Warning: Design size of 11196 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# after#25
+# ** Note: $finish    : Waveform.vwf.vt(52)
+#    Time: 100 ns  Iteration: 0  Instance: /RAM_vlg_vec_tst
+# End time: 21:34:04 on Jun 29,2025, Elapsed time: 0:00:02
+# Errors: 0, Warnings: 1

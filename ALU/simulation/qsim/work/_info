@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/yasser/Documents/Lab POCA/MiniProject/ALU/simulation/qsim
+vALU
+Z1 !s110 1750854711
+!i10b 1
+!s100 cEz8c]if;5<bDcZ@U_9VJ2
+Ib8XV:oJ=K;4nj82@geTVE0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1750854710
+8ALU.vo
+FALU.vo
+L0 31
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1750854710.000000
+!s107 ALU.vo|
+!s90 -work|work|ALU.vo|
+!i113 1
+Z4 o-work work
+Z5 tCvgOpt 0
+n@a@l@u
+vALU_vlg_vec_tst
+R1
+!i10b 1
+!s100 kcG<b29RoPf5?L4U:>TR<0
+IM;349>?jfU84Ym27C8`l`1
+R2
+R0
+w1750854709
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 29
+R3
+r1
+!s85 0
+31
+!s108 1750854711.000000
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R4
+R5
+n@a@l@u_vlg_vec_tst

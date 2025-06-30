@@ -1,5 +1,5 @@
 Timing Analyzer report for ROM
-Sat Jun 21 22:42:46 2025
+Sun Jun 29 22:36:56 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -152,9 +152,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 9     ; 9    ;
-; Unconstrained Input Port Paths  ; 123   ; 123  ;
-; Unconstrained Output Ports      ; 14    ; 14   ;
-; Unconstrained Output Port Paths ; 14    ; 14   ;
+; Unconstrained Input Port Paths  ; 99    ; 99   ;
+; Unconstrained Output Ports      ; 11    ; 11   ;
+; Unconstrained Output Port Paths ; 11    ; 11   ;
 +---------------------------------+-------+------+
 
 
@@ -196,9 +196,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; data_out[6]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[7]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[8]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; data_out[9]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; data_out[10] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; data_out[11] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[12] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[13] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[14] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -235,9 +232,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; data_out[6]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[7]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[8]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; data_out[9]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; data_out[10] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; data_out[11] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[12] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[13] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; data_out[14] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -251,7 +245,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 21 22:42:45 2025
+    Info: Processing started: Sun Jun 29 22:36:55 2025
 Info: Command: quartus_sta ROM -c ROM
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -279,7 +273,7 @@ Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 3 warnings
     Info: Peak virtual memory: 4672 megabytes
-    Info: Processing ended: Sat Jun 21 22:42:46 2025
+    Info: Processing ended: Sun Jun 29 22:36:56 2025
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

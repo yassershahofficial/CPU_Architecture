@@ -1,5 +1,5 @@
 Timing Analyzer report for CPU
-Sat Jun 21 15:20:26 2025
+Mon Jun 30 11:45:45 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -58,7 +58,7 @@ refer to the applicable agreement for further details.
 ; Timing Analyzer       ; Legacy Timing Analyzer                              ;
 ; Revision Name         ; CPU                                                 ;
 ; Device Family         ; MAX V                                               ;
-; Device Name           ; 5M240ZT144C4                                        ;
+; Device Name           ; 5M1270ZF256C4                                       ;
 ; Timing Models         ; Final                                               ;
 ; Delay Model           ; Slow Model                                          ;
 ; Rise/Fall Delays      ; Unavailable                                         ;
@@ -90,23 +90,23 @@ refer to the applicable agreement for further details.
 +------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+---------+
 
 
-+--------------------------------------------------+
-; Fmax Summary                                     ;
-+------------+-----------------+------------+------+
-; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
-+------------+-----------------+------------+------+
-; 277.78 MHz ; 277.78 MHz      ; clk        ;      ;
-+------------+-----------------+------------+------+
++------------------------------------------------+
+; Fmax Summary                                   ;
++----------+-----------------+------------+------+
+; Fmax     ; Restricted Fmax ; Clock Name ; Note ;
++----------+-----------------+------------+------+
+; 68.3 MHz ; 68.3 MHz        ; clk        ;      ;
++----------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
-+--------------------------------+
-; Setup Summary                  ;
-+-------+--------+---------------+
-; Clock ; Slack  ; End Point TNS ;
-+-------+--------+---------------+
-; clk   ; -2.600 ; -35.164       ;
-+-------+--------+---------------+
++---------------------------------+
+; Setup Summary                   ;
++-------+---------+---------------+
+; Clock ; Slack   ; End Point TNS ;
++-------+---------+---------------+
+; clk   ; -13.642 ; -3484.238     ;
++-------+---------+---------------+
 
 
 +-------------------------------+
@@ -114,7 +114,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +-------+-------+---------------+
 ; Clock ; Slack ; End Point TNS ;
 +-------+-------+---------------+
-; clk   ; 1.828 ; 0.000         ;
+; clk   ; 1.117 ; 0.000         ;
 +-------+-------+---------------+
 
 
@@ -139,76 +139,220 @@ No paths to report.
 +-------+--------+---------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------+
-; Setup: 'clk'                                                                                                                     ;
-+--------+-------------------------+-------------------------+--------------+-------------+--------------+------------+------------+
-; Slack  ; From Node               ; To Node                 ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+--------+-------------------------+-------------------------+--------------+-------------+--------------+------------+------------+
-; -2.600 ; FSM:fsm_inst|ir_load[0] ; IR[10]                  ; clk          ; clk         ; 1.000        ; 0.000      ; 3.340      ;
-; -2.322 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|state[0]   ; clk          ; clk         ; 1.000        ; 0.000      ; 3.062      ;
-; -2.310 ; FSM:fsm_inst|pc[0]      ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 1.000        ; 0.000      ; 3.050      ;
-; -2.293 ; FSM:fsm_inst|pc[2]      ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 1.000        ; 0.000      ; 3.033      ;
-; -2.213 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|pc[0]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.953      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[12]                  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[14]                  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[15]                  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[13]                  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[6]                   ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[7]                   ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[8]                   ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[9]                   ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.192 ; FSM:fsm_inst|ir_load[0] ; IR[11]                  ; clk          ; clk         ; 1.000        ; 0.000      ; 2.932      ;
-; -2.177 ; FSM:fsm_inst|ir_load[0] ; FSM:fsm_inst|ir_load[0] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.917      ;
-; -2.175 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|ir_load[0] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.915      ;
-; -2.162 ; FSM:fsm_inst|pc[1]      ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.902      ;
-; -2.158 ; FSM:fsm_inst|pc[1]      ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.898      ;
-; -2.052 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.792      ;
-; -1.937 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.677      ;
-; -1.911 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|ir_load[0] ; clk          ; clk         ; 1.000        ; 0.000      ; 2.651      ;
-; -1.633 ; FSM:fsm_inst|pc[0]      ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.373      ;
-; -1.627 ; FSM:fsm_inst|pc[0]      ; FSM:fsm_inst|pc[0]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.367      ;
-; -1.521 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|state[1]   ; clk          ; clk         ; 1.000        ; 0.000      ; 2.261      ;
-; -1.391 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|pc[0]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.131      ;
-; -1.390 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 1.000        ; 0.000      ; 2.130      ;
-; -1.382 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|state[0]   ; clk          ; clk         ; 1.000        ; 0.000      ; 2.122      ;
-; -1.162 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 1.000        ; 0.000      ; 1.902      ;
-+--------+-------------------------+-------------------------+--------------+-------------+--------------+------------+------------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Setup: 'clk'                                                                                                              ;
++---------+-----------------+-------------------------+--------------+-------------+--------------+------------+------------+
+; Slack   ; From Node       ; To Node                 ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++---------+-----------------+-------------------------+--------------+-------------+--------------+------------+------------+
+; -13.642 ; IR_internal[13] ; RAM:ram_inst|memory~131 ; clk          ; clk         ; 1.000        ; 0.000      ; 14.371     ;
+; -13.450 ; IR_internal[13] ; RAM:ram_inst|memory~51  ; clk          ; clk         ; 1.000        ; 0.000      ; 14.179     ;
+; -13.433 ; IR_internal[13] ; RAM:ram_inst|memory~107 ; clk          ; clk         ; 1.000        ; 0.000      ; 14.162     ;
+; -13.432 ; IR_internal[13] ; RAM:ram_inst|memory~211 ; clk          ; clk         ; 1.000        ; 0.000      ; 14.161     ;
+; -13.233 ; IR_internal[13] ; RAM:ram_inst|memory~179 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.962     ;
+; -13.200 ; IR_internal[13] ; RAM:ram_inst|memory~139 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.929     ;
+; -13.187 ; IR_internal[13] ; RAM:ram_inst|memory~195 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.916     ;
+; -13.147 ; IR_internal[13] ; RAM:ram_inst|memory~183 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.876     ;
+; -13.085 ; IR_internal[13] ; RAM:ram_inst|memory~71  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.814     ;
+; -13.084 ; IR_internal[13] ; RAM:ram_inst|memory~135 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.813     ;
+; -13.043 ; IR_internal[13] ; RAM:ram_inst|memory~248 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.772     ;
+; -13.040 ; IR_internal[13] ; RAM:ram_inst|memory~120 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.769     ;
+; -13.040 ; IR_internal[13] ; RAM:ram_inst|memory~175 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.769     ;
+; -13.021 ; IR_internal[13] ; RAM:ram_inst|memory~119 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.750     ;
+; -13.015 ; IR_internal[13] ; RAM:ram_inst|memory~11  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.744     ;
+; -13.012 ; IR_internal[13] ; RAM:ram_inst|memory~27  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.741     ;
+; -13.007 ; IR_internal[13] ; RAM:ram_inst|memory~67  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.736     ;
+; -13.006 ; IR_internal[13] ; RAM:ram_inst|memory~147 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.735     ;
+; -13.004 ; IR_internal[13] ; RAM:ram_inst|memory~3   ; clk          ; clk         ; 1.000        ; 0.000      ; 13.733     ;
+; -12.997 ; IR_internal[13] ; RAM:ram_inst|memory~171 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.726     ;
+; -12.982 ; IR_internal[13] ; RAM:ram_inst|memory~111 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.711     ;
+; -12.981 ; IR_internal[13] ; RAM:ram_inst|memory~47  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.710     ;
+; -12.978 ; IR_internal[13] ; RAM:ram_inst|memory~187 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.707     ;
+; -12.960 ; IR_internal[13] ; RAM:ram_inst|memory~159 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.689     ;
+; -12.939 ; IR_internal[13] ; RAM:ram_inst|memory~123 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.668     ;
+; -12.901 ; IR_internal[13] ; RAM:ram_inst|memory~191 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.630     ;
+; -12.900 ; IR_internal[13] ; RAM:ram_inst|memory~99  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.629     ;
+; -12.896 ; IR_internal[13] ; RAM:ram_inst|memory~35  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.625     ;
+; -12.863 ; IR_internal[13] ; RAM:ram_inst|memory~152 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.592     ;
+; -12.859 ; IR_internal[13] ; RAM:ram_inst|memory~184 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.588     ;
+; -12.858 ; IR_internal[13] ; RAM:ram_inst|memory~55  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.587     ;
+; -12.830 ; IR_internal[13] ; RAM:ram_inst|memory~203 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.559     ;
+; -12.787 ; IR_internal[13] ; RAM:ram_inst|memory~251 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.516     ;
+; -12.763 ; IR_internal[13] ; RAM:ram_inst|memory~115 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.492     ;
+; -12.744 ; IR_internal[13] ; RAM:ram_inst|memory~151 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.473     ;
+; -12.739 ; IR_internal[13] ; RAM:ram_inst|memory~215 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.468     ;
+; -12.735 ; IR_internal[13] ; RAM:ram_inst|memory~247 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.464     ;
+; -12.728 ; IR_internal[13] ; RAM:ram_inst|memory~169 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.457     ;
+; -12.715 ; IR_internal[13] ; RAM:ram_inst|memory~197 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.444     ;
+; -12.711 ; IR_internal[13] ; RAM:ram_inst|memory~186 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.440     ;
+; -12.705 ; IR_internal[12] ; RAM:ram_inst|memory~131 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.434     ;
+; -12.695 ; IR_internal[13] ; RAM:ram_inst|memory~185 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.424     ;
+; -12.690 ; IR_internal[13] ; RAM:ram_inst|memory~46  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.419     ;
+; -12.656 ; IR_internal[13] ; RAM:ram_inst|memory~216 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.385     ;
+; -12.656 ; IR_internal[13] ; RAM:ram_inst|memory~63  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.385     ;
+; -12.638 ; IR_internal[13] ; RAM:ram_inst|memory~103 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.367     ;
+; -12.636 ; IR_internal[13] ; RAM:ram_inst|memory~39  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.365     ;
+; -12.630 ; IR_internal[15] ; RAM:ram_inst|memory~131 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.359     ;
+; -12.622 ; IR_internal[13] ; RAM:ram_inst|memory~199 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.351     ;
+; -12.594 ; IR_internal[14] ; RAM:ram_inst|memory~131 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.323     ;
+; -12.561 ; IR_internal[13] ; RAM:ram_inst|memory~155 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.290     ;
+; -12.560 ; IR_internal[13] ; RAM:ram_inst|memory~219 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.289     ;
+; -12.548 ; IR_internal[13] ; RAM:ram_inst|memory~104 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.277     ;
+; -12.538 ; IR_internal[13] ; RAM:ram_inst|memory~193 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.267     ;
+; -12.538 ; IR_internal[13] ; RAM:ram_inst|memory~167 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.267     ;
+; -12.537 ; IR_internal[13] ; RAM:ram_inst|memory~231 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.266     ;
+; -12.536 ; IR_internal[13] ; RAM:ram_inst|memory~190 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.265     ;
+; -12.528 ; IR_internal[13] ; RAM:ram_inst|memory~127 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.257     ;
+; -12.526 ; IR_internal[13] ; RAM:ram_inst|memory~255 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.255     ;
+; -12.515 ; IR_internal[13] ; RAM:ram_inst|memory~73  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.244     ;
+; -12.513 ; IR_internal[12] ; RAM:ram_inst|memory~51  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.242     ;
+; -12.512 ; IR_internal[13] ; RAM:ram_inst|memory~235 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.241     ;
+; -12.506 ; IR_internal[13] ; RAM:ram_inst|memory~75  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.235     ;
+; -12.502 ; IR_internal[13] ; RAM:ram_inst|memory~58  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.231     ;
+; -12.498 ; IR_internal[13] ; RAM:ram_inst|memory~26  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.227     ;
+; -12.495 ; IR_internal[12] ; RAM:ram_inst|memory~211 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.224     ;
+; -12.492 ; IR_internal[13] ; RAM:ram_inst|memory~15  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.221     ;
+; -12.492 ; IR_internal[13] ; RAM:ram_inst|memory~79  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.221     ;
+; -12.473 ; IR_internal[13] ; RAM:ram_inst|memory~223 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.202     ;
+; -12.473 ; IR_internal[13] ; RAM:ram_inst|memory~207 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.202     ;
+; -12.464 ; IR_internal[13] ; RAM:ram_inst|memory~143 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.193     ;
+; -12.438 ; IR_internal[15] ; RAM:ram_inst|memory~51  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.167     ;
+; -12.429 ; IR_internal[13] ; RAM:ram_inst|memory~60  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.158     ;
+; -12.428 ; IR_internal[13] ; RAM:ram_inst|memory~173 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.157     ;
+; -12.421 ; IR_internal[15] ; RAM:ram_inst|memory~107 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.150     ;
+; -12.420 ; IR_internal[15] ; RAM:ram_inst|memory~211 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.149     ;
+; -12.402 ; IR_internal[14] ; RAM:ram_inst|memory~51  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.131     ;
+; -12.387 ; IR_internal[13] ; RAM:ram_inst|memory~221 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.116     ;
+; -12.384 ; IR_internal[14] ; RAM:ram_inst|memory~211 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.113     ;
+; -12.379 ; IR_internal[13] ; RAM:ram_inst|memory~136 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.108     ;
+; -12.373 ; IR_internal[13] ; RAM:ram_inst|memory~201 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.102     ;
+; -12.365 ; IR_internal[13] ; RAM:ram_inst|memory~174 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.094     ;
+; -12.338 ; IR_internal[13] ; RAM:ram_inst|memory~214 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.067     ;
+; -12.337 ; IR_internal[13] ; RAM:ram_inst|memory~243 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.066     ;
+; -12.323 ; IR_internal[13] ; RAM:ram_inst|memory~227 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.052     ;
+; -12.323 ; IR_internal[13] ; RAM:ram_inst|memory~163 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.052     ;
+; -12.296 ; IR_internal[12] ; RAM:ram_inst|memory~179 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.025     ;
+; -12.292 ; IR_internal[13] ; RAM:ram_inst|memory~133 ; clk          ; clk         ; 1.000        ; 0.000      ; 13.021     ;
+; -12.289 ; IR_internal[13] ; RAM:ram_inst|memory~53  ; clk          ; clk         ; 1.000        ; 0.000      ; 13.018     ;
+; -12.254 ; IR_internal[13] ; RAM:ram_inst|memory~166 ; clk          ; clk         ; 1.000        ; 0.000      ; 12.983     ;
+; -12.250 ; IR_internal[12] ; RAM:ram_inst|memory~195 ; clk          ; clk         ; 1.000        ; 0.000      ; 12.979     ;
+; -12.243 ; IR_internal[13] ; RAM:ram_inst|memory~7   ; clk          ; clk         ; 1.000        ; 0.000      ; 12.972     ;
+; -12.225 ; IR_internal[13] ; RAM:ram_inst|memory~149 ; clk          ; clk         ; 1.000        ; 0.000      ; 12.954     ;
+; -12.225 ; IR_internal[12] ; RAM:ram_inst|memory~183 ; clk          ; clk         ; 1.000        ; 0.000      ; 12.954     ;
+; -12.221 ; IR_internal[15] ; RAM:ram_inst|memory~179 ; clk          ; clk         ; 1.000        ; 0.000      ; 12.950     ;
+; -12.219 ; IR_internal[13] ; RAM:ram_inst|memory~213 ; clk          ; clk         ; 1.000        ; 0.000      ; 12.948     ;
+; -12.218 ; IR_internal[13] ; RAM:ram_inst|memory~78  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.947     ;
+; -12.215 ; IR_internal[13] ; RAM:ram_inst|memory~72  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.944     ;
+; -12.212 ; IR_internal[13] ; RAM:ram_inst|memory~56  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.941     ;
+; -12.193 ; IR_internal[13] ; RAM:ram_inst|memory~49  ; clk          ; clk         ; 1.000        ; 0.000      ; 12.922     ;
++---------+-----------------+-------------------------+--------------+-------------+--------------+------------+------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------+
-; Hold: 'clk'                                                                                                                     ;
-+-------+-------------------------+-------------------------+--------------+-------------+--------------+------------+------------+
-; Slack ; From Node               ; To Node                 ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
-+-------+-------------------------+-------------------------+--------------+-------------+--------------+------------+------------+
-; 1.828 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 0.000        ; 0.000      ; 1.902      ;
-; 2.048 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|state[0]   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.122      ;
-; 2.056 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.130      ;
-; 2.057 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|pc[0]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.131      ;
-; 2.187 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|state[1]   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.261      ;
-; 2.293 ; FSM:fsm_inst|pc[0]      ; FSM:fsm_inst|pc[0]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.367      ;
-; 2.299 ; FSM:fsm_inst|pc[0]      ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.373      ;
-; 2.577 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|ir_load[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.651      ;
-; 2.603 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.677      ;
-; 2.718 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.792      ;
-; 2.824 ; FSM:fsm_inst|pc[1]      ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.898      ;
-; 2.828 ; FSM:fsm_inst|pc[1]      ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.902      ;
-; 2.841 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|ir_load[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.915      ;
-; 2.843 ; FSM:fsm_inst|ir_load[0] ; FSM:fsm_inst|ir_load[0] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.917      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[12]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[14]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[15]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[13]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[6]                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[7]                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[8]                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[9]                   ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.858 ; FSM:fsm_inst|ir_load[0] ; IR[11]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.932      ;
-; 2.879 ; FSM:fsm_inst|state[0]   ; FSM:fsm_inst|pc[0]      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.953      ;
-; 2.959 ; FSM:fsm_inst|pc[2]      ; FSM:fsm_inst|pc[2]      ; clk          ; clk         ; 0.000        ; 0.000      ; 3.033      ;
-; 2.976 ; FSM:fsm_inst|pc[0]      ; FSM:fsm_inst|pc[1]      ; clk          ; clk         ; 0.000        ; 0.000      ; 3.050      ;
-; 2.988 ; FSM:fsm_inst|state[1]   ; FSM:fsm_inst|state[0]   ; clk          ; clk         ; 0.000        ; 0.000      ; 3.062      ;
-; 3.266 ; FSM:fsm_inst|ir_load[0] ; IR[10]                  ; clk          ; clk         ; 0.000        ; 0.000      ; 3.340      ;
-+-------+-------------------------+-------------------------+--------------+-------------+--------------+------------+------------+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Hold: 'clk'                                                                                                                         ;
++-------+---------------------------+---------------------------+--------------+-------------+--------------+------------+------------+
+; Slack ; From Node                 ; To Node                   ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++-------+---------------------------+---------------------------+--------------+-------------+--------------+------------+------------+
+; 1.117 ; ROM:rom_inst|data_out[8]  ; IR_internal[8]            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.296      ;
+; 1.119 ; RAM:ram_inst|data_out[1]  ; delayed_data[1]           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.298      ;
+; 1.119 ; RAM:ram_inst|data_out[6]  ; delayed_data[6]           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.298      ;
+; 1.120 ; RAM:ram_inst|data_out[7]  ; delayed_data[7]           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.299      ;
+; 1.122 ; RAM:ram_inst|data_out[15] ; delayed_data[15]          ; clk          ; clk         ; 0.000        ; 0.000      ; 1.301      ;
+; 1.122 ; RAM:ram_inst|data_out[5]  ; delayed_data[5]           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.301      ;
+; 1.123 ; RAM:ram_inst|data_out[11] ; delayed_data[11]          ; clk          ; clk         ; 0.000        ; 0.000      ; 1.302      ;
+; 1.130 ; RAM:ram_inst|data_out[0]  ; delayed_data[0]           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.309      ;
+; 1.130 ; RAM:ram_inst|data_out[13] ; delayed_data[13]          ; clk          ; clk         ; 0.000        ; 0.000      ; 1.309      ;
+; 1.132 ; ROM:rom_inst|data_out[7]  ; IR_internal[7]            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.311      ;
+; 1.335 ; ROM:rom_inst|data_out[6]  ; IR_internal[6]            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.514      ;
+; 1.335 ; RAM:ram_inst|data_out[9]  ; delayed_data[9]           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.514      ;
+; 1.338 ; RAM:ram_inst|memory~216   ; RAM:ram_inst|data_out[8]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.517      ;
+; 1.343 ; RAM:ram_inst|data_out[3]  ; delayed_data[3]           ; clk          ; clk         ; 0.000        ; 0.000      ; 1.522      ;
+; 1.416 ; FSM:fsm_inst|state[1]     ; FSM:fsm_inst|state[1]     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.595      ;
+; 1.417 ; FSM:fsm_inst|state[1]     ; FSM:fsm_inst|state[0]     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.596      ;
+; 1.418 ; FSM:fsm_inst|state[1]     ; was_exec2                 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.597      ;
+; 1.421 ; FSM:fsm_inst|state[1]     ; FSM:fsm_inst|state[2]     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.600      ;
+; 1.461 ; ROM:rom_inst|data_out[3]  ; IR_internal[3]            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.640      ;
+; 1.489 ; delayed_data[10]          ; reg_a[10]~reg0            ; clk          ; clk         ; 0.000        ; 0.000      ; 1.668      ;
+; 1.550 ; FSM:fsm_inst|pc[0]        ; FSM:fsm_inst|pc[0]        ; clk          ; clk         ; 0.000        ; 0.000      ; 1.729      ;
+; 1.674 ; FSM:fsm_inst|state[0]     ; was_exec2                 ; clk          ; clk         ; 0.000        ; 0.000      ; 1.853      ;
+; 1.675 ; FSM:fsm_inst|state[2]     ; FSM:fsm_inst|state[2]     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.854      ;
+; 1.682 ; FSM:fsm_inst|state[2]     ; FSM:fsm_inst|state[1]     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.861      ;
+; 1.685 ; FSM:fsm_inst|state[2]     ; FSM:fsm_inst|state[0]     ; clk          ; clk         ; 0.000        ; 0.000      ; 1.864      ;
+; 1.735 ; FSM:fsm_inst|pc[7]        ; FSM:fsm_inst|pc[7]        ; clk          ; clk         ; 0.000        ; 0.000      ; 1.914      ;
+; 1.742 ; FSM:fsm_inst|pc[2]        ; FSM:fsm_inst|pc[2]        ; clk          ; clk         ; 0.000        ; 0.000      ; 1.921      ;
+; 1.743 ; FSM:fsm_inst|pc[1]        ; FSM:fsm_inst|pc[1]        ; clk          ; clk         ; 0.000        ; 0.000      ; 1.922      ;
+; 1.746 ; FSM:fsm_inst|pc[2]        ; ROM:rom_inst|data_out[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 1.925      ;
+; 1.821 ; FSM:fsm_inst|pc[3]        ; FSM:fsm_inst|pc[3]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.000      ;
+; 1.825 ; FSM:fsm_inst|pc[3]        ; ROM:rom_inst|data_out[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.004      ;
+; 1.827 ; FSM:fsm_inst|pc[4]        ; FSM:fsm_inst|pc[4]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.006      ;
+; 1.830 ; prev_was_exec1            ; reg_a[10]~reg0            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.009      ;
+; 1.837 ; FSM:fsm_inst|pc[5]        ; FSM:fsm_inst|pc[5]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.016      ;
+; 1.837 ; FSM:fsm_inst|pc[6]        ; FSM:fsm_inst|pc[6]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.016      ;
+; 1.902 ; delayed_data[5]           ; reg_a[5]~reg0             ; clk          ; clk         ; 0.000        ; 0.000      ; 2.081      ;
+; 1.936 ; FSM:fsm_inst|state[0]     ; FSM:fsm_inst|state[0]     ; clk          ; clk         ; 0.000        ; 0.000      ; 2.115      ;
+; 1.937 ; ROM:rom_inst|data_out[0]  ; IR_internal[0]            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.116      ;
+; 1.937 ; RAM:ram_inst|data_out[14] ; delayed_data[14]          ; clk          ; clk         ; 0.000        ; 0.000      ; 2.116      ;
+; 1.949 ; FSM:fsm_inst|state[0]     ; FSM:fsm_inst|state[1]     ; clk          ; clk         ; 0.000        ; 0.000      ; 2.128      ;
+; 1.955 ; FSM:fsm_inst|state[0]     ; FSM:fsm_inst|state[2]     ; clk          ; clk         ; 0.000        ; 0.000      ; 2.134      ;
+; 1.955 ; FSM:fsm_inst|state[2]     ; was_exec2                 ; clk          ; clk         ; 0.000        ; 0.000      ; 2.134      ;
+; 2.044 ; RAM:ram_inst|memory~212   ; RAM:ram_inst|data_out[4]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.223      ;
+; 2.048 ; delayed_data[12]          ; reg_b[12]~reg0            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.227      ;
+; 2.055 ; was_exec1                 ; prev_was_exec1            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.234      ;
+; 2.074 ; FSM:fsm_inst|pc[6]        ; ROM:rom_inst|data_out[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.253      ;
+; 2.083 ; delayed_data[8]           ; reg_a[8]~reg0             ; clk          ; clk         ; 0.000        ; 0.000      ; 2.262      ;
+; 2.104 ; ROM:rom_inst|data_out[1]  ; IR_internal[1]            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.283      ;
+; 2.131 ; RAM:ram_inst|memory~126   ; RAM:ram_inst|data_out[14] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.310      ;
+; 2.150 ; delayed_data[10]          ; reg_b[10]~reg0            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.329      ;
+; 2.157 ; delayed_data[13]          ; reg_a[13]~reg0            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.336      ;
+; 2.204 ; FSM:fsm_inst|pc[7]        ; ROM:rom_inst|data_out[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.383      ;
+; 2.211 ; RAM:ram_inst|memory~225   ; RAM:ram_inst|data_out[1]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.390      ;
+; 2.333 ; FSM:fsm_inst|pc[1]        ; ROM:rom_inst|data_out[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.512      ;
+; 2.350 ; FSM:fsm_inst|pc[5]        ; ROM:rom_inst|data_out[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.529      ;
+; 2.404 ; RAM:ram_inst|data_out[12] ; delayed_data[12]          ; clk          ; clk         ; 0.000        ; 0.000      ; 2.583      ;
+; 2.418 ; FSM:fsm_inst|pc[2]        ; FSM:fsm_inst|pc[3]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.597      ;
+; 2.419 ; FSM:fsm_inst|pc[1]        ; FSM:fsm_inst|pc[2]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.598      ;
+; 2.436 ; RAM:ram_inst|memory~26    ; RAM:ram_inst|data_out[10] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.615      ;
+; 2.469 ; RAM:ram_inst|memory~123   ; RAM:ram_inst|data_out[11] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.648      ;
+; 2.476 ; FSM:fsm_inst|ir_load      ; FSM:fsm_inst|ir_load      ; clk          ; clk         ; 0.000        ; 0.000      ; 2.655      ;
+; 2.479 ; ROM:rom_inst|data_out[2]  ; IR_internal[2]            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.658      ;
+; 2.501 ; delayed_data[5]           ; reg_b[5]~reg0             ; clk          ; clk         ; 0.000        ; 0.000      ; 2.680      ;
+; 2.508 ; FSM:fsm_inst|pc[2]        ; FSM:fsm_inst|pc[4]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.687      ;
+; 2.509 ; FSM:fsm_inst|pc[1]        ; FSM:fsm_inst|pc[3]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.688      ;
+; 2.520 ; RAM:ram_inst|memory~127   ; RAM:ram_inst|data_out[15] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.699      ;
+; 2.533 ; delayed_data[15]          ; reg_b[15]~reg0            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.712      ;
+; 2.541 ; delayed_data[15]          ; reg_a[15]~reg0            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.720      ;
+; 2.579 ; delayed_data[1]           ; reg_a[1]~reg0             ; clk          ; clk         ; 0.000        ; 0.000      ; 2.758      ;
+; 2.580 ; RAM:ram_inst|memory~226   ; RAM:ram_inst|data_out[2]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.759      ;
+; 2.586 ; FSM:fsm_inst|pc[3]        ; FSM:fsm_inst|pc[4]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.765      ;
+; 2.599 ; FSM:fsm_inst|pc[4]        ; ROM:rom_inst|data_out[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.778      ;
+; 2.599 ; FSM:fsm_inst|pc[1]        ; FSM:fsm_inst|pc[4]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.778      ;
+; 2.602 ; FSM:fsm_inst|pc[5]        ; FSM:fsm_inst|pc[6]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.781      ;
+; 2.602 ; FSM:fsm_inst|pc[6]        ; FSM:fsm_inst|pc[7]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.781      ;
+; 2.613 ; delayed_data[7]           ; reg_b[7]~reg0             ; clk          ; clk         ; 0.000        ; 0.000      ; 2.792      ;
+; 2.642 ; delayed_data[12]          ; reg_a[12]~reg0            ; clk          ; clk         ; 0.000        ; 0.000      ; 2.821      ;
+; 2.647 ; delayed_data[4]           ; reg_b[4]~reg0             ; clk          ; clk         ; 0.000        ; 0.000      ; 2.826      ;
+; 2.666 ; delayed_data[4]           ; reg_a[4]~reg0             ; clk          ; clk         ; 0.000        ; 0.000      ; 2.845      ;
+; 2.674 ; RAM:ram_inst|memory~119   ; RAM:ram_inst|data_out[7]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.853      ;
+; 2.686 ; delayed_data[1]           ; reg_b[1]~reg0             ; clk          ; clk         ; 0.000        ; 0.000      ; 2.865      ;
+; 2.692 ; FSM:fsm_inst|pc[5]        ; FSM:fsm_inst|pc[7]        ; clk          ; clk         ; 0.000        ; 0.000      ; 2.871      ;
+; 2.721 ; RAM:ram_inst|memory~118   ; RAM:ram_inst|data_out[6]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.900      ;
+; 2.726 ; RAM:ram_inst|memory~237   ; RAM:ram_inst|data_out[13] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.905      ;
+; 2.756 ; RAM:ram_inst|memory~243   ; RAM:ram_inst|data_out[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 2.935      ;
+; 2.772 ; RAM:ram_inst|memory~220   ; RAM:ram_inst|data_out[12] ; clk          ; clk         ; 0.000        ; 0.000      ; 2.951      ;
+; 2.831 ; RAM:ram_inst|memory~238   ; RAM:ram_inst|data_out[14] ; clk          ; clk         ; 0.000        ; 0.000      ; 3.010      ;
+; 2.840 ; FSM:fsm_inst|state[1]     ; FSM:fsm_inst|pc[0]        ; clk          ; clk         ; 0.000        ; 0.000      ; 3.019      ;
+; 2.851 ; FSM:fsm_inst|pc[4]        ; FSM:fsm_inst|pc[5]        ; clk          ; clk         ; 0.000        ; 0.000      ; 3.030      ;
+; 2.851 ; FSM:fsm_inst|pc[4]        ; FSM:fsm_inst|pc[6]        ; clk          ; clk         ; 0.000        ; 0.000      ; 3.030      ;
+; 2.851 ; FSM:fsm_inst|pc[4]        ; FSM:fsm_inst|pc[7]        ; clk          ; clk         ; 0.000        ; 0.000      ; 3.030      ;
+; 2.854 ; FSM:fsm_inst|state[1]     ; was_exec1                 ; clk          ; clk         ; 0.000        ; 0.000      ; 3.033      ;
+; 2.888 ; FSM:fsm_inst|pc[2]        ; FSM:fsm_inst|pc[5]        ; clk          ; clk         ; 0.000        ; 0.000      ; 3.067      ;
+; 2.888 ; FSM:fsm_inst|pc[2]        ; FSM:fsm_inst|pc[6]        ; clk          ; clk         ; 0.000        ; 0.000      ; 3.067      ;
+; 2.888 ; FSM:fsm_inst|pc[2]        ; FSM:fsm_inst|pc[7]        ; clk          ; clk         ; 0.000        ; 0.000      ; 3.067      ;
+; 2.908 ; RAM:ram_inst|memory~163   ; RAM:ram_inst|data_out[3]  ; clk          ; clk         ; 0.000        ; 0.000      ; 3.087      ;
+; 2.911 ; RAM:ram_inst|memory~215   ; RAM:ram_inst|data_out[7]  ; clk          ; clk         ; 0.000        ; 0.000      ; 3.090      ;
+; 2.933 ; RAM:ram_inst|memory~22    ; RAM:ram_inst|data_out[6]  ; clk          ; clk         ; 0.000        ; 0.000      ; 3.112      ;
+; 2.943 ; delayed_data[14]          ; reg_b[14]~reg0            ; clk          ; clk         ; 0.000        ; 0.000      ; 3.122      ;
+; 2.945 ; RAM:ram_inst|memory~234   ; RAM:ram_inst|data_out[10] ; clk          ; clk         ; 0.000        ; 0.000      ; 3.124      ;
++-------+---------------------------+---------------------------+--------------+-------------+--------------+------------+------------+
 
 
 +-------------------------------------------------------------------+
@@ -216,7 +360,7 @@ No paths to report.
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 28       ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 59842    ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -226,7 +370,7 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +------------+----------+----------+----------+----------+----------+
 ; From Clock ; To Clock ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +------------+----------+----------+----------+----------+----------+
-; clk        ; clk      ; 28       ; 0        ; 0        ; 0        ;
+; clk        ; clk      ; 59842    ; 0        ; 0        ; 0        ;
 +------------+----------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -250,10 +394,10 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
-; Unconstrained Input Ports       ; 27    ; 27   ;
-; Unconstrained Input Port Paths  ; 32    ; 32   ;
-; Unconstrained Output Ports      ; 32    ; 32   ;
-; Unconstrained Output Port Paths ; 64    ; 64   ;
+; Unconstrained Input Ports       ; 1     ; 1    ;
+; Unconstrained Input Port Paths  ; 12    ; 12   ;
+; Unconstrained Output Ports      ; 89    ; 89   ;
+; Unconstrained Output Port Paths ; 582   ; 582  ;
 +---------------------------------+-------+------+
 
 
@@ -266,154 +410,216 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +--------+-------+------+-------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Unconstrained Input Ports                                                                              ;
-+-----------------+--------------------------------------------------------------------------------------+
-; Input Port      ; Comment                                                                              ;
-+-----------------+--------------------------------------------------------------------------------------+
-; ram_data_in[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[2]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[3]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[4]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[5]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[6]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[7]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[8]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[9]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[10] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[11] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[12] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[13] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[14] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[15] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; reset           ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[6]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[7]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[8]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[9]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[10]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[11]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[12]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[13]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[14]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[15]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+-----------------+--------------------------------------------------------------------------------------+
-
-
-+----------------------------------------------------------------------------------------------------------+
-; Unconstrained Output Ports                                                                               ;
-+------------------+---------------------------------------------------------------------------------------+
-; Output Port      ; Comment                                                                               ;
-+------------------+---------------------------------------------------------------------------------------+
-; alu_enable       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; alu_op[0]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; alu_op[1]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; alu_op[2]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; alu_op[3]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_addr[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_addr[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_addr[2]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_addr[3]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_addr[4]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_addr[5]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[0]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[1]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[2]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[3]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[4]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[5]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[6]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[7]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[8]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[9]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[10] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[11] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[12] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[13] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[14] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[15] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_read         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_write        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_address[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_address[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_address[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+------------------+---------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------------------------------------------------------+
-; Unconstrained Input Ports                                                                              ;
-+-----------------+--------------------------------------------------------------------------------------+
-; Input Port      ; Comment                                                                              ;
-+-----------------+--------------------------------------------------------------------------------------+
-; ram_data_in[0]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[1]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[2]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[3]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[4]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[5]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[6]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[7]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[8]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[9]  ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[10] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[11] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[12] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[13] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[14] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_in[15] ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; reset           ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[6]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[7]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[8]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[9]     ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[10]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[11]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[12]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[13]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[14]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_data[15]    ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+-----------------+--------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                             ;
++----------------+---------------------------------------------------------------------------------------+
+; Output Port    ; Comment                                                                               ;
++----------------+---------------------------------------------------------------------------------------+
+; IR[0]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[1]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[2]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[3]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[6]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[7]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[8]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[12]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[13]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[14]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[15]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_enable     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_op[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_op[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_op[2]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_op[3]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[0]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[1]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[2]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[3]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[4]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[5]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[6]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[7]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[8]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[9]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[10] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[11] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[12] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[13] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[14] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[15] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; dest[0]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; dest[1]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; dest[2]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[0]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[1]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[2]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[3]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[4]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[5]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[6]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[7]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ram_addr[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ram_addr[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ram_addr[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ram_addr[3]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[0]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[1]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[2]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[3]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[4]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[5]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[6]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[7]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[8]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[9]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[10]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[11]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[12]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[13]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[14]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[15]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[0]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[1]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[2]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[3]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[4]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[5]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[6]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[7]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[8]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[9]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[10]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[11]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[12]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[13]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[14]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[15]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_read       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_write      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; src[0]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; src[1]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; src[2]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; src[3]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; state[0]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; state[1]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; state[2]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; zero_flag      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++----------------+---------------------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------+
-; Unconstrained Output Ports                                                                               ;
-+------------------+---------------------------------------------------------------------------------------+
-; Output Port      ; Comment                                                                               ;
-+------------------+---------------------------------------------------------------------------------------+
-; alu_enable       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; alu_op[0]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; alu_op[1]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; alu_op[2]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; alu_op[3]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_addr[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_addr[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_addr[2]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_addr[3]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_addr[4]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_addr[5]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[0]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[1]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[2]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[3]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[4]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[5]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[6]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[7]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[8]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[9]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[10] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[11] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[12] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[13] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[14] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_data_out[15] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_read         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; ram_write        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_address[0]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_address[1]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; rom_address[2]   ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-+------------------+---------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------+
+; Unconstrained Input Ports                                                                         ;
++------------+--------------------------------------------------------------------------------------+
+; Input Port ; Comment                                                                              ;
++------------+--------------------------------------------------------------------------------------+
+; reset      ; No input delay, min/max delays, false-path exceptions, or max skew assignments found ;
++------------+--------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------+
+; Unconstrained Output Ports                                                                             ;
++----------------+---------------------------------------------------------------------------------------+
+; Output Port    ; Comment                                                                               ;
++----------------+---------------------------------------------------------------------------------------+
+; IR[0]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[1]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[2]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[3]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[6]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[7]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[8]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[12]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[13]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[14]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; IR[15]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_enable     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_op[0]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_op[1]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_op[2]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_op[3]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[0]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[1]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[2]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[3]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[4]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[5]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[6]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[7]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[8]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[9]  ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[10] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[11] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[12] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[13] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[14] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; alu_result[15] ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; dest[0]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; dest[1]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; dest[2]        ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[0]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[1]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[2]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[3]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[4]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[5]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[6]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; pc[7]          ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ram_addr[0]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ram_addr[1]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ram_addr[2]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; ram_addr[3]    ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[0]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[1]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[2]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[3]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[4]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[5]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[6]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[7]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[8]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[9]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[10]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[11]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[12]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[13]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[14]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_a[15]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[0]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[1]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[2]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[3]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[4]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[5]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[6]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[7]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[8]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[9]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[10]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[11]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[12]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[13]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[14]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_b[15]      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_read       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; reg_write      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; src[0]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; src[1]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; src[2]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; src[3]         ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; state[0]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; state[1]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; state[2]       ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
+; zero_flag      ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
++----------------+---------------------------------------------------------------------------------------+
 
 
 +--------------------------+
@@ -422,7 +628,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 21 15:20:25 2025
+    Info: Processing started: Mon Jun 30 11:45:44 2025
 Info: Command: quartus_sta CPU -c CPU
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -436,14 +642,14 @@ Info (332105): Deriving Clocks
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Can't run Report Timing Closure Recommendations. The current device family is not supported.
 Critical Warning (332148): Timing requirements not met
-Info (332146): Worst-case setup slack is -2.600
+Info (332146): Worst-case setup slack is -13.642
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.600             -35.164 clk 
-Info (332146): Worst-case hold slack is 1.828
+    Info (332119):   -13.642           -3484.238 clk 
+Info (332146): Worst-case hold slack is 1.117
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.828               0.000 clk 
+    Info (332119):     1.117               0.000 clk 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.289
@@ -454,9 +660,9 @@ Info (332001): The selected device family is not supported by the report_metasta
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4674 megabytes
-    Info: Processing ended: Sat Jun 21 15:20:26 2025
+    Info: Peak virtual memory: 4679 megabytes
+    Info: Processing ended: Mon Jun 30 11:45:45 2025
     Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+    Info: Total CPU time (on all processors): 00:00:02
 
 

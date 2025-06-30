@@ -1,5 +1,5 @@
 Analysis & Synthesis report for FSM
-Sat Jun 21 23:01:18 2025
+Mon Jun 30 11:44:44 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -42,13 +42,13 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sat Jun 21 23:01:18 2025       ;
+; Analysis & Synthesis Status ; Successful - Mon Jun 30 11:44:44 2025       ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; FSM                                         ;
 ; Top-level Entity Name       ; FSM                                         ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 12                                          ;
-; Total pins                  ; 14                                          ;
+; Total logic elements        ; 13                                          ;
+; Total pins                  ; 15                                          ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -154,33 +154,33 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 12    ;
+; Total logic elements                        ; 13    ;
 ;     -- Combinational with no register       ; 1     ;
-;     -- Register only                        ; 1     ;
-;     -- Combinational with a register        ; 10    ;
+;     -- Register only                        ; 0     ;
+;     -- Combinational with a register        ; 12    ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 0     ;
-;     -- 3 input functions                    ; 2     ;
-;     -- 2 input functions                    ; 9     ;
+;     -- 4 input functions                    ; 2     ;
+;     -- 3 input functions                    ; 4     ;
+;     -- 2 input functions                    ; 7     ;
 ;     -- 1 input functions                    ; 0     ;
 ;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 6     ;
+;     -- normal mode                          ; 7     ;
 ;     -- arithmetic mode                      ; 6     ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
 ;     -- synchronous clear/load mode          ; 0     ;
-;     -- asynchronous clear/load mode         ; 11    ;
+;     -- asynchronous clear/load mode         ; 12    ;
 ;                                             ;       ;
-; Total registers                             ; 11    ;
+; Total registers                             ; 12    ;
 ; Total logic cells in carry chains           ; 7     ;
-; I/O pins                                    ; 14    ;
+; I/O pins                                    ; 15    ;
 ; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 11    ;
-; Total fan-out                               ; 66    ;
-; Average fan-out                             ; 2.54  ;
+; Maximum fan-out                             ; 12    ;
+; Total fan-out                               ; 78    ;
+; Average fan-out                             ; 2.79  ;
 +---------------------------------------------+-------+
 
 
@@ -189,7 +189,7 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |FSM                       ; 12 (12)     ; 11           ; 0          ; 14   ; 0            ; 1 (1)        ; 1 (1)             ; 10 (10)          ; 7 (7)           ; 0 (0)      ; |FSM                ; FSM         ; work         ;
+; |FSM                       ; 13 (13)     ; 12           ; 0          ; 15   ; 0            ; 1 (1)        ; 0 (0)             ; 12 (12)          ; 7 (7)           ; 0 (0)      ; |FSM                ; FSM         ; work         ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -209,10 +209,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 11    ;
+; Total registers                              ; 12    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 11    ;
+; Number of registers using Asynchronous Clear ; 12    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 7     ;
 ; Number of registers using Preset             ; 0     ;
@@ -224,9 +224,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+-------+--------------------------------------------+
 ; Parameter Name ; Value ; Type                                       ;
 +----------------+-------+--------------------------------------------+
-; FETCH          ; 00    ; Unsigned Binary                            ;
-; DECODE         ; 01    ; Unsigned Binary                            ;
-; EXECUTE        ; 10    ; Unsigned Binary                            ;
+; FETCH          ; 000   ; Unsigned Binary                            ;
+; DECODE         ; 001   ; Unsigned Binary                            ;
+; EXEC1          ; 010   ; Unsigned Binary                            ;
+; EXEC2          ; 011   ; Unsigned Binary                            ;
+; EXEC3          ; 100   ; Unsigned Binary                            ;
+; EXEC4          ; 101   ; Unsigned Binary                            ;
 +----------------+-------+--------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -237,21 +240,21 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 21 23:01:09 2025
+    Info: Processing started: Mon Jun 30 11:44:35 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off FSM -c FSM
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 1 design units, including 1 entities, in source file fsm.v
     Info (12023): Found entity 1: FSM File: C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v Line: 1
 Info (12127): Elaborating entity "FSM" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at FSM.v(50): truncated value with size 32 to match size of target (8) File: C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v Line: 50
-Info (21057): Implemented 26 device resources after synthesis - the final resource count might be different
+Warning (10230): Verilog HDL assignment warning at FSM.v(49): truncated value with size 32 to match size of target (8) File: C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v Line: 49
+Info (21057): Implemented 28 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
-    Info (21059): Implemented 12 output pins
-    Info (21061): Implemented 12 logic cells
+    Info (21059): Implemented 13 output pins
+    Info (21061): Implemented 13 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
     Info: Peak virtual memory: 4705 megabytes
-    Info: Processing ended: Sat Jun 21 23:01:18 2025
+    Info: Processing ended: Mon Jun 30 11:44:44 2025
     Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:19
 

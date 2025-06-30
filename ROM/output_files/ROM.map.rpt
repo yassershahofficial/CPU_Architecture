@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ROM
-Sat Jun 21 22:42:41 2025
+Sun Jun 29 22:37:06 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -41,12 +41,12 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sat Jun 21 22:42:41 2025       ;
+; Analysis & Synthesis Status ; Successful - Sun Jun 29 22:37:06 2025       ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; ROM                                         ;
 ; Top-level Entity Name       ; ROM                                         ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 24                                          ;
+; Total logic elements        ; 23                                          ;
 ; Total pins                  ; 26                                          ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
@@ -148,38 +148,38 @@ refer to the applicable agreement for further details.
 +----------------------------------+-----------------+------------------------+----------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary         ;
-+---------------------------------------------+-------+
-; Resource                                    ; Usage ;
-+---------------------------------------------+-------+
-; Total logic elements                        ; 24    ;
-;     -- Combinational with no register       ; 10    ;
-;     -- Register only                        ; 7     ;
-;     -- Combinational with a register        ; 7     ;
-;                                             ;       ;
-; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 9     ;
-;     -- 3 input functions                    ; 0     ;
-;     -- 2 input functions                    ; 8     ;
-;     -- 1 input functions                    ; 0     ;
-;     -- 0 input functions                    ; 0     ;
-;                                             ;       ;
-; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 24    ;
-;     -- arithmetic mode                      ; 0     ;
-;     -- qfbk mode                            ; 0     ;
-;     -- register cascade mode                ; 0     ;
-;     -- synchronous clear/load mode          ; 0     ;
-;     -- asynchronous clear/load mode         ; 0     ;
-;                                             ;       ;
-; Total registers                             ; 14    ;
-; I/O pins                                    ; 26    ;
-; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 14    ;
-; Total fan-out                               ; 101   ;
-; Average fan-out                             ; 2.02  ;
-+---------------------------------------------+-------+
++-------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary           ;
++---------------------------------------------+---------+
+; Resource                                    ; Usage   ;
++---------------------------------------------+---------+
+; Total logic elements                        ; 23      ;
+;     -- Combinational with no register       ; 12      ;
+;     -- Register only                        ; 0       ;
+;     -- Combinational with a register        ; 11      ;
+;                                             ;         ;
+; Logic element usage by number of LUT inputs ;         ;
+;     -- 4 input functions                    ; 12      ;
+;     -- 3 input functions                    ; 0       ;
+;     -- 2 input functions                    ; 11      ;
+;     -- 1 input functions                    ; 0       ;
+;     -- 0 input functions                    ; 0       ;
+;                                             ;         ;
+; Logic elements by mode                      ;         ;
+;     -- normal mode                          ; 23      ;
+;     -- arithmetic mode                      ; 0       ;
+;     -- qfbk mode                            ; 0       ;
+;     -- register cascade mode                ; 0       ;
+;     -- synchronous clear/load mode          ; 0       ;
+;     -- asynchronous clear/load mode         ; 0       ;
+;                                             ;         ;
+; Total registers                             ; 11      ;
+; I/O pins                                    ; 26      ;
+; Maximum fan-out node                        ; addr[0] ;
+; Maximum fan-out                             ; 11      ;
+; Total fan-out                               ; 103     ;
+; Average fan-out                             ; 2.10    ;
++---------------------------------------------+---------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -187,7 +187,7 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |ROM                       ; 24 (24)     ; 14           ; 0          ; 26   ; 0            ; 10 (10)      ; 7 (7)             ; 7 (7)            ; 0 (0)           ; 0 (0)      ; |ROM                ; ROM         ; work         ;
+; |ROM                       ; 23 (23)     ; 11           ; 0          ; 26   ; 0            ; 12 (12)      ; 0 (0)             ; 11 (11)          ; 0 (0)           ; 0 (0)      ; |ROM                ; ROM         ; work         ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -199,7 +199,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +---------------------------------------+----------------------------------------+
 ; data_out[4]~reg0                      ; Stuck at GND due to stuck port data_in ;
 ; data_out[5]~reg0                      ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 2 ;                                        ;
+; data_out[9]~reg0                      ; Stuck at GND due to stuck port data_in ;
+; data_out[10]~reg0                     ; Stuck at GND due to stuck port data_in ;
+; data_out[11]~reg0                     ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 5 ;                                        ;
 +---------------------------------------+----------------------------------------+
 
 
@@ -208,12 +211,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 14    ;
+; Total registers                              ; 11    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 14    ;
+; Number of registers using Clock Enable       ; 11    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -224,7 +227,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 21 22:42:33 2025
+    Info: Processing started: Sun Jun 29 22:36:58 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ROM -c ROM
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -232,15 +235,18 @@ Info (12021): Found 1 design units, including 1 entities, in source file rom.v
     Info (12023): Found entity 1: ROM File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 1
 Info (12127): Elaborating entity "ROM" for the top level hierarchy
 Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "data_out[4]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 7
-    Warning (13410): Pin "data_out[5]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 7
-Info (21057): Implemented 50 device resources after synthesis - the final resource count might be different
+    Warning (13410): Pin "data_out[4]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 8
+    Warning (13410): Pin "data_out[5]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 8
+    Warning (13410): Pin "data_out[9]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 8
+    Warning (13410): Pin "data_out[10]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 8
+    Warning (13410): Pin "data_out[11]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 8
+Info (21057): Implemented 49 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 10 input pins
     Info (21059): Implemented 16 output pins
-    Info (21061): Implemented 24 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
-    Info: Peak virtual memory: 4709 megabytes
-    Info: Processing ended: Sat Jun 21 22:42:41 2025
+    Info (21061): Implemented 23 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 7 warnings
+    Info: Peak virtual memory: 4706 megabytes
+    Info: Processing ended: Sun Jun 29 22:37:06 2025
     Info: Elapsed time: 00:00:08
     Info: Total CPU time (on all processors): 00:00:18
 

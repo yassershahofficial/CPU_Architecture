@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/simulation/qsim
+vROM
+Z1 !s110 1751207834
+!i10b 1
+!s100 ^:kAHo473hbfXO@V3L?630
+I[6ZlHZOZz7=9g[klcgKh50
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1751207833
+8ROM.vo
+FROM.vo
+L0 31
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1751207834.000000
+!s107 ROM.vo|
+!s90 -work|work|ROM.vo|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+n@r@o@m
+vROM_vlg_vec_tst
+R1
+!i10b 1
+!s100 >gCDI?9?G`o_1iUAgK_881
+I23L<eiHaX6cP3dNW`ZUnT1
+R2
+R0
+w1751207832
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 29
+R3
+r1
+!s85 0
+31
+R4
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R5
+R6
+n@r@o@m_vlg_vec_tst

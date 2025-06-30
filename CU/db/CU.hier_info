@@ -3,12 +3,12 @@ opcode[0] => Decoder0.IN3
 opcode[1] => Decoder0.IN2
 opcode[2] => Decoder0.IN1
 opcode[3] => Decoder0.IN0
-ram_write <= Decoder0.DB_MAX_OUTPUT_PORT_TYPE
-ram_read <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
-alu_op[0] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
-alu_op[1] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
-alu_op[2] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
-alu_op[3] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
-alu_enable <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+ram_write << WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+ram_read << WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+alu_op[0] << WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+alu_op[1] << WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+alu_op[2] << WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+alu_op[3] << WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+alu_enable << WideOr2.DB_MAX_OUTPUT_PORT_TYPE
 
 

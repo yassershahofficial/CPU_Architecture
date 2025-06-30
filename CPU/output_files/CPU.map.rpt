@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Sat Jun 21 15:20:21 2025
+Mon Jun 30 11:45:37 2025
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -13,10 +13,12 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Parameter Settings for User Entity Instance: FSM:fsm_inst
- 10. Port Connectivity Checks: "FSM:fsm_inst"
- 11. Analysis & Synthesis Messages
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Parameter Settings for User Entity Instance: FSM:fsm_inst
+ 13. Analysis & Synthesis Messages
 
 
 
@@ -42,13 +44,13 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Successful - Sat Jun 21 15:20:21 2025       ;
+; Analysis & Synthesis Status ; Successful - Mon Jun 30 11:45:37 2025       ;
 ; Quartus Prime Version       ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name               ; CPU                                         ;
 ; Top-level Entity Name       ; CPU                                         ;
 ; Family                      ; MAX V                                       ;
-; Total logic elements        ; 30                                          ;
-; Total pins                  ; 66                                          ;
+; Total logic elements        ; 738                                         ;
+; Total pins                  ; 103                                         ;
 ; Total virtual pins          ; 0                                           ;
 ; UFM blocks                  ; 0 / 1 ( 0 % )                               ;
 +-----------------------------+---------------------------------------------+
@@ -145,8 +147,11 @@ refer to the applicable agreement for further details.
 +----------------------------------+-----------------+------------------------+----------------------------------------------------------+---------+
 ; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                             ; Library ;
 +----------------------------------+-----------------+------------------------+----------------------------------------------------------+---------+
+; ../ROM/ROM.v                     ; yes             ; User Verilog HDL File  ; C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v ;         ;
+; ../RAM/RAM.v                     ; yes             ; User Verilog HDL File  ; C:/Users/yasser/Documents/Lab POCA/MiniProject/RAM/RAM.v ;         ;
 ; ../FSM/FSM.v                     ; yes             ; User Verilog HDL File  ; C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v ;         ;
 ; ../CU/CU.v                       ; yes             ; User Verilog HDL File  ; C:/Users/yasser/Documents/Lab POCA/MiniProject/CU/CU.v   ;         ;
+; ../ALU/ALU.v                     ; yes             ; User Verilog HDL File  ; C:/Users/yasser/Documents/Lab POCA/MiniProject/ALU/ALU.v ;         ;
 ; CPU.v                            ; yes             ; User Verilog HDL File  ; C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v ;         ;
 +----------------------------------+-----------------+------------------------+----------------------------------------------------------+---------+
 
@@ -156,32 +161,33 @@ refer to the applicable agreement for further details.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Total logic elements                        ; 30    ;
-;     -- Combinational with no register       ; 14    ;
-;     -- Register only                        ; 11    ;
-;     -- Combinational with a register        ; 5     ;
+; Total logic elements                        ; 738   ;
+;     -- Combinational with no register       ; 380   ;
+;     -- Register only                        ; 271   ;
+;     -- Combinational with a register        ; 87    ;
 ;                                             ;       ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 8     ;
-;     -- 3 input functions                    ; 9     ;
-;     -- 2 input functions                    ; 2     ;
-;     -- 1 input functions                    ; 0     ;
+;     -- 4 input functions                    ; 290   ;
+;     -- 3 input functions                    ; 46    ;
+;     -- 2 input functions                    ; 83    ;
+;     -- 1 input functions                    ; 48    ;
 ;     -- 0 input functions                    ; 0     ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 30    ;
-;     -- arithmetic mode                      ; 0     ;
+;     -- normal mode                          ; 701   ;
+;     -- arithmetic mode                      ; 37    ;
 ;     -- qfbk mode                            ; 0     ;
 ;     -- register cascade mode                ; 0     ;
 ;     -- synchronous clear/load mode          ; 0     ;
-;     -- asynchronous clear/load mode         ; 6     ;
+;     -- asynchronous clear/load mode         ; 12    ;
 ;                                             ;       ;
-; Total registers                             ; 16    ;
-; I/O pins                                    ; 66    ;
+; Total registers                             ; 358   ;
+; Total logic cells in carry chains           ; 40    ;
+; I/O pins                                    ; 103   ;
 ; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 16    ;
-; Total fan-out                               ; 138   ;
-; Average fan-out                             ; 1.44  ;
+; Maximum fan-out                             ; 358   ;
+; Total fan-out                               ; 2575  ;
+; Average fan-out                             ; 3.06  ;
 +---------------------------------------------+-------+
 
 
@@ -190,11 +196,812 @@ refer to the applicable agreement for further details.
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 ; Compilation Hierarchy Node ; Logic Cells ; LC Registers ; UFM Blocks ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Carry Chain LCs ; Packed LCs ; Full Hierarchy Name ; Entity Name ; Library Name ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
-; |CPU                       ; 30 (17)     ; 16           ; 0          ; 66   ; 0            ; 14 (7)       ; 11 (10)           ; 5 (0)            ; 0 (0)           ; 0 (0)      ; |CPU                ; CPU         ; work         ;
-;    |CU:cu_inst|            ; 7 (7)       ; 0            ; 0          ; 0    ; 0            ; 7 (7)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |CPU|CU:cu_inst     ; CU          ; work         ;
-;    |FSM:fsm_inst|          ; 6 (6)       ; 6            ; 0          ; 0    ; 0            ; 0 (0)        ; 1 (1)             ; 5 (5)            ; 0 (0)           ; 0 (0)      ; |CPU|FSM:fsm_inst   ; FSM         ; work         ;
+; |CPU                       ; 738 (72)    ; 358          ; 0          ; 103  ; 0            ; 380 (9)      ; 271 (62)          ; 87 (1)           ; 40 (0)          ; 0 (0)      ; |CPU                ; CPU         ; work         ;
+;    |ALU:alu_inst|          ; 189 (189)   ; 0            ; 0          ; 0    ; 0            ; 189 (189)    ; 0 (0)             ; 0 (0)            ; 33 (33)         ; 0 (0)      ; |CPU|ALU:alu_inst   ; ALU         ; work         ;
+;    |CU:cu_inst|            ; 6 (6)       ; 0            ; 0          ; 0    ; 0            ; 6 (6)        ; 0 (0)             ; 0 (0)            ; 0 (0)           ; 0 (0)      ; |CPU|CU:cu_inst     ; CU          ; work         ;
+;    |FSM:fsm_inst|          ; 14 (14)     ; 12           ; 0          ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 12 (12)          ; 7 (7)           ; 0 (0)      ; |CPU|FSM:fsm_inst   ; FSM         ; work         ;
+;    |RAM:ram_inst|          ; 434 (434)   ; 272          ; 0          ; 0    ; 0            ; 162 (162)    ; 209 (209)         ; 63 (63)          ; 0 (0)           ; 0 (0)      ; |CPU|RAM:ram_inst   ; RAM         ; work         ;
+;    |ROM:rom_inst|          ; 23 (23)     ; 11           ; 0          ; 0    ; 0            ; 12 (12)      ; 0 (0)             ; 11 (11)          ; 0 (0)           ; 0 (0)      ; |CPU|ROM:rom_inst   ; ROM         ; work         ;
 +----------------------------+-------------+--------------+------------+------+--------------+--------------+-------------------+------------------+-----------------+------------+---------------------+-------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; ROM:rom_inst|data_out[4,5,9..11]        ; Stuck at GND due to stuck port data_in ;
+; IR_internal[4,5,9..11]                  ; Stuck at GND due to stuck port data_in ;
+; FSM:fsm_inst|rom_read_enable            ; Merged with FSM:fsm_inst|ir_load       ;
+; RAM:ram_inst|memory~256                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~257                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~258                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~259                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~260                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~261                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~262                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~263                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~264                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~265                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~266                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~267                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~268                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~269                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~270                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~271                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~272                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~273                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~274                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~275                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~276                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~277                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~278                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~279                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~280                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~281                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~282                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~283                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~284                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~285                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~286                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~287                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~288                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~289                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~290                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~291                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~292                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~293                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~294                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~295                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~296                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~297                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~298                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~299                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~300                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~301                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~302                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~303                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~304                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~305                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~306                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~307                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~308                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~309                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~310                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~311                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~312                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~313                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~314                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~315                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~316                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~317                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~318                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~319                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~320                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~321                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~322                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~323                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~324                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~325                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~326                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~327                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~328                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~329                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~330                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~331                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~332                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~333                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~334                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~335                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~336                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~337                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~338                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~339                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~340                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~341                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~342                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~343                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~344                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~345                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~346                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~347                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~348                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~349                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~350                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~351                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~352                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~353                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~354                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~355                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~356                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~357                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~358                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~359                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~360                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~361                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~362                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~363                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~364                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~365                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~366                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~367                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~368                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~369                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~370                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~371                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~372                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~373                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~374                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~375                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~376                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~377                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~378                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~379                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~380                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~381                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~382                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~383                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~384                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~385                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~386                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~387                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~388                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~389                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~390                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~391                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~392                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~393                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~394                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~395                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~396                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~397                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~398                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~399                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~400                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~401                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~402                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~403                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~404                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~405                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~406                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~407                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~408                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~409                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~410                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~411                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~412                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~413                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~414                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~415                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~416                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~417                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~418                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~419                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~420                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~421                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~422                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~423                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~424                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~425                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~426                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~427                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~428                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~429                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~430                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~431                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~432                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~433                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~434                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~435                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~436                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~437                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~438                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~439                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~440                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~441                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~442                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~443                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~444                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~445                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~446                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~447                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~448                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~449                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~450                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~451                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~452                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~453                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~454                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~455                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~456                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~457                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~458                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~459                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~460                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~461                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~462                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~463                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~464                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~465                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~466                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~467                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~468                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~469                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~470                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~471                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~472                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~473                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~474                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~475                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~476                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~477                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~478                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~479                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~480                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~481                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~482                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~483                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~484                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~485                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~486                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~487                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~488                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~489                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~490                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~491                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~492                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~493                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~494                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~495                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~496                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~497                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~498                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~499                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~500                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~501                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~502                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~503                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~504                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~505                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~506                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~507                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~508                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~509                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~510                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~511                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~512                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~513                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~514                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~515                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~516                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~517                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~518                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~519                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~520                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~521                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~522                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~523                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~524                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~525                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~526                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~527                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~528                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~529                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~530                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~531                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~532                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~533                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~534                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~535                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~536                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~537                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~538                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~539                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~540                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~541                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~542                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~543                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~544                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~545                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~546                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~547                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~548                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~549                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~550                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~551                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~552                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~553                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~554                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~555                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~556                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~557                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~558                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~559                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~560                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~561                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~562                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~563                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~564                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~565                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~566                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~567                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~568                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~569                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~570                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~571                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~572                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~573                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~574                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~575                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~576                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~577                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~578                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~579                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~580                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~581                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~582                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~583                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~584                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~585                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~586                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~587                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~588                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~589                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~590                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~591                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~592                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~593                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~594                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~595                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~596                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~597                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~598                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~599                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~600                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~601                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~602                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~603                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~604                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~605                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~606                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~607                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~608                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~609                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~610                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~611                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~612                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~613                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~614                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~615                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~616                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~617                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~618                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~619                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~620                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~621                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~622                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~623                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~624                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~625                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~626                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~627                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~628                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~629                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~630                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~631                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~632                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~633                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~634                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~635                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~636                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~637                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~638                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~639                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~640                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~641                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~642                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~643                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~644                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~645                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~646                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~647                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~648                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~649                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~650                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~651                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~652                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~653                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~654                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~655                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~656                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~657                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~658                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~659                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~660                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~661                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~662                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~663                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~664                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~665                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~666                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~667                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~668                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~669                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~670                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~671                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~672                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~673                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~674                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~675                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~676                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~677                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~678                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~679                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~680                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~681                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~682                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~683                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~684                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~685                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~686                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~687                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~688                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~689                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~690                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~691                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~692                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~693                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~694                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~695                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~696                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~697                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~698                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~699                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~700                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~701                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~702                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~703                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~704                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~705                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~706                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~707                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~708                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~709                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~710                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~711                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~712                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~713                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~714                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~715                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~716                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~717                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~718                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~719                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~720                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~721                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~722                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~723                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~724                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~725                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~726                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~727                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~728                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~729                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~730                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~731                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~732                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~733                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~734                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~735                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~736                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~737                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~738                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~739                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~740                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~741                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~742                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~743                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~744                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~745                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~746                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~747                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~748                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~749                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~750                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~751                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~752                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~753                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~754                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~755                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~756                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~757                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~758                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~759                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~760                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~761                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~762                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~763                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~764                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~765                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~766                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~767                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~768                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~769                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~770                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~771                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~772                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~773                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~774                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~775                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~776                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~777                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~778                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~779                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~780                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~781                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~782                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~783                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~784                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~785                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~786                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~787                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~788                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~789                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~790                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~791                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~792                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~793                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~794                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~795                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~796                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~797                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~798                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~799                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~800                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~801                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~802                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~803                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~804                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~805                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~806                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~807                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~808                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~809                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~810                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~811                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~812                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~813                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~814                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~815                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~816                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~817                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~818                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~819                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~820                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~821                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~822                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~823                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~824                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~825                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~826                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~827                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~828                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~829                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~830                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~831                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~832                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~833                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~834                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~835                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~836                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~837                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~838                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~839                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~840                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~841                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~842                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~843                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~844                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~845                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~846                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~847                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~848                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~849                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~850                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~851                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~852                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~853                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~854                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~855                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~856                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~857                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~858                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~859                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~860                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~861                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~862                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~863                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~864                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~865                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~866                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~867                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~868                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~869                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~870                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~871                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~872                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~873                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~874                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~875                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~876                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~877                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~878                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~879                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~880                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~881                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~882                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~883                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~884                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~885                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~886                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~887                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~888                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~889                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~890                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~891                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~892                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~893                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~894                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~895                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~896                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~897                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~898                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~899                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~900                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~901                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~902                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~903                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~904                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~905                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~906                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~907                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~908                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~909                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~910                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~911                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~912                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~913                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~914                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~915                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~916                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~917                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~918                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~919                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~920                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~921                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~922                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~923                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~924                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~925                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~926                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~927                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~928                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~929                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~930                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~931                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~932                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~933                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~934                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~935                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~936                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~937                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~938                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~939                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~940                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~941                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~942                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~943                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~944                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~945                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~946                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~947                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~948                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~949                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~950                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~951                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~952                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~953                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~954                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~955                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~956                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~957                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~958                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~959                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~960                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~961                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~962                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~963                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~964                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~965                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~966                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~967                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~968                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~969                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~970                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~971                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~972                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~973                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~974                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~975                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~976                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~977                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~978                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~979                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~980                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~981                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~982                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~983                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~984                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~985                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~986                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~987                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~988                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~989                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~990                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~991                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~992                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~993                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~994                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~995                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~996                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~997                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~998                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~999                 ; Lost fanout                            ;
+; RAM:ram_inst|memory~1000                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1001                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1002                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1003                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1004                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1005                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1006                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1007                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1008                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1009                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1010                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1011                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1012                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1013                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1014                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1015                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1016                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1017                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1018                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1019                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1020                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1021                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1022                ; Lost fanout                            ;
+; RAM:ram_inst|memory~1023                ; Lost fanout                            ;
+; Total Number of Removed Registers = 779 ;                                        ;
++-----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                    ;
++---------------------------+---------------------------+----------------------------------------+
+; Register name             ; Reason for Removal        ; Registers Removed due to This Register ;
++---------------------------+---------------------------+----------------------------------------+
+; ROM:rom_inst|data_out[4]  ; Stuck at GND              ; IR_internal[4]                         ;
+;                           ; due to stuck port data_in ;                                        ;
+; ROM:rom_inst|data_out[5]  ; Stuck at GND              ; IR_internal[5]                         ;
+;                           ; due to stuck port data_in ;                                        ;
+; ROM:rom_inst|data_out[9]  ; Stuck at GND              ; IR_internal[9]                         ;
+;                           ; due to stuck port data_in ;                                        ;
+; ROM:rom_inst|data_out[10] ; Stuck at GND              ; IR_internal[10]                        ;
+;                           ; due to stuck port data_in ;                                        ;
+; ROM:rom_inst|data_out[11] ; Stuck at GND              ; IR_internal[11]                        ;
+;                           ; due to stuck port data_in ;                                        ;
++---------------------------+---------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -202,14 +1009,25 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 16    ;
+; Total registers                              ; 358   ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 6     ;
+; Number of registers using Asynchronous Clear ; 12    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 10    ;
+; Number of registers using Clock Enable       ; 333   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |CPU|ram_addr                ;
+; 14:1               ; 7 bits    ; 63 LEs        ; 42 LEs               ; 21 LEs                 ; No         ; |CPU|ALU:alu_inst|result[6]  ;
+; 14:1               ; 7 bits    ; 63 LEs        ; 35 LEs               ; 28 LEs                 ; No         ; |CPU|ALU:alu_inst|result[13] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+------------------------------+
 
 
 +-----------------------------------------------------------+
@@ -217,21 +1035,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+-------+----------------------------------+
 ; Parameter Name ; Value ; Type                             ;
 +----------------+-------+----------------------------------+
-; FETCH          ; 00    ; Unsigned Binary                  ;
-; DECODE         ; 01    ; Unsigned Binary                  ;
-; EXECUTE        ; 10    ; Unsigned Binary                  ;
+; FETCH          ; 000   ; Unsigned Binary                  ;
+; DECODE         ; 001   ; Unsigned Binary                  ;
+; EXEC1          ; 010   ; Unsigned Binary                  ;
+; EXEC2          ; 011   ; Unsigned Binary                  ;
+; EXEC3          ; 100   ; Unsigned Binary                  ;
+; EXEC4          ; 101   ; Unsigned Binary                  ;
 +----------------+-------+----------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "FSM:fsm_inst"                                                                                                                         ;
-+-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
-; Port            ; Type   ; Severity ; Details                                                                                                                    ;
-+-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
-; rom_read_enable ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                        ;
-; ir_load         ; Output ; Warning  ; Output or bidir port (3 bits) is wider than the port expression (1 bits) it drives; bit(s) "ir_load[2..1]" have no fanouts ;
-+-----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -240,14 +1051,10 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sat Jun 21 15:20:12 2025
+    Info: Processing started: Mon Jun 30 11:45:28 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
-Warning (10229): Verilog HDL Expression warning at ROM.v(18): truncated literal to match 16 bits File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 18
-Warning (10229): Verilog HDL Expression warning at ROM.v(19): truncated literal to match 16 bits File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 19
-Warning (10229): Verilog HDL Expression warning at ROM.v(20): truncated literal to match 16 bits File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 20
-Warning (10229): Verilog HDL Expression warning at ROM.v(21): truncated literal to match 16 bits File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 21
 Info (12021): Found 1 design units, including 1 entities, in source file /users/yasser/documents/lab poca/miniproject/rom/rom.v
     Info (12023): Found entity 1: ROM File: C:/Users/yasser/Documents/Lab POCA/MiniProject/ROM/ROM.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file /users/yasser/documents/lab poca/miniproject/ram/ram.v
@@ -261,26 +1068,35 @@ Info (12021): Found 1 design units, including 1 entities, in source file /users/
 Info (12021): Found 1 design units, including 1 entities, in source file cpu.v
     Info (12023): Found entity 1: CPU File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 1
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at CPU.v(19): object "src" assigned a value but never read File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 19
-Info (12128): Elaborating entity "FSM" for hierarchy "FSM:fsm_inst" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 35
-Warning (10230): Verilog HDL assignment warning at FSM.v(50): truncated value with size 32 to match size of target (3) File: C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v Line: 50
-Info (12128): Elaborating entity "CU" for hierarchy "CU:cu_inst" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 43
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Warning (21074): Design contains 6 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "rom_data[0]" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[1]" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[2]" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[3]" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[4]" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 4
-    Warning (15610): No output dependent on input pin "rom_data[5]" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 4
-Info (21057): Implemented 96 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 34 input pins
-    Info (21059): Implemented 32 output pins
-    Info (21061): Implemented 30 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 15 warnings
-    Info: Peak virtual memory: 4713 megabytes
-    Info: Processing ended: Sat Jun 21 15:20:21 2025
+Info (12128): Elaborating entity "ROM" for hierarchy "ROM:rom_inst" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 56
+Info (12128): Elaborating entity "RAM" for hierarchy "RAM:ram_inst" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 66
+Warning (10230): Verilog HDL assignment warning at RAM.v(17): truncated value with size 32 to match size of target (16) File: C:/Users/yasser/Documents/Lab POCA/MiniProject/RAM/RAM.v Line: 17
+Info (12128): Elaborating entity "FSM" for hierarchy "FSM:fsm_inst" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 76
+Warning (10230): Verilog HDL assignment warning at FSM.v(49): truncated value with size 32 to match size of target (8) File: C:/Users/yasser/Documents/Lab POCA/MiniProject/FSM/FSM.v Line: 49
+Info (12128): Elaborating entity "CU" for hierarchy "CU:cu_inst" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 85
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:alu_inst" File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 95
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "IR[4]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 12
+    Warning (13410): Pin "IR[5]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 12
+    Warning (13410): Pin "IR[9]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 12
+    Warning (13410): Pin "IR[10]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 12
+    Warning (13410): Pin "IR[11]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 12
+    Warning (13410): Pin "dest[3]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 15
+    Warning (13410): Pin "dest[4]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 15
+    Warning (13410): Pin "dest[5]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 15
+    Warning (13410): Pin "src[4]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 15
+    Warning (13410): Pin "src[5]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 15
+    Warning (13410): Pin "ram_addr[4]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 20
+    Warning (13410): Pin "ram_addr[5]" is stuck at GND File: C:/Users/yasser/Documents/Lab POCA/MiniProject/CPU/CPU.v Line: 20
+Info (17049): 768 registers lost all their fanouts during netlist optimizations.
+Info (21057): Implemented 841 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 101 output pins
+    Info (21061): Implemented 738 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 16 warnings
+    Info: Peak virtual memory: 4712 megabytes
+    Info: Processing ended: Mon Jun 30 11:45:37 2025
     Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:19
+    Info: Total CPU time (on all processors): 00:00:18
 
 

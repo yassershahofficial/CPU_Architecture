@@ -3,6 +3,7 @@ clk => ir_load~reg0.CLK
 clk => rom_read_enable~reg0.CLK
 clk => state[0]~reg0.CLK
 clk => state[1]~reg0.CLK
+clk => state[2]~reg0.CLK
 clk => pc[0]~reg0.CLK
 clk => pc[1]~reg0.CLK
 clk => pc[2]~reg0.CLK
@@ -15,6 +16,7 @@ reset => ir_load~reg0.ACLR
 reset => rom_read_enable~reg0.ACLR
 reset => state[0]~reg0.ACLR
 reset => state[1]~reg0.ACLR
+reset => state[2]~reg0.ACLR
 reset => pc[0]~reg0.ACLR
 reset => pc[1]~reg0.ACLR
 reset => pc[2]~reg0.ACLR
@@ -23,17 +25,18 @@ reset => pc[4]~reg0.ACLR
 reset => pc[5]~reg0.ACLR
 reset => pc[6]~reg0.ACLR
 reset => pc[7]~reg0.ACLR
-pc[0] <= pc[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-pc[1] <= pc[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-pc[2] <= pc[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-pc[3] <= pc[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-pc[4] <= pc[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-pc[5] <= pc[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-pc[6] <= pc[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-pc[7] <= pc[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-rom_read_enable <= rom_read_enable~reg0.DB_MAX_OUTPUT_PORT_TYPE
-state[0] <= state[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-state[1] <= state[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
-ir_load <= ir_load~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ir_load << ir_load~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rom_read_enable << rom_read_enable~reg0.DB_MAX_OUTPUT_PORT_TYPE
+state[0] << state[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+state[1] << state[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+state[2] << state[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[0] << pc[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[1] << pc[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[2] << pc[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[3] << pc[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[4] << pc[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[5] << pc[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[6] << pc[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+pc[7] << pc[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
